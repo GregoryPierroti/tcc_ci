@@ -242,3 +242,58 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   `feat/etl-pyspark-local` foram enviados ao remoto.
 - **PRs:** PR #1 (Python) e PR #2 (PySpark) foram integrados em `main` com
   commits de merge após resolução dos conflitos documentais.
+
+### 2026-07-25 — ETP-009 — Importação da linha de base do ETL dbt
+
+- **Estado:** concluída.
+- **Branch:** `feat/etl-dbt-local`.
+- **Origem:** `eEDB011ingestao_dados_grupo_d/04_ETL_dbt`, commit fonte
+  `f0fceafc95cc9c848ce8ca3def6f73208383d806`.
+- **Destino:** `projects/04_etl_dbt/` (48 arquivos, 796 KB).
+- **Exclusões:** `dbt/project/target/`, `dbt/project/logs/` e o perfil
+  específico de usuário `dbt/profiles/.user.yml`; são artefatos ou configuração
+  local não reproduzível.
+- **Próxima etapa:** revisar raiz do projeto dbt, Compose, perfil, seeds e
+  dependências antes de qualquer correção.
+
+### 2026-07-25 — ETP-010 — Recuperação e validação local do ETL dbt
+
+- **Estado:** concluída.
+- **Problemas basais confirmados:** o Compose montava `dbt/project` em
+  `/app`, mas `dbt_project.yml` estava fora desse diretório; o Dockerfile era
+  referenciado como `Dockerfile`, embora existisse como `dockerfile`; o perfil
+  apontava a camada local para `warehouse`, enquanto os `source()` declaravam
+  o banco `postgres`; e o delivery tratava modelos internos como fontes
+  externas (`source()`) em vez de dependências dbt (`ref()`).
+- **Infraestrutura recuperada:** a raiz única do projeto passou a ser
+  `dbt/project/`, com `dbt_project.yml` nesse diretório; `dbt/Dockerfile` usa
+  Python 3.11, git, dbt-core 1.9.0 e dbt-postgres 1.9.0; Docker Compose
+  declara PostgreSQL 16 e injeta as variáveis de conexão no perfil dbt.
+  Foram adicionados `.env.example`, `.gitignore`, `Makefile` e `README.md`.
+- **Decisão de execução:** `make run` executa `dbt seed --full-refresh` antes
+  de `dbt build`. Os modelos dependem de entradas declaradas por `source()`,
+  cuja criação pelos seeds não forma uma dependência de grafo dbt; portanto a
+  ordem explícita evita corrida em banco vazio.
+- **Correções de modelos:** `mod_final.sql` passou a usar `ref()` para
+  `mod_bancos`, `mod_reclamacoes` e `mod_empregados`; os sources de entrada
+  passaram a apontar para `warehouse.public`; as três fontes `public_trusted`
+  obsoletas foram removidas. Em `mod_bancos`, a chave incremental passou a
+  ser `(cnpj, segmento, nome)`, após a descoberta de colisões em
+  `nome_processed`; o `SELECT DISTINCT` da staging preserva linhas com nome
+  original diferente e elimina somente duplicatas literais.
+- **Falhas encontradas durante a validação:** a primeira imagem não continha
+  git, exigido por `dbt debug`; a primeira construção falhou porque os sources
+  compilavam para `postgres.public`; e a segunda construção revelou que a
+  chave incremental anterior não era única (`MERGE command cannot affect row
+  a second time`). Todas foram reproduzidas localmente e corrigidas antes da
+  validação final.
+- **Validação final:** após `make reset` (somente o volume PostgreSQL local),
+  `make debug`, `make parse`, `make run` e uma segunda execução de
+  `make build` concluíram com sucesso. Cada build processou 26 nós: 10 seeds
+  e 16 modelos, sem avisos ou erros. `dbt ls --resource-type source` encontrou
+  os 10 sources reais dos seeds (1 de bancos, 2 de empregados e 7 de
+  reclamações). A conexão em `warehouse.public` foi aprovada por `dbt debug`.
+- **Saída observada:** `public_trusted.mod_bancos` tem 1474 linhas,
+  `public_trusted.mod_reclamacoes` 918, `public_trusted.mod_empregados` 39 e
+  `public_delivery.mod_final` 1. A segunda execução preservou o resultado de
+  delivery com 1 linha, comprovando a reexecução local para os dados atuais.

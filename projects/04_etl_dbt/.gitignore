@@ -1,0 +1,4 @@
+.env
+dbt/profiles/.user.yml
+dbt/project/target/
+dbt/project/logs/

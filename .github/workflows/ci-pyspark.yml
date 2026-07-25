@@ -1,0 +1,56 @@
+name: CI - ETL PySpark
+
+on:
+  pull_request:
+    paths:
+      - "projects/03_etl_pyspark/**"
+      - ".github/workflows/ci-pyspark.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "projects/03_etl_pyspark/**"
+      - ".github/workflows/ci-pyspark.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-pyspark-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Qualidade, testes Spark e segurança
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: projects/03_etl_pyspark
+
+    steps:
+      - name: Obter código
+        uses: actions/checkout@v4
+
+      - name: Preparar configuração local efêmera
+        run: cp .env.example .env
+
+      - name: Verificar Docker Compose
+        run: docker compose version
+
+      - name: Verificar formatação
+        run: make format-check
+
+      - name: Executar lint
+        run: make lint
+
+      - name: Executar testes Spark determinísticos
+        run: make test
+
+      - name: Auditar dependências
+        run: make security
+
+      - name: Encerrar recursos Docker
+        if: always()
+        run: docker compose down -v

@@ -674,3 +674,17 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   concluiu os quatro testes.
 - **Próxima validação:** a PR deverá confirmar que os workflows hospedados
   executam a cobertura e as novas etapas dbt com os mesmos comandos locais.
+
+### 2026-07-25 — ETP-024 — Integração das verificações ampliadas
+
+- **Estado:** concluída.
+- **Pull request:** [#10](https://github.com/GregoryPierroti/tcc_ci/pull/10),
+  integrada por merge em `main` após estado `CLEAN` e `MERGEABLE`.
+- **Evidência remota:** todos os workflows passaram com a ampliação: Python
+  em 26 s, PySpark em 57 s e dbt em 1 min 18 s. A execução dbt exibiu as
+  etapas distintas de lint, parse, compile e build/test; Python e PySpark
+  executaram pytest com cobertura.
+- **Resultado metodológico:** o baseline agora permite associar falhas a uma
+  etapa dbt mais específica e registrar cobertura como métrica auxiliar dos
+  objetos Python. A próxima feature deve congelar este baseline e criar o
+  catálogo/protocolo de injeção, sem inserir falhas ainda.

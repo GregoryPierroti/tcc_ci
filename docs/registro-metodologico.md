@@ -612,3 +612,25 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Validação local:** `make lint` passou com as duas supressões; `make test`
   voltou a concluir os 27 itens do `dbt build` e o teste singular basal. Os
   serviços foram encerrados após a validação.
+
+### 2026-07-25 — ETP-022 — Primeira execução remota de CI do dbt
+
+- **Estado:** concluída.
+- **Pull request:** [#9](https://github.com/GregoryPierroti/tcc_ci/pull/9),
+  integrada por merge em `main` após estado `CLEAN` e `MERGEABLE`.
+- **Evidência remota:** a terceira execução do job `SQLFluff e dbt build`
+  passou em 1 minuto e 4 segundos. Ela criou o PostgreSQL efêmero, executou o
+  lint SQL com templater dbt e concluiu `make test`, que inclui seeds, `dbt
+  build` (27 itens) e o teste singular basal.
+- **Limitação observada:** as duas tentativas iniciais falharam por exceção
+  interna CV11 do SQLFluff no cast condicional `null::text`; a correção de
+  espaçamento por si só não resolveu a falha. A supressão de CV11 limitada a
+  essas duas linhas foi necessária para a estabilidade no runner hospedado.
+  Isso não demonstra falha da transformação nem uma detecção válida de defeito
+  de dados; deve ser classificado como limitação da ferramenta/configuração no
+  experimento.
+- **Baseline comparável:** os três objetos experimentais possuem agora uma
+  pipeline GitHub Actions explícita e bloqueante: Python (24 s), PySpark (1
+  min 2 s) e dbt (1 min 4 s). A comparação ainda é apenas operacional: dbt
+  não possui auditoria de dependências nesta primeira versão, conforme
+  DEC-014.

@@ -168,3 +168,20 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   em `raw.reclamacoes` e 11 registros em `delivery.bancos_unificados`.
 - **Instruções ao usuário:** `README.md` documenta `make run`, `make status` e
   `make reset`. O último remove somente os volumes Docker locais deste projeto.
+
+### 2026-07-25 — ETP-004 — Importação da linha de base do ETL PySpark
+
+- **Estado:** concluída.
+- **Objetivo:** criar a cópia experimental do objeto `03_ETL_Pyspark` sem
+  alterar o repositório-fonte.
+- **Origem:** `eEDB011ingestao_dados_grupo_d/03_ETL_Pyspark`, no commit fonte
+  `f0fceafc95cc9c848ce8ca3def6f73208383d806` (árvore de trabalho limpa).
+- **Destino:** `projects/03_etl_pyspark/` no monorepo `tcc_ci`.
+- **Conteúdo importado:** 20 arquivos (352 KB), incluindo código, Docker,
+  requisitos e dados de entrada CSV/TSV.
+- **Exclusões justificadas:** `src/pipeline/Camadas/` não foi copiado. Ele
+  continha Parquets, `_SUCCESS` e arquivos `.crc` gerados por Spark, que são
+  resultados de execução e serão recriados localmente.
+- **Verificação:** `diff -qr`, excluindo apenas `Camadas/`, não apresentou
+  diferenças entre a fonte e o destino.
+- **Próxima etapa:** revisão técnica da cópia basal, sem correções nesta etapa.

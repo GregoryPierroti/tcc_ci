@@ -7,6 +7,8 @@ models:
       # Campos de bancos
       - name: cnpj
         description: "Identificador do banco."
+        data_tests:
+          - not_null
       - name: segmento
         description: "Segmento do banco."
       - name: nome

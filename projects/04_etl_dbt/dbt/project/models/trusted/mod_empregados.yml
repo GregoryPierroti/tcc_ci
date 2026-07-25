@@ -6,3 +6,8 @@ models:
     columns:
       - name: nome_processed
         description: "Nome padronizado do empregador para junção."
+      - name: employer_sk
+        description: "Chave técnica determinística do empregador."
+        data_tests:
+          - not_null
+          - unique

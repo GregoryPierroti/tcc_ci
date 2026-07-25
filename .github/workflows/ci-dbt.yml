@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   quality:
-    name: SQLFluff e dbt build
+    name: SQLFluff, parse, compile e dbt build
     runs-on: ubuntu-latest
     timeout-minutes: 20
     defaults:
@@ -41,6 +41,12 @@ jobs:
 
       - name: Executar lint SQL
         run: make lint
+
+      - name: Validar estrutura do projeto dbt
+        run: make parse
+
+      - name: Compilar modelos dbt
+        run: make compile
 
       - name: Executar dbt build e testes
         run: make test

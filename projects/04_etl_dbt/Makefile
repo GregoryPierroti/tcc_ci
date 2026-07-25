@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := run
 
-.PHONY: up debug parse seed build format-check lint test run status down reset
+.PHONY: up debug parse compile seed build format-check lint test run status down reset
 
 up:
 	docker compose up -d --wait postgres
@@ -10,6 +10,9 @@ debug: up
 
 parse: up
 	docker compose run --rm --no-deps --build dbt dbt parse
+
+compile: up
+	docker compose run --rm --no-deps --build dbt dbt compile
 
 seed: up
 	docker compose run --rm --no-deps --build dbt dbt seed --full-refresh

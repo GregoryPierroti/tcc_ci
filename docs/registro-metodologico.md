@@ -434,3 +434,14 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Limite de escopo:** não foi criado workflow de CI, relatório remoto ou
   check automático de pull request. Esta etapa apenas consolidou comandos
   locais bloqueantes que a próxima etapa de CI chamará.
+
+### 2026-07-25 — ETP-016 — Integração dos checks locais de qualidade
+
+- **Estado:** concluída.
+- **Pull request:** [#5](https://github.com/GregoryPierroti/tcc_ci/pull/5),
+  aberto a partir de `feat/local-quality-checks` e integrado por merge em
+  `main` após confirmação de estado `CLEAN` e `MERGEABLE`.
+- **Resultado:** a `main` contém a interface local comum de qualidade e as
+  respectivas versões de dependências congeladas. A imagem de diagrama anexada
+  manualmente na raiz do repositório foi preservada como arquivo não rastreado
+  e não compõe este commit nem o PR.

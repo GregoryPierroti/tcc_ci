@@ -41,6 +41,10 @@ class S3Uploader:
             for root, _, files in os.walk(local_categoria_path):
                 for nome_arquivo in files:
                     caminho_local = os.path.join(root, nome_arquivo)
+                    if os.path.getsize(caminho_local) == 0:
+                        logging.warning(f"Arquivo vazio, ignorado: {caminho_local}")
+                        continue
+
                     rel_path = os.path.relpath(caminho_local, self.local_base_dir)
                     s3_key = os.path.join(self.s3_base_prefix, rel_path).replace("\\", "/")
 

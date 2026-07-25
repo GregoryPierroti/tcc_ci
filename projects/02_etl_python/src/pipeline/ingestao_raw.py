@@ -1,5 +1,4 @@
 import logging
-from io import StringIO
 import pandas as pd
 from utils.s3_client import S3Client
 from utils.postgres_uploader import PostgresUploader
@@ -21,15 +20,7 @@ class PipelineIngestaoRaw:
 
         self.categories = ["Bancos", "Reclamacoes", "Empregados"]
 
-    def _detect_sep(self, key):
-        if key.endswith(".tsv") or key.endswith(".TSV"):
-            return "\t"
-        return ","
-
     def _ler_arquivo_s3_para_df(self, key):
-        sep = self._detect_sep(key)
-        content = self.s3.read_file(key)
-        
         return self.s3.read_file(key)
 
     def _montar_destino_processado(self, key):
@@ -50,23 +41,14 @@ class PipelineIngestaoRaw:
             logging.info(f"Nenhum arquivo para processar em categoria '{category}'")
             return
         
+        primeiro_arquivo_processado = True
         for key in arquivos:
             logging.info(f"Iniciando processamento do arquivo {key}")
             obj = self.s3.get_object_metadata(key)
             if obj["ContentLength"] == 0:
                 logging.warning(f"📭 Arquivo vazio, ignorado: {key}")
-                return
-             # Mapear categoria para separador e encoding
-            if category == "Bancos":
-                sep = "\t"
-                encoding = "utf-8"
-            elif category == "Empregados":
-                sep = "|"
-                encoding = "utf-8"
-            elif category == "Reclamacoes":
-                sep = ";"
-                encoding = "latin1"
-            
+                continue
+
             try:
                 df = self._ler_arquivo_s3_para_df(key)
                 # Substitui espaços em branco e strings vazias por NaN
@@ -75,9 +57,10 @@ class PipelineIngestaoRaw:
                     df,
                     schema=self.raw_schema,
                     table_name=category.lower(),
-                    if_exists="append",
+                    if_exists="replace" if primeiro_arquivo_processado else "append",
                     index=False,
                 )
+                primeiro_arquivo_processado = False
                 destino = self._montar_destino_processado(key)
                 self.s3.move_file(key, destino)
             except Exception as e:

@@ -142,3 +142,29 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Critério de validação posterior:** uma execução limpa deve produzir as
   tabelas `raw.*`, `trusted.*` e `delivery.bancos_unificados` no PostgreSQL
   local, com contagens registradas.
+
+### 2026-07-25 — ETP-003 — Recuperação e validação local do ETL Python
+
+- **Estado:** concluída.
+- **Infraestrutura declarada:** `Dockerfile`, `docker-compose.yaml`,
+  `infra/postgres/init.sql`, `.env.example`, `.dockerignore` e `Makefile`.
+  O Compose sobe PostgreSQL 16, MinIO e um inicializador de bucket antes da
+  aplicação.
+- **Dependências:** `requirements.txt` passou a usar versões fixadas; `s3fs`,
+  que não era importada pelo projeto e tornava a resolução do `pip` instável,
+  foi removida.
+- **Correções de execução:** arquivos de entrada vazios são ignorados no envio
+  e na ingestão; a ingestão substitui a tabela `raw` no primeiro arquivo de
+  cada categoria e acrescenta os demais, evitando acúmulo entre execuções.
+- **Comando de validação:** após `docker compose down -v`, foi executado
+  `make run`, que cria os serviços, o bucket e executa a aplicação. A consulta
+  posterior foi feita no PostgreSQL local.
+- **Resultado da execução limpa:** 10 arquivos não vazios enviados;
+  `raw.reclamacoes` e `trusted.reclamacoes` com 918 linhas; `raw.bancos` e
+  `trusted.bancos` com 1474 linhas; `raw.empregados` e `trusted.empregados`
+  com 39 linhas; `delivery.bancos_unificados` com 11 linhas e 3 CNPJs
+  distintos.
+- **Reprodutibilidade:** uma segunda execução sem limpeza preservou 918 linhas
+  em `raw.reclamacoes` e 11 registros em `delivery.bancos_unificados`.
+- **Instruções ao usuário:** `README.md` documenta `make run`, `make status` e
+  `make reset`. O último remove somente os volumes Docker locais deste projeto.

@@ -185,3 +185,28 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Verificação:** `diff -qr`, excluindo apenas `Camadas/`, não apresentou
   diferenças entre a fonte e o destino.
 - **Próxima etapa:** revisão técnica da cópia basal, sem correções nesta etapa.
+
+### 2026-07-25 — ETP-005 — Revisão basal do ETL PySpark
+
+- **Estado:** concluída.
+- **Fluxo identificado:** arquivos locais em `src/pipeline/Dados/` são lidos
+  pelo Spark, materializados em Parquet nas camadas `RAW`, `Trusted` e
+  `Delivery`, e a tabela final é escrita no PostgreSQL por JDBC.
+- **Bloqueio reproduzido:** `docker compose config` não é válido sem `.env` e
+  emite variáveis PostgreSQL vazias; o arquivo referenciado como Dockerfile não
+  existe, pois a fonte contém `dockerfile`.
+- **Bloqueios adicionais identificados:** `main.py` fixa `/app/src`; o Compose
+  mantém o contêiner inativo (`tail -f /dev/null`) em vez de executar o ETL; a
+  sessão Spark solicita o driver JDBC por `spark.jars.packages`, criando uma
+  dependência de rede; e as exceções principais são apenas registradas, sem
+  retornar código de falha.
+- **Dados e artefatos:** Bancos é TSV, Empregados usa `|` e Reclamações usa
+  `;` com codificação Latin-1; o arquivo de reclamações de 2022-T2 é vazio.
+  `Camadas/` é saída gerada pelo Spark, não fonte.
+- **Decisão de recuperação:** declarar um ambiente local composto por Spark
+  local (PySpark 3.5 e Java 17) e PostgreSQL, com driver JDBC instalado na
+  imagem e referenciado localmente. Preservar Parquet como saída intermediária,
+  mas ignorá-lo no Git.
+- **Critério de validação posterior:** uma execução limpa deve recriar as três
+  camadas Parquet e a tabela PostgreSQL `reclamacoes_consolidadas`, com
+  contagens registradas e status de processo bem-sucedido.

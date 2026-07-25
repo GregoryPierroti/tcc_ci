@@ -237,8 +237,8 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 
 ### 2026-07-25 — ETP-008 — Publicação e integração no GitHub
 
-- **Estado:** em andamento.
+- **Estado:** concluída.
 - **Publicação:** `main`, `feat/etl-python-local` e
   `feat/etl-pyspark-local` foram enviados ao remoto.
-- **PRs:** PR #1 (Python) foi integrado em `main`; PR #2 (PySpark) foi
-  atualizado para ter `main` como base e aguarda conclusão da integração.
+- **PRs:** PR #1 (Python) e PR #2 (PySpark) foram integrados em `main` com
+  commits de merge após resolução dos conflitos documentais.

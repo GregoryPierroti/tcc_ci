@@ -114,3 +114,31 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Verificação:** `diff -qr` entre origem e destino não apresentou diferenças.
 - **Próxima etapa:** revisão técnica da cópia basal; nenhuma correção foi feita
   nesta importação.
+
+### 2026-07-25 — ETP-002 — Revisão basal do ETL Python
+
+- **Estado:** concluída.
+- **Fluxo identificado:** arquivos locais em `src/pipeline/Dados/` são enviados
+  a S3, ingeridos para PostgreSQL na camada `raw`, transformados para
+  `trusted` e unidos em `delivery`.
+- **Dados:** os CSV/TSV importados são entradas reais do fluxo e seus formatos
+  correspondem às categorias Bancos (TSV), Empregados (CSV separado por `|`) e
+  Reclamações (CSV separado por `;`, codificação Latin-1). O arquivo
+  `2022_tri_02_nao_ha_dados.csv` é vazio.
+- **Bloqueio reproduzido:** `docker compose config` falha porque o arquivo
+  `.env` referenciado não existe.
+- **Bloqueios adicionais identificados:** o Compose solicita `Dockerfile`, mas
+  a cópia contém `dockerfile`; ele não declara PostgreSQL; o código exige S3,
+  PostgreSQL e schemas `raw`, `trusted` e `delivery` externos; `main.py`
+  sempre tenta enviar os dados ao S3.
+- **Defeitos de recuperação relevantes:** o processamento retorna da categoria
+  inteira ao encontrar arquivo vazio (`ingestao_raw.py`); as configurações de
+  separador calculadas ali não são usadas; e uma nova execução pode acumular
+  dados em `raw`.
+- **Decisão de recuperação:** declarar uma infraestrutura local em Docker
+  Compose com PostgreSQL, MinIO (S3 compatível), inicialização de bucket e
+  criação dos schemas. A aplicação continuará usando o fluxo S3/PostgreSQL,
+  sem credenciais de cloud nem serviços externos.
+- **Critério de validação posterior:** uma execução limpa deve produzir as
+  tabelas `raw.*`, `trusted.*` e `delivery.bancos_unificados` no PostgreSQL
+  local, com contagens registradas.

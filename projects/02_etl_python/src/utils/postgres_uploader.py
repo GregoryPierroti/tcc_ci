@@ -1,12 +1,12 @@
-import os
 import logging
-from sqlalchemy import create_engine, text
-from dotenv import load_dotenv
+import os
 from datetime import datetime
+
 import pandas as pd
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+from dotenv import load_dotenv
+from sqlalchemy import create_engine, text
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
 class PostgresUploader:
@@ -24,7 +24,7 @@ class PostgresUploader:
 
     def upload_df(self, df, schema, table_name, if_exists="replace", index=False):
         try:
-            df['data_insercao'] = datetime.now()
+            df["data_insercao"] = datetime.now()
             df.to_sql(
                 table_name,
                 self.engine,
@@ -36,6 +36,7 @@ class PostgresUploader:
         except Exception as e:
             logging.error(f"Erro ao salvar DataFrame no Postgres: {e}")
             raise
+
     def read_table(self, schema, table_name):
         """Lê uma tabela do PostgreSQL e retorna como DataFrame."""
         try:

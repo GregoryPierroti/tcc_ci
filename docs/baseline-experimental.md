@@ -22,6 +22,9 @@ execução local.
 - `make down` encerra os serviços preservando o volume local.
 - As verificações locais serão expostas por `make test`. Elas não são uma
   esteira de CI e não executam automaticamente no GitHub nesta fase.
+- Os checks de qualidade locais são expostos por `make format-check` e
+  `make lint`; nos projetos Python, `make security` executa a auditoria de
+  dependências. Esses comandos serão a interface chamada pela CI posterior.
 
 ## Interpretação comparativa
 
@@ -41,3 +44,4 @@ Uma versão basal é aceita quando:
 3. os oráculos mínimos da tabela acima são observados;
 4. a reexecução não falha e preserva a saída esperada;
 5. os testes locais determinísticos passam.
+6. os checks locais de formatação, lint e dependências aplicáveis passam.

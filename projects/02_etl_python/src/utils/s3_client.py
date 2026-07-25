@@ -1,10 +1,10 @@
 import os
-import boto3
+from datetime import datetime
 from io import BytesIO
+
+import boto3
 import pandas as pd
 from botocore.exceptions import ClientError
-from datetime import datetime
-import logging
 
 
 class S3Client:

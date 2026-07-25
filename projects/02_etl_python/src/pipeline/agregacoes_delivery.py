@@ -1,10 +1,11 @@
 import logging
+
 import pandas as pd
+
 from utils.postgres_uploader import PostgresUploader
 
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
 
 class AgregacoesDelivery:
     def __init__(self):
@@ -30,7 +31,9 @@ class AgregacoesDelivery:
 
         # JOIN 1 - Bancos x Reclamações pelo CNPJ
         df_bancos = df_bancos[df_bancos["CNPJ"].notnull() & (df_bancos["CNPJ"] != "0")]
-        df_reclamacoes = df_reclamacoes[df_reclamacoes["CNPJ IF"].notnull() & (df_reclamacoes["CNPJ IF"] != "0")]
+        df_reclamacoes = df_reclamacoes[
+            df_reclamacoes["CNPJ IF"].notnull() & (df_reclamacoes["CNPJ IF"] != "0")
+        ]
 
         df_join_br = pd.merge(
             df_bancos,
@@ -45,10 +48,10 @@ class AgregacoesDelivery:
         logging.info(f"CNPJs únicos pós join: {df_join_br['CNPJ'].nunique()}")
 
         if df_join_br.empty:
-            logging.warning("Join bancos x reclamações resultou em 0 registros. Encerrando execução.")
+            logging.warning(
+                "Join bancos x reclamações resultou em 0 registros. Encerrando execução."
+            )
             return
-
-
 
         df_final = pd.merge(
             df_join_br,
@@ -56,14 +59,16 @@ class AgregacoesDelivery:
             how="inner",
             left_on="Nome_processed",
             right_on="Nome_processed",
-            suffixes=("", "_empregado")
+            suffixes=("", "_empregado"),
         )
 
         logging.info(f"Join com empregados resultou em {len(df_final)} registros finais.")
         logging.info(f"CNPJs únicos no DataFrame final: {df_final['CNPJ'].nunique()}")
 
         if df_final.empty:
-            logging.warning("Join final com empregados resultou em 0 registros. Encerrando execução.")
+            logging.warning(
+                "Join final com empregados resultou em 0 registros. Encerrando execução."
+            )
             return
 
         # Upload final

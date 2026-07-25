@@ -1,4 +1,3 @@
-
 {{ config(materialized='incremental', schema='trusted', unique_key=['cnpj', 'segmento', 'nome'],
     incremental_strategy='merge') }}
 

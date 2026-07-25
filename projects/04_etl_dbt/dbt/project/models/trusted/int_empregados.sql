@@ -12,37 +12,37 @@
 
 with less_v2 as (
   select
-    {{ clean_text('employer_name') }}                as employer_name,
-    cast(reviews_count   as integer)                 as reviews_count,
-    cast(culture_count   as integer)                 as culture_count,
-    cast(salaries_count  as integer)                 as salaries_count,
-    cast(benefits_count  as integer)                 as benefits_count,
+    {{ clean_text('employer_name') }} as employer_name,
+    cast(reviews_count as integer) as reviews_count,
+    cast(culture_count as integer) as culture_count,
+    cast(salaries_count as integer) as salaries_count,
+    cast(benefits_count as integer) as benefits_count,
 
-    {{ clean_text('employer_website') }}             as employer_website,
-    {{ clean_text('employer_headquarters') }}        as employer_headquarters,
-    cast(employer_founded as integer)                as employer_founded,
-    {{ clean_text('employer_industry') }}            as employer_industry,
-    {{ clean_text('employer_revenue') }}             as employer_revenue,
-    {{ clean_text('url') }}                          as url,
+    {{ clean_text('employer_website') }} as employer_website,
+    {{ clean_text('employer_headquarters') }} as employer_headquarters,
+    cast(employer_founded as integer) as employer_founded,
+    {{ clean_text('employer_industry') }} as employer_industry,
+    {{ clean_text('employer_revenue') }} as employer_revenue,
+    {{ clean_text('url') }} as url,
 
-    cast(geral                     as double precision)  as geral,
-    cast(cultura_e_valores         as double precision)  as cultura_e_valores,
-    cast(diversidade_e_inclusao    as double precision)  as diversidade_e_inclusao,
-    cast(qualidade_de_vida         as double precision)  as qualidade_de_vida,
-    cast(alta_lideranca            as double precision)  as alta_lideranca,
-    cast(remuneracao_e_beneficios  as double precision)  as remuneracao_e_beneficios,
-    cast(oportunidades_de_carreira as double precision)  as oportunidades_de_carreira,
+    cast(geral as double precision) as geral,
+    cast(cultura_e_valores as double precision) as cultura_e_valores,
+    cast(diversidade_e_inclusao as double precision) as diversidade_e_inclusao,
+    cast(qualidade_de_vida as double precision) as qualidade_de_vida,
+    cast(alta_lideranca as double precision) as alta_lideranca,
+    cast(remuneracao_e_beneficios as double precision) as remuneracao_e_beneficios,
+    cast(oportunidades_de_carreira as double precision) as oportunidades_de_carreira,
 
-    cast(recomendam_para_outras_pessoas  as integer)     as recomendam_para_outras_pessoas,
-    cast(perspectiva_positiva_da_empresa as integer)     as perspectiva_positiva_da_empresa,
+    cast(recomendam_para_outras_pessoas as integer) as recomendam_para_outras_pessoas,
+    cast(perspectiva_positiva_da_empresa as integer) as perspectiva_positiva_da_empresa,
 
     {% if 'segmento' in less_colnames %}
-      {{ clean_text('segmento') }}                      as segmento,
+      {{ clean_text('segmento') }} as segmento,
     {% else %}
       null::text                                        as segmento,
     {% endif %}
 
-    {{ clean_text('nome') }}                            as nome,
+    {{ clean_text('nome') }} as nome,
     nullif(
       trim(
         regexp_replace(
@@ -63,47 +63,47 @@ with less_v2 as (
         )
       ),
       ''
-    )                                         as nome_processed,
-    cast(match_percent as integer)                      as match_percent,
+    ) as nome_processed,
+    cast(match_percent as integer) as match_percent,
 
     data_atualizacao,
-    'glassdoor_consolidado_join_match_less_v2'          as _source_table
+    'glassdoor_consolidado_join_match_less_v2' as _source_table
   from {{ ref('stg_empregados_menor') }}
 ),
 
 v2 as (
   select
-    {{ clean_text('employer_name') }}                as employer_name,
-    cast(reviews_count   as integer)                 as reviews_count,
-    cast(culture_count   as integer)                 as culture_count,
-    cast(salaries_count  as integer)                 as salaries_count,
-    cast(benefits_count  as integer)                 as benefits_count,
+    {{ clean_text('employer_name') }} as employer_name,
+    cast(reviews_count as integer) as reviews_count,
+    cast(culture_count as integer) as culture_count,
+    cast(salaries_count as integer) as salaries_count,
+    cast(benefits_count as integer) as benefits_count,
 
-    {{ clean_text('employer_website') }}             as employer_website,
-    {{ clean_text('employer_headquarters') }}        as employer_headquarters,
-    cast(employer_founded as integer)                as employer_founded,
-    {{ clean_text('employer_industry') }}            as employer_industry,
-    {{ clean_text('employer_revenue') }}             as employer_revenue,
-    {{ clean_text('url') }}                          as url,
+    {{ clean_text('employer_website') }} as employer_website,
+    {{ clean_text('employer_headquarters') }} as employer_headquarters,
+    cast(employer_founded as integer) as employer_founded,
+    {{ clean_text('employer_industry') }} as employer_industry,
+    {{ clean_text('employer_revenue') }} as employer_revenue,
+    {{ clean_text('url') }} as url,
 
-    cast(geral                     as double precision)  as geral,
-    cast(cultura_e_valores         as double precision)  as cultura_e_valores,
-    cast(diversidade_e_inclusao    as double precision)  as diversidade_e_inclusao,
-    cast(qualidade_de_vida         as double precision)  as qualidade_de_vida,
-    cast(alta_lideranca            as double precision)  as alta_lideranca,
-    cast(remuneracao_e_beneficios  as double precision)  as remuneracao_e_beneficios,
-    cast(oportunidades_de_carreira as double precision)  as oportunidades_de_carreira,
+    cast(geral as double precision) as geral,
+    cast(cultura_e_valores as double precision) as cultura_e_valores,
+    cast(diversidade_e_inclusao as double precision) as diversidade_e_inclusao,
+    cast(qualidade_de_vida as double precision) as qualidade_de_vida,
+    cast(alta_lideranca as double precision) as alta_lideranca,
+    cast(remuneracao_e_beneficios as double precision) as remuneracao_e_beneficios,
+    cast(oportunidades_de_carreira as double precision) as oportunidades_de_carreira,
 
-    cast(recomendam_para_outras_pessoas  as integer)     as recomendam_para_outras_pessoas,
-    cast(perspectiva_positiva_da_empresa as integer)     as perspectiva_positiva_da_empresa,
+    cast(recomendam_para_outras_pessoas as integer) as recomendam_para_outras_pessoas,
+    cast(perspectiva_positiva_da_empresa as integer) as perspectiva_positiva_da_empresa,
 
     {% if 'segmento' in v2_colnames %}
-      {{ clean_text('segmento') }}                      as segmento,
+      {{ clean_text('segmento') }} as segmento,
     {% else %}
       null::text                                        as segmento,
     {% endif %}
 
-    {{ clean_text('nome') }}                            as nome,
+    {{ clean_text('nome') }} as nome,
     nullif(
       trim(
         regexp_replace(
@@ -124,11 +124,11 @@ v2 as (
         )
       ),
       ''
-    )                                         as nome_processed,
-    cast(match_percent as integer)                      as match_percent,
+    ) as nome_processed,
+    cast(match_percent as integer) as match_percent,
 
     data_atualizacao,
-    'glassdoor_consolidado_join_match_v2'               as _source_table
+    'glassdoor_consolidado_join_match_v2' as _source_table
   from {{ ref('stg_empregados_maior') }}
 ),
 
@@ -195,10 +195,10 @@ unioned as (
 final as (
   select
     md5(
-      coalesce(nome,'') || '|' ||
-      coalesce(employer_name,'') || '|' ||
-      coalesce(url,'') || '|' ||
-      coalesce(segmento,'')
+      coalesce(nome, '') || '|'
+      || coalesce(employer_name, '') || '|'
+      || coalesce(url, '') || '|'
+      || coalesce(segmento, '')
     ) as employer_sk,
     *
   from unioned

@@ -1,3 +1,4 @@
+FROM ghcr.io/astral-sh/uv:0.10.7 AS uv
 FROM python:3.11-slim-bookworm
 
 RUN apt-get update \
@@ -7,10 +8,14 @@ RUN apt-get update \
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
-WORKDIR /app/src
+WORKDIR /app
 
-COPY requirements.txt /tmp/requirements.txt
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
+COPY --from=uv /uv /uvx /bin/
+COPY pyproject.toml uv.lock ./
+ENV UV_PROJECT_ENVIRONMENT=/opt/venv
+RUN uv sync --frozen --no-install-project
+
+ENV PATH="/opt/venv/bin:${PATH}"
 
 RUN mkdir -p /opt/spark/jars \
     && curl --fail --location --silent --show-error \
@@ -19,4 +24,5 @@ RUN mkdir -p /opt/spark/jars \
 
 COPY src/ /app/src/
 
+WORKDIR /app/src
 CMD ["python", "main.py"]

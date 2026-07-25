@@ -377,3 +377,60 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Resultado:** `main` passa a conter os três ETLs executáveis localmente,
   seus oráculos mínimos e a documentação da linha de base. A próxima fase é a
   primeira esteira de CI, que chamará os comandos locais já validados.
+
+### 2026-07-25 — DEC-010 — Ferramentas da preparação local de qualidade
+
+- **Estado:** decidido e em execução na branch `feat/local-quality-checks`.
+- **Python e PySpark:** `pyproject.toml` será a fonte de metadados e
+  configuração; `uv.lock` congelará a resolução das dependências; Ruff fará
+  verificação de formatação, lint e ordenação de imports; pytest continuará
+  sendo o executor de testes; e `pip-audit` será exposto como verificação de
+  dependências.
+- **dbt:** o projeto manterá `dbt_project.yml` e as versões no Dockerfile;
+  SQLFluff será instalado na mesma imagem para lint SQL com o dialect Postgres
+  e o templater dbt já declarados.
+- **Interface comum:** cada Makefile receberá alvos explícitos de
+  `format-check`, `lint` e, nos projetos Python, `security`. A execução de
+  produção continua em `make run` e nenhum workflow de CI será criado nesta
+  decisão.
+- **Escopo:** não adotar mypy, pre-commit ou templates de workflow nesta fase.
+
+### 2026-07-25 — ETP-015 — Preparação local de qualidade e revalidação
+
+- **Estado:** concluída, pendente apenas de revisão e integração por pull
+  request.
+- **Reprodutibilidade Python/PySpark:** os dois objetos passaram a declarar
+  dependências em `pyproject.toml` e resolução exata em `uv.lock`. Os antigos
+  `requirements.txt` foram removidos para evitar duas fontes divergentes de
+  dependência. As imagens Docker usam `uv sync --frozen`, portanto a mesma
+  resolução é empregada localmente e na futura CI.
+- **Segurança:** a primeira execução de `pip-audit --strict` no ETL Python
+  encontrou `PYSEC-2026-1845` em `pytest 8.3.4` e `PYSEC-2026-2270` em
+  `python-dotenv 1.0.1`. Foram adotadas as correções disponíveis (`pytest
+  9.0.3` nos dois objetos e `python-dotenv 1.2.2` no Python), locks foram
+  regenerados e as auditorias posteriores passaram sem vulnerabilidades
+  conhecidas.
+- **Qualidade Python:** `make format-check`, `make lint`, `make test` e
+  `make security` passaram. Ruff aplicou apenas formatação, ordenação de
+  imports e a remoção de construções equivalentes; os três testes continuam
+  verdes. A montagem do código foi deslocada para `/app/src` para não ocultar
+  o `pyproject.toml` e o ambiente virtual da imagem; os dados continuam
+  montados em `/app/Dados`, caminho requerido pela execução existente.
+- **Qualidade PySpark:** os mesmos quatro comandos passaram, com dois testes
+  Spark em `local[2]`. Três lambdas usadas somente como leitores foram
+  convertidas em funções nomeadas pelo lint, sem mudança de schema ou de
+  transformação. A execução integral inicialmente não resolvia `postgres`
+  porque `make run` usava `docker compose run --no-deps`; o alvo agora mantém
+  a rede Compose e voltou a gravar 154 registros. Python, PySpark e dbt usam a
+  porta local 5432, logo seus serviços devem ser encerrados entre execuções;
+  isso é uma limitação operacional documentada, não uma dependência externa.
+- **Qualidade dbt/SQL:** SQLFluff 3.3.1 e o templater dbt foram incluídos na
+  imagem. Foram aplicadas 210 correções automáticas exclusivamente de layout
+  aos modelos. `RF02` (qualificação de referências) e `ST06` (ordem de
+  colunas) foram explicitamente excluídas do conjunto inicial por exigirem
+  revisão semântica; a exclusão será reavaliada ao definir as falhas
+  experimentais. Após isso, `make lint` passou e `make test` concluiu 27 itens
+  dbt, incluindo o teste singular basal.
+- **Limite de escopo:** não foi criado workflow de CI, relatório remoto ou
+  check automático de pull request. Esta etapa apenas consolidou comandos
+  locais bloqueantes que a próxima etapa de CI chamará.

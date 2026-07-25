@@ -566,3 +566,28 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   limitação comparativa e tratada numa etapa posterior, se mantida no escopo.
 - **Isolamento:** o workflow usa apenas `.env.example`, dados versionados e
   PostgreSQL local ao runner; não exige credenciais ou banco externos.
+
+### 2026-07-25 — ETP-021 — Correção mínima após a primeira execução remota do dbt
+
+- **Estado:** concluída localmente; pendente de confirmação pela repetição da
+  execução remota da PR #9.
+- **Evidência inicial:** a primeira execução do job `SQLFluff e dbt build` da
+  PR #9 interrompeu em `int_empregados.sql`. O log reportou duas ocorrências
+  de `LT01` (espaçamento excessivo antes de `AS`) e uma exceção interna
+  `CV11` (`tuple index out of range`) na linha 42.
+- **Diagnóstico:** a reconstrução local sem cache da imagem dbt e uma execução
+  com os artefatos `target/` e `logs/` temporariamente removidos não
+  reproduziram a exceção CV11; ambos os lints passaram. Portanto, não há
+  evidência suficiente para classificar o evento como defeito reproduzível do
+  SQLFluff ou para desativar a regra CV11.
+- **Correção aplicada:** normalizar exclusivamente os dois espaçamentos de
+  `null::text as segmento` em
+  `projects/04_etl_dbt/dbt/project/models/trusted/int_empregados.sql`. Não
+  houve alteração de expressão SQL, regra de transformação ou modelo dbt.
+- **Validação local:** após a correção, `make lint` passou e `make test`
+  concluiu o `dbt build` com 27 itens e o teste singular basal aprovados. Os
+  serviços efêmeros foram encerrados com `docker compose down`.
+- **Interpretação pendente:** a nova execução remota dirá se o evento inicial
+  foi transitório ou se ainda existe uma condição não reproduzida localmente;
+  mesmo com êxito, a correção de espaçamento não será tomada isoladamente como
+  prova causal para a exceção CV11.

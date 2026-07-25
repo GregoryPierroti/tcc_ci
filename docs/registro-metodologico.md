@@ -506,3 +506,29 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   qualquer uma de suas quatro verificações falhar. Esse resultado é o baseline
   remoto do objeto Python; ainda não mede cobertura, integração integral ou
   falsos negativos experimentais.
+
+### 2026-07-25 — DEC-013 — Pipeline GitHub Actions: ETL PySpark
+
+- **Estado:** decidido e em implementação na branch `feat/ci-pyspark`.
+- **Decisão:** criar `.github/workflows/ci-pyspark.yml`, espelhando o contrato
+  de qualidade do objeto Python e usando os comandos já validados do objeto
+  PySpark: `make format-check`, `make lint`, `make test` e `make security`.
+- **Particularidade tecnológica:** o job executa a imagem Docker que contém
+  Python 3.11, Java 17 e PySpark 3.5.2; os testes usam Spark em `local[2]`.
+  Por isso, o timeout foi definido em 25 minutos, superior ao do Python, sem
+  introduzir cluster ou infraestrutura distribuída.
+- **Isolamento:** o workflow cria `.env` a partir de `.env.example`, sem usar
+  credenciais externas. A execução integral com PostgreSQL/JDBC (`make run`)
+  continua fora do baseline remoto inicial; os testes Spark atuais não exigem
+  banco e isolam melhor a avaliação das verificações de qualidade.
+
+### 2026-07-25 — ETP-019 — Atualização de segurança do PySpark
+
+- **Estado:** concluída, pendente de revalidação da branch `feat/ci-pyspark`.
+- **Evidência:** `make security` identificou `PYSEC-2025-184` em
+  `pyspark 3.5.0`; o banco de vulnerabilidades aponta `3.5.2` como correção
+  disponível na linha 3.5.
+- **Correção:** atualizar a dependência fixada para `pyspark 3.5.2` e
+  regenerar `uv.lock`. Por ser uma atualização de patch de segurança, ela não
+  altera deliberadamente a regra de negócio nem o desenho experimental; os
+  testes Spark e a auditoria serão repetidos antes de publicar o PR.

@@ -210,3 +210,15 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Critério de validação posterior:** uma execução limpa deve recriar as três
   camadas Parquet e a tabela PostgreSQL `reclamacoes_consolidadas`, com
   contagens registradas e status de processo bem-sucedido.
+
+### 2026-07-25 — ETP-006 — Recuperação e validação local do ETL PySpark
+
+- **Estado:** concluída.
+- **Infraestrutura:** Docker Compose com PostgreSQL 16; imagem Python 3.11
+  Bookworm, Java 17, PySpark 3.5 e driver JDBC PostgreSQL instalado na imagem.
+- **Correções:** execução direta via `make run`, caminhos parametrizáveis,
+  exceções propagadas, schema CSV com 15 colunas e limpeza de `Camadas/` antes
+  de cada execução. Artefatos Parquet são ignorados no Git.
+- **Evidência:** em execução limpa, a tabela
+  `reclamacoes_consolidadas` possui 154 registros e 38 CNPJs distintos; a
+  saída RAW de Bancos contém um único arquivo Parquet, sem resíduo de runs.

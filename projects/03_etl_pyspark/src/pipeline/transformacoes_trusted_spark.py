@@ -36,6 +36,7 @@ class TransformacoesTrustedSpark:
                 logging.warning(f"Camada RAW não encontrada para {nome_tabela}: {caminho_raw}")
             else:
                 logging.error(f"Erro ao transformar {nome_tabela}: {e}")
+            raise
 
     def executar(self):
         logging.info("🧹 Etapa 2: RAW -> TRUSTED")

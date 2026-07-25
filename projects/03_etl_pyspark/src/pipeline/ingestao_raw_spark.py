@@ -46,10 +46,11 @@ class IngestaoRawSpark:
             StructField("Indice", StringType(), True), StructField("Quantidade de reclamacoes reguladas procedentes", IntegerType(), True),
             StructField("Quantidade de reclamacoes reguladas - outras", IntegerType(), True), StructField("Quantidade de reclamacoes nao reguladas", IntegerType(), True),
             StructField("Quantidade total de reclamacoes", IntegerType(), True), StructField("Quantidade total de clientes CCS e SCR", LongType(), True),
-            StructField("Quantidade de clientes CCS", LongType(), True), StructField("Quantidade de clientes SCR", LongType(), True)
+            StructField("Quantidade de clientes CCS", LongType(), True), StructField("Quantidade de clientes SCR", LongType(), True),
+            StructField("campo_extra", StringType(), True)
         ])
         reclamacoes_reader = lambda path: self.spark.read.format("csv") \
-            .schema(schema_reclamacoes).option("header", True).option("delimiter", ";").option("encoding", "UTF-8").load(path)
+            .schema(schema_reclamacoes).option("header", True).option("delimiter", ";").option("encoding", "ISO-8859-1").load(path)
         self.ler_e_salvar_parquet(reclamacoes_reader, "CSV", caminho_reclamacoes, "reclamacoes_parquet")
 
         caminho_empregados = os.path.join(self.base_dir, "Empregados", "glassdoor_consolidado_join_match_less_v2.csv")

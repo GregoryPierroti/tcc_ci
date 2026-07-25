@@ -491,3 +491,18 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   análise de tipos. Esses elementos serão adicionados somente após confirmar o
   baseline remoto deste workflow, evitando confundir a primeira comparação com
   múltiplas mudanças de uma só vez.
+
+### 2026-07-25 — ETP-018 — Primeira execução remota de CI do ETL Python
+
+- **Estado:** concluída.
+- **Pull request:** [#7](https://github.com/GregoryPierroti/tcc_ci/pull/7),
+  integrado por merge em `main` após estado `CLEAN` e `MERGEABLE`.
+- **Evidência remota:** o job `Qualidade, testes e segurança` do GitHub
+  Actions passou em 24 segundos. Foram executados, sem falha, a preparação do
+  ambiente efêmero, `make format-check`, `make lint`, `make test` (3 testes) e
+  `make security`.
+- **Interpretação:** a esteira local escolhida pode ser executada no runner
+  hospedado do GitHub sem credenciais externas e bloqueia um pull request se
+  qualquer uma de suas quatro verificações falhar. Esse resultado é o baseline
+  remoto do objeto Python; ainda não mede cobertura, integração integral ou
+  falsos negativos experimentais.

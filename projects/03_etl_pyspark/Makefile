@@ -18,7 +18,7 @@ security:
 	docker compose run --rm --no-deps --build spark pip-audit --strict
 
 test:
-	docker compose run --rm --no-deps --build spark pytest -q
+	docker compose run --rm --no-deps --build spark pytest -q --cov=pipeline --cov-report=term-missing --cov-report=xml:coverage.xml
 
 status:
 	docker compose exec -T postgres sh -c 'psql -U "$$POSTGRES_USER" -d "$$POSTGRES_DB" -c "SELECT count(*) AS registros FROM reclamacoes_consolidadas;"'

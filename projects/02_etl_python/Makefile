@@ -21,7 +21,7 @@ security:
 	docker compose run --rm --no-deps --build pipeline pip-audit --strict
 
 test:
-	docker compose run --rm --no-deps --build pipeline pytest -q
+	docker compose run --rm --no-deps --build pipeline pytest -q --cov=pipeline --cov-report=term-missing --cov-report=xml:coverage.xml
 
 status:
 	docker compose exec -T postgres sh -c 'psql -U "$$POSTGRES_USER" -d "$$POSTGRES_DB" -c "SELECT table_schema, table_name FROM information_schema.tables WHERE table_schema IN ('\''raw'\'', '\''trusted'\'', '\''delivery'\'') ORDER BY 1, 2;"'

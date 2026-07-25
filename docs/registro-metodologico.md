@@ -634,3 +634,43 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   min 2 s) e dbt (1 min 4 s). A comparação ainda é apenas operacional: dbt
   não possui auditoria de dependências nesta primeira versão, conforme
   DEC-014.
+
+### 2026-07-25 — DEC-016 — Ampliação mínima das verificações para a rodada de falhas
+
+- **Estado:** decidida e em implementação na branch `feat/expanded-validation`.
+- **Cobertura Python/PySpark:** incluir `pytest-cov` nos dois projetos e fazer
+  o alvo `make test` emitir o resumo no terminal e `coverage.xml`. A cobertura
+  será tratada como métrica auxiliar, não como prova de ausência de falhas.
+- **dbt visível por etapa:** manter `dbt build` como validação integrada, mas
+  executar `dbt parse` e `dbt compile` antes dela como etapas explícitas no
+  workflow. Isso permitirá registrar se uma falha de SQL ou de referência foi
+  bloqueada durante a análise, compilação ou execução.
+- **Testes de schema dbt:** declarar apenas invariantes já sustentadas pelo
+  modelo basal: `mod_empregados.employer_sk` obrigatório e único; e
+  `mod_final.cnpj` obrigatório. Não serão habilitados contratos dbt agora,
+  pois eles exigiriam especificar e manter os tipos de todas as colunas;
+  isso aumentaria a mudança simultânea de estrutura e de regra de negócio.
+- **Fora de escopo:** `mypy`, auditoria de dependências do dbt e testes
+  unitários nativos do dbt continuam pendentes de avaliação posterior. A
+  feature atual prioriza detectores diretamente úteis ao catálogo inicial de
+  falhas, sem ampliar a plataforma.
+
+### 2026-07-25 — ETP-023 — Validação local das verificações ampliadas
+
+- **Estado:** concluída, pendente de revisão e integração por pull request.
+- **Python:** `make test` passou com 3 testes e 32% de cobertura de linhas
+  (`coverage.xml` gerado e ignorado pelo Git). Os módulos de ingestão e
+  popularização continuam sem cobertura; esse resultado caracteriza o estado
+  inicial dos testes, não um limiar de aceite.
+- **PySpark:** `make test` passou com 2 testes Spark em `local[2]` e 23% de
+  cobertura de linhas. A primeira tentativa foi interrompida durante a
+  exportação da imagem Docker, antes dos testes; a repetição com imagem
+  disponível passou em 7,05 s de execução de pytest. Trata-se de uma
+  intercorrência de ambiente, não de falha do objeto PySpark.
+- **dbt:** `make parse`, `make compile` e `make test` passaram. O projeto
+  passou a declarar quatro testes de dados: o teste singular basal, `not_null`
+  e `unique` para `mod_empregados.employer_sk`, e `not_null` para
+  `mod_final.cnpj`. O `dbt build` concluiu 30 itens; o `dbt test` isolado
+  concluiu os quatro testes.
+- **Próxima validação:** a PR deverá confirmar que os workflows hospedados
+  executam a cobertura e as novas etapas dbt com os mesmos comandos locais.

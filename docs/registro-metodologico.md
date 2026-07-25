@@ -110,3 +110,14 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Regra operacional:** commits de implementação não são feitos diretamente
   em `main`; após validação, a branch correspondente será revisada e integrada
   de forma explícita.
+
+### 2026-07-25 — ETP-007 — Preparação de publicação no GitHub
+
+- **Estado:** parcialmente concluída.
+- **Ação:** instalado o GitHub CLI oficial (`gh` 2.96.0) localmente em
+  `tools/gh`, pois a instalação global exigia privilégios administrativos não
+  disponíveis neste ambiente.
+- **Resultado:** a ferramenta está funcional, mas não há sessão GitHub
+  autenticada. Publicação de branches e criação de pull requests aguardam
+  autenticação interativa do proprietário da conta.
+- **Segurança:** nenhuma credencial foi criada, exibida ou versionada.

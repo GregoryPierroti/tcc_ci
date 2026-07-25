@@ -547,3 +547,22 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   O aumento de duração observado (24 segundos no Python; 62 segundos no
   PySpark) é uma primeira evidência de custo adicional do ambiente Spark, e
   não uma medida final de desempenho.
+
+### 2026-07-25 — DEC-014 — Pipeline GitHub Actions: ETL dbt
+
+- **Estado:** decidido e em implementação na branch `feat/ci-dbt`.
+- **Decisão:** criar `.github/workflows/ci-dbt.yml` para executar `make lint`
+  (SQLFluff com templater dbt) e `make test` (seeds, `dbt build` e `dbt test`)
+  no PostgreSQL efêmero fornecido pelo Docker Compose.
+- **Particularidade tecnológica:** dbt não possui testes pytest nem lockfile
+  uv neste objeto; as versões de dbt e SQLFluff permanecem explicitamente
+  fixadas no Dockerfile. `dbt build` já engloba parse, compilação, materialização
+  dos modelos e o teste singular basal, sendo a validação de integração leve
+  adequada neste estágio.
+- **Segurança:** não será adicionado `pip-audit` à imagem dbt nesta feature.
+  A auditoria do conjunto de dependências da imagem requer uma decisão de
+  atualização específica para dbt e seus adaptadores, que seria uma variável
+  adicional no primeiro baseline remoto. Essa lacuna será registrada como
+  limitação comparativa e tratada numa etapa posterior, se mantida no escopo.
+- **Isolamento:** o workflow usa apenas `.env.example`, dados versionados e
+  PostgreSQL local ao runner; não exige credenciais ou banco externos.

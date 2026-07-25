@@ -532,3 +532,18 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   regenerar `uv.lock`. Por ser uma atualização de patch de segurança, ela não
   altera deliberadamente a regra de negócio nem o desenho experimental; os
   testes Spark e a auditoria serão repetidos antes de publicar o PR.
+
+### 2026-07-25 — ETP-020 — Primeira execução remota de CI do PySpark
+
+- **Estado:** concluída.
+- **Pull request:** [#8](https://github.com/GregoryPierroti/tcc_ci/pull/8),
+  integrado por merge em `main` após estado `CLEAN` e `MERGEABLE`.
+- **Evidência remota:** o job `Qualidade, testes Spark e segurança` do GitHub
+  Actions passou em 1 minuto e 2 segundos. Ele executou a imagem com Java 17 e
+  PySpark 3.5.2, format check, lint, 2 testes em Spark `local[2]` e auditoria
+  de dependências sem vulnerabilidades conhecidas.
+- **Interpretação:** a mesma esteira convencional de qualidade usada no ETL
+  Python é aplicável ao PySpark com adaptação limitada ao runtime Java/Spark.
+  O aumento de duração observado (24 segundos no Python; 62 segundos no
+  PySpark) é uma primeira evidência de custo adicional do ambiente Spark, e
+  não uma medida final de desempenho.

@@ -471,3 +471,23 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Resultado:** `AGENTS.md` e o template de PR passam a orientar as próximas
   etapas. A próxima mudança prevista é a branch `feat/ci-python`, dedicada
   exclusivamente à primeira pipeline GitHub Actions do ETL Python.
+
+### 2026-07-25 — DEC-012 — Primeira pipeline GitHub Actions: ETL Python
+
+- **Estado:** decidido e em implementação na branch `feat/ci-python`.
+- **Decisão:** criar `.github/workflows/ci-python.yml` como workflow explícito
+  do primeiro objeto experimental. Ele dispara em pull requests e pushes para
+  `main` que afetem o ETL Python, além de permitir execução manual.
+- **Etapas bloqueantes:** preparar um `.env` efêmero a partir de
+  `.env.example`, verificar Docker Compose, executar `make format-check`,
+  `make lint`, `make test` e `make security`. Os comandos são os mesmos já
+  aprovados na validação local, preservando a relação entre ambiente local e
+  CI.
+- **Isolamento:** a configuração efêmera não contém segredo de produção e é
+  descartada com o runner. O encerramento Docker ocorre sempre ao fim do job,
+  inclusive em falha.
+- **Fora de escopo deliberado:** a primeira versão não executa `make run`,
+  não publica artefatos, não mede duração por etapa e não usa cobertura ou
+  análise de tipos. Esses elementos serão adicionados somente após confirmar o
+  baseline remoto deste workflow, evitando confundir a primeira comparação com
+  múltiplas mudanças de uma só vez.

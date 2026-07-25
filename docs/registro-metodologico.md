@@ -297,3 +297,11 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   `public_trusted.mod_reclamacoes` 918, `public_trusted.mod_empregados` 39 e
   `public_delivery.mod_final` 1. A segunda execução preservou o resultado de
   delivery com 1 linha, comprovando a reexecução local para os dados atuais.
+
+### 2026-07-25 — ETP-011 — Integração da recuperação dbt
+
+- **Estado:** concluída.
+- **Pull request:** [#3](https://github.com/GregoryPierroti/tcc_ci/pull/3),
+  aberto a partir de `feat/etl-dbt-local` e integrado por merge em `main`.
+- **Critério atendido:** o PR estava `CLEAN` e `MERGEABLE`; a integração só
+  ocorreu depois das validações locais descritas na ETP-010.

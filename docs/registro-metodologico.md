@@ -242,3 +242,16 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   `feat/etl-pyspark-local` foram enviados ao remoto.
 - **PRs:** PR #1 (Python) e PR #2 (PySpark) foram integrados em `main` com
   commits de merge após resolução dos conflitos documentais.
+
+### 2026-07-25 — ETP-009 — Importação da linha de base do ETL dbt
+
+- **Estado:** concluída.
+- **Branch:** `feat/etl-dbt-local`.
+- **Origem:** `eEDB011ingestao_dados_grupo_d/04_ETL_dbt`, commit fonte
+  `f0fceafc95cc9c848ce8ca3def6f73208383d806`.
+- **Destino:** `projects/04_etl_dbt/` (48 arquivos, 796 KB).
+- **Exclusões:** `dbt/project/target/`, `dbt/project/logs/` e o perfil
+  específico de usuário `dbt/profiles/.user.yml`; são artefatos ou configuração
+  local não reproduzível.
+- **Próxima etapa:** revisar raiz do projeto dbt, Compose, perfil, seeds e
+  dependências antes de qualquer correção.

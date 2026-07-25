@@ -97,3 +97,16 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   validação seguir para `03_etl_pyspark` e, depois, `04_etl_dbt`.
 - **Critério:** uma alteração não é considerada concluída apenas porque o
   Docker constrói; deve haver uma execução observável com saída verificável.
+
+### 2026-07-25 — DEC-007 — Estratégia de branches
+
+- **Estado:** decidido.
+- **Decisão:** `main` representa apenas o estado integrado e estável do
+  experimento. Cada recuperação de objeto experimental ocorre em uma branch
+  própria.
+- **Branches iniciais:** `feat/etl-python-local` e
+  `feat/etl-pyspark-local`; a segunda está empilhada sobre a primeira enquanto
+  ambas ainda não foram integradas em `main`.
+- **Regra operacional:** commits de implementação não são feitos diretamente
+  em `main`; após validação, a branch correspondente será revisada e integrada
+  de forma explícita.

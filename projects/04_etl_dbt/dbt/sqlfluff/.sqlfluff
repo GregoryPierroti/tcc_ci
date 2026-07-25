@@ -1,15 +1,13 @@
-# dbt/sqlfluff/.sqlfluff
 [sqlfluff]
 dialect = postgres
 templater = dbt
-exclude_rules = L009  # exemplo: evitar algumas regras (opcional)
+max_line_length = 120
+exclude_rules = RF02,ST06
 
 [sqlfluff:templater:dbt]
 project_dir = /app
 profiles_dir = /root/.dbt
 
-# Exemplo de tunning de regras (opcional)
-[sqlfluff:rules]
-max_line_length = 120
+[sqlfluff:indentation]
 indent_unit = space
 tab_space_size = 2

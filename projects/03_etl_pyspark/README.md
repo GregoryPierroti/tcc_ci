@@ -23,6 +23,18 @@ O ambiente inclui Java 17, PySpark 3.5, o driver JDBC PostgreSQL e PostgreSQL
 16. A sessão usa `local[2]`; não há dependência de cluster nem de download de
 driver JDBC durante a execução.
 
+## Verificações locais de qualidade
+
+```sh
+make format-check  # confirma a formatação com Ruff
+make lint          # verifica código e imports com Ruff
+make test          # executa pytest com Spark local[2]
+make security      # audita dependências Python instaladas
+```
+
+As dependências e configurações Python estão em `pyproject.toml`; `uv.lock`
+congela a resolução usada pelo Docker.
+
 ## Reexecução limpa
 
 ```sh

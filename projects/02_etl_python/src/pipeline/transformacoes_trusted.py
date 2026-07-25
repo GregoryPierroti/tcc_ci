@@ -1,13 +1,13 @@
 import logging
-import unicodedata
 import re
+import unicodedata
+
 import pandas as pd
+
 from utils.postgres_uploader import PostgresUploader
 
 # Configuração de logging
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
 class TransformacoesTrusted:
@@ -35,9 +35,7 @@ class TransformacoesTrusted:
             df_transformado = self._aplicar_transformacoes(df, nome)
             if df_transformado is not None:
                 logging.info(f"Fazendo upload para '{self.trusted_schema}.{nome}'...")
-                self.db.upload_df(
-                    df_transformado, schema=self.trusted_schema, table_name=nome
-                )
+                self.db.upload_df(df_transformado, schema=self.trusted_schema, table_name=nome)
                 logging.info(f"Upload de '{nome}' concluído com sucesso.")
             else:
                 logging.warning(f"Transformação retornou None para '{nome}'.")

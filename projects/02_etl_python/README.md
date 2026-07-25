@@ -39,6 +39,18 @@ transformados e unidos na tabela final `delivery.bancos_unificados`.
 O Compose declara PostgreSQL, MinIO, criação do bucket e os schemas de banco.
 Não são necessárias credenciais AWS, banco remoto ou dados externos.
 
+## Verificações locais de qualidade
+
+```sh
+make format-check  # confirma a formatação com Ruff
+make lint          # verifica código e imports com Ruff
+make test          # executa os testes pytest
+make security      # audita dependências Python instaladas
+```
+
+As dependências e configurações Python estão em `pyproject.toml`; `uv.lock`
+congela a resolução usada pelo Docker.
+
 ## Reexecução limpa
 
 Para remover somente os volumes locais deste projeto e executar novamente do

@@ -20,10 +20,11 @@ with stg as (
     oportunidades_de_carreira,
     recomendam_para_outras_pessoas,
     perspectiva_positiva_da_empresa,
-    null as segmento,      
+    null as segmento,
     nome,
     match_percent,
     current_timestamp as data_atualizacao
   from {{ source('empregados','glassdoor_consolidado_join_match_less_v2') }}
 )
+
 select * from stg

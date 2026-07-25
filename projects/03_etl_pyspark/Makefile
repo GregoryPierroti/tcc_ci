@@ -1,15 +1,24 @@
 .DEFAULT_GOAL := run
 
-.PHONY: up run test status down reset
+.PHONY: up run format-check lint security test status down reset
 
 up:
 	docker compose up -d --wait postgres
 
 run: up
-	docker compose run --rm --no-deps --build spark
+	docker compose run --rm --build spark
+
+format-check:
+	docker compose run --rm --no-deps --build spark ruff format --check .
+
+lint:
+	docker compose run --rm --no-deps --build spark ruff check .
+
+security:
+	docker compose run --rm --no-deps --build spark pip-audit --strict
 
 test:
-	docker compose run --rm --no-deps --build spark sh -c 'PYTHONPATH=/app/src pytest -q tests'
+	docker compose run --rm --no-deps --build spark pytest -q
 
 status:
 	docker compose exec -T postgres sh -c 'psql -U "$$POSTGRES_USER" -d "$$POSTGRES_DB" -c "SELECT count(*) AS registros FROM reclamacoes_consolidadas;"'

@@ -6,5 +6,7 @@ RUN apt-get update \
 
 RUN pip install --no-cache-dir \
     dbt-core==1.9.0 \
-    dbt-postgres==1.9.0
+    dbt-postgres==1.9.0 \
+    sqlfluff==3.3.1 \
+    sqlfluff-templater-dbt==3.3.1
 WORKDIR /app

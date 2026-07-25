@@ -43,12 +43,8 @@ def test_delivery_une_apenas_chaves_validas_e_publica_resultado():
             ("trusted", "bancos"): pd.DataFrame(
                 {"CNPJ": ["1", "0"], "Nome_processed": ["ALFA", "IGNORAR"]}
             ),
-            ("trusted", "reclamacoes"): pd.DataFrame(
-                {"CNPJ IF": ["1", "0"], "valor": [10, 20]}
-            ),
-            ("trusted", "empregados"): pd.DataFrame(
-                {"Nome_processed": ["ALFA"], "avaliacao": [5]}
-            ),
+            ("trusted", "reclamacoes"): pd.DataFrame({"CNPJ IF": ["1", "0"], "valor": [10, 20]}),
+            ("trusted", "empregados"): pd.DataFrame({"Nome_processed": ["ALFA"], "avaliacao": [5]}),
         }
     )
     delivery = AgregacoesDelivery.__new__(AgregacoesDelivery)

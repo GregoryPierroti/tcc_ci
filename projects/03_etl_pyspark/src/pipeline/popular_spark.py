@@ -1,9 +1,11 @@
 # popular_local_spark.py
-import os
 import logging
+import os
+
 from pyspark.sql import SparkSession
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
 
 class PopularLocalSpark:
     def __init__(self, spark: SparkSession, base_dir="camadas", fonte_dir="Dados"):
@@ -31,10 +33,16 @@ class PopularLocalSpark:
             else:
                 sep, encoding = ",", "utf-8"
 
-            df = self.spark.read.option("header", True).option("sep", sep).option("encoding", encoding).csv(pasta_fonte)
+            df = (
+                self.spark.read.option("header", True)
+                .option("sep", sep)
+                .option("encoding", encoding)
+                .csv(pasta_fonte)
+            )
             destino = os.path.join(self.raw_dir, f"{categoria.lower()}_parquet")
             df.write.mode("overwrite").parquet(destino)
             logging.info(f"RAW salva: {destino}")
+
 
 if __name__ == "__main__":
     spark = SparkSession.builder.appName("PopularLocalSpark").getOrCreate()

@@ -1,8 +1,11 @@
 import logging
 import os
-from pyspark.sql import SparkSession, functions as F
+
+from pyspark.sql import SparkSession
+from pyspark.sql import functions as F
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
 
 class TransformacoesTrustedSpark:
     def __init__(self, spark: SparkSession, base_path: str):
@@ -25,7 +28,7 @@ class TransformacoesTrustedSpark:
     def transformar_e_salvar(self, nome_tabela, nome_coluna_chave):
         caminho_raw = os.path.join(self.raw_dir, f"{nome_tabela}_parquet")
         caminho_trusted = os.path.join(self.trusted_dir, f"{nome_tabela}_parquet")
-        
+
         try:
             df = self.spark.read.parquet(caminho_raw)
             df_transformado = self._criar_chave_nome(df, nome_coluna_chave)

@@ -28,4 +28,5 @@ with stg as (
     current_timestamp as data_atualizacao
   from {{ source('empregados','glassdoor_consolidado_join_match_v2') }}
 )
+
 select * from stg

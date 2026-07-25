@@ -1,11 +1,9 @@
 import logging
-import pandas as pd
-from utils.s3_client import S3Client
-from utils.postgres_uploader import PostgresUploader
 
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+from utils.postgres_uploader import PostgresUploader
+from utils.s3_client import S3Client
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
 class PipelineIngestaoRaw:
@@ -24,7 +22,6 @@ class PipelineIngestaoRaw:
         return self.s3.read_file(key)
 
     def _montar_destino_processado(self, key):
-
         parts = key.split("/")
         # substitui base prefixo pela de processados, e mantém a pasta
         return f"{self.processed_prefix}/{parts[1]}/"  # garante terminar com barra
@@ -33,14 +30,13 @@ class PipelineIngestaoRaw:
         parts = key.split("/")
         return f"{self.failed_prefix}/{parts[1]}/"
 
-
     def processar_categoria(self, category):
         prefix = f"{self.base_prefix}/{category}/"
         arquivos = self.s3.list_files(prefix)
         if not arquivos:
             logging.info(f"Nenhum arquivo para processar em categoria '{category}'")
             return
-        
+
         primeiro_arquivo_processado = True
         for key in arquivos:
             logging.info(f"Iniciando processamento do arquivo {key}")

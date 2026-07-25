@@ -1,13 +1,12 @@
-import os
 import logging
+import os
+
 import boto3
 from dotenv import load_dotenv
 
 # Configura logging
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
 
 class S3Uploader:
     def __init__(self):
@@ -49,7 +48,9 @@ class S3Uploader:
                     s3_key = os.path.join(self.s3_base_prefix, rel_path).replace("\\", "/")
 
                     try:
-                        self.s3_client.upload_file(Filename=caminho_local, Bucket=self.s3_bucket, Key=s3_key)
+                        self.s3_client.upload_file(
+                            Filename=caminho_local, Bucket=self.s3_bucket, Key=s3_key
+                        )
                         logging.info(f"✅ Enviado: {s3_key}")
                         total += 1
                     except Exception as e:

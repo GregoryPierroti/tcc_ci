@@ -445,3 +445,19 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   respectivas versões de dependências congeladas. A imagem de diagrama anexada
   manualmente na raiz do repositório foi preservada como arquivo não rastreado
   e não compõe este commit nem o PR.
+
+### 2026-07-25 — DEC-011 — Contrato operacional e revisão de pull requests
+
+- **Estado:** decidido e em implementação na branch `docs/project-workflow`.
+- **Decisão:** versionar `AGENTS.md` como contrato operacional do repositório.
+  O documento formaliza a autonomia para alterações, validações, commits,
+  branches, PRs e merges dentro do escopo do TCC, e preserva as situações que
+  ainda exigem direção explícita: segredos, custos externos, ações destrutivas,
+  mudança de escopo acadêmico e mudança injustificada de regra de negócio.
+- **Rastreabilidade:** todo trabalho relevante deve continuar registrado neste
+  diário. O template `.github/pull_request_template.md` torna obrigatório
+  descrever objetivo, escopo, validações, registro metodológico e itens fora
+  de escopo em cada PR.
+- **Justificativa:** a medida reduz a fricção operacional sem tentar substituir
+  os controles técnicos do ambiente. Ela também transforma commits e PRs em
+  evidências reutilizáveis na redação da metodologia do TCC.

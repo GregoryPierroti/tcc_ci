@@ -169,39 +169,76 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Instruções ao usuário:** `README.md` documenta `make run`, `make status` e
   `make reset`. O último remove somente os volumes Docker locais deste projeto.
 
+### 2026-07-25 — ETP-004 — Importação da linha de base do ETL PySpark
+
+- **Estado:** concluída.
+- **Objetivo:** criar a cópia experimental do objeto `03_ETL_Pyspark` sem
+  alterar o repositório-fonte.
+- **Origem:** `eEDB011ingestao_dados_grupo_d/03_ETL_Pyspark`, no commit fonte
+  `f0fceafc95cc9c848ce8ca3def6f73208383d806` (árvore de trabalho limpa).
+- **Destino:** `projects/03_etl_pyspark/` no monorepo `tcc_ci`.
+- **Conteúdo importado:** 20 arquivos (352 KB), incluindo código, Docker,
+  requisitos e dados de entrada CSV/TSV.
+- **Exclusões justificadas:** `src/pipeline/Camadas/` não foi copiado. Ele
+  continha Parquets, `_SUCCESS` e arquivos `.crc` gerados por Spark, que são
+  resultados de execução e serão recriados localmente.
+- **Verificação:** `diff -qr`, excluindo apenas `Camadas/`, não apresentou
+  diferenças entre a fonte e o destino.
+- **Próxima etapa:** revisão técnica da cópia basal, sem correções nesta etapa.
+
+### 2026-07-25 — ETP-005 — Revisão basal do ETL PySpark
+
+- **Estado:** concluída.
+- **Fluxo identificado:** arquivos locais em `src/pipeline/Dados/` são lidos
+  pelo Spark, materializados em Parquet nas camadas `RAW`, `Trusted` e
+  `Delivery`, e a tabela final é escrita no PostgreSQL por JDBC.
+- **Bloqueio reproduzido:** `docker compose config` não é válido sem `.env` e
+  emite variáveis PostgreSQL vazias; o arquivo referenciado como Dockerfile não
+  existe, pois a fonte contém `dockerfile`.
+- **Bloqueios adicionais identificados:** `main.py` fixa `/app/src`; o Compose
+  mantém o contêiner inativo (`tail -f /dev/null`) em vez de executar o ETL; a
+  sessão Spark solicita o driver JDBC por `spark.jars.packages`, criando uma
+  dependência de rede; e as exceções principais são apenas registradas, sem
+  retornar código de falha.
+- **Dados e artefatos:** Bancos é TSV, Empregados usa `|` e Reclamações usa
+  `;` com codificação Latin-1; o arquivo de reclamações de 2022-T2 é vazio.
+  `Camadas/` é saída gerada pelo Spark, não fonte.
+- **Decisão de recuperação:** declarar um ambiente local composto por Spark
+  local (PySpark 3.5 e Java 17) e PostgreSQL, com driver JDBC instalado na
+  imagem e referenciado localmente. Preservar Parquet como saída intermediária,
+  mas ignorá-lo no Git.
+- **Critério de validação posterior:** uma execução limpa deve recriar as três
+  camadas Parquet e a tabela PostgreSQL `reclamacoes_consolidadas`, com
+  contagens registradas e status de processo bem-sucedido.
+
+### 2026-07-25 — ETP-006 — Recuperação e validação local do ETL PySpark
+
+- **Estado:** concluída.
+- **Infraestrutura:** Docker Compose com PostgreSQL 16; imagem Python 3.11
+  Bookworm, Java 17, PySpark 3.5 e driver JDBC PostgreSQL instalado na imagem.
+- **Correções:** execução direta via `make run`, caminhos parametrizáveis,
+  exceções propagadas, schema CSV com 15 colunas e limpeza de `Camadas/` antes
+  de cada execução. Artefatos Parquet são ignorados no Git.
+- **Evidência:** em execução limpa, a tabela
+  `reclamacoes_consolidadas` possui 154 registros e 38 CNPJs distintos; a
+  saída RAW de Bancos contém um único arquivo Parquet, sem resíduo de runs.
+
 ### 2026-07-25 — DEC-007 — Estratégia de branches
 
 - **Estado:** decidido.
-- **Decisão:** `main` representa apenas o estado integrado e estável do
-  experimento. Cada recuperação de objeto experimental ocorre em uma branch
-  própria.
-- **Branches iniciais:** `feat/etl-python-local` e
-  `feat/etl-pyspark-local`; a segunda está empilhada sobre a primeira enquanto
-  ambas ainda não foram integradas em `main`.
-- **Regra operacional:** commits de implementação não são feitos diretamente
-  em `main`; após validação, a branch correspondente será revisada e integrada
-  de forma explícita.
+- **Decisão:** `main` representa o estado integrado e estável; cada recuperação
+  ocorre em uma feature branch e é integrada explicitamente após validação.
 
 ### 2026-07-25 — ETP-007 — Preparação de publicação no GitHub
 
-- **Estado:** parcialmente concluída.
-- **Ação:** instalado o GitHub CLI oficial (`gh` 2.96.0) localmente em
-  `tools/gh`, pois a instalação global exigia privilégios administrativos não
-  disponíveis neste ambiente.
-- **Resultado:** a ferramenta está funcional, mas não há sessão GitHub
-  autenticada. Publicação de branches e criação de pull requests aguardam
-  autenticação interativa do proprietário da conta.
-- **Segurança:** nenhuma credencial foi criada, exibida ou versionada.
-
-### 2026-07-25 — ETP-008 — Publicação de branches e pull requests
-
 - **Estado:** concluída.
+- **Ação:** GitHub CLI oficial instalado localmente em `tools/gh`; credenciais
+  não são versionadas.
+
+### 2026-07-25 — ETP-008 — Publicação e integração no GitHub
+
+- **Estado:** em andamento.
 - **Publicação:** `main`, `feat/etl-python-local` e
-  `feat/etl-pyspark-local` foram enviados ao repositório GitHub remoto.
-- **Pull requests:** PR #1 abre a recuperação Python contra `main`; PR #2 abre
-  a recuperação PySpark contra `feat/etl-python-local`, refletindo sua
-  dependência de histórico.
-- **Estado dos PRs:** inicialmente em rascunho; integração solicitada após
-  validação local dos objetos.
-- **Próxima ordem de integração:** concluir PR #1 em `main`, atualizar a base
-  do PR #2 para `main` e então integrar PySpark.
+  `feat/etl-pyspark-local` foram enviados ao remoto.
+- **PRs:** PR #1 (Python) foi integrado em `main`; PR #2 (PySpark) foi
+  atualizado para ter `main` como base e aguarda conclusão da integração.

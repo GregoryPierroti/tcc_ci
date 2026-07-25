@@ -97,3 +97,20 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   validação seguir para `03_etl_pyspark` e, depois, `04_etl_dbt`.
 - **Critério:** uma alteração não é considerada concluída apenas porque o
   Docker constrói; deve haver uma execução observável com saída verificável.
+
+### 2026-07-25 — ETP-001 — Importação da linha de base do ETL Python
+
+- **Estado:** concluída.
+- **Objetivo:** criar uma cópia experimental rastreável do objeto
+  `02_ETL_python`, sem alterar a fonte.
+- **Origem:**
+  `eEDB011ingestao_dados_grupo_d/02_ETL_python`, no commit fonte
+  `f0fceafc95cc9c848ce8ca3def6f73208383d806` (árvore de trabalho limpa).
+- **Destino:** `projects/02_etl_python/` no monorepo `tcc_ci`.
+- **Conteúdo importado:** 21 arquivos (368 KB), incluindo código Python,
+  Dockerfile/Compose, requisitos e os dados CSV/TSV de entrada disponíveis.
+- **Exclusões:** não havia artefatos gerados, credenciais ou diretórios Git no
+  conteúdo importado.
+- **Verificação:** `diff -qr` entre origem e destino não apresentou diferenças.
+- **Próxima etapa:** revisão técnica da cópia basal; nenhuma correção foi feita
+  nesta importação.

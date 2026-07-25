@@ -367,3 +367,13 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Ambiente:** os contêineres foram encerrados com `make down`/`docker compose
   down`, preservando os volumes locais; nenhum dado versionado ou artefato de
   execução entrou no repositório.
+
+### 2026-07-25 — ETP-014 — Integração da linha de base experimental
+
+- **Estado:** concluída.
+- **Pull request:** [#4](https://github.com/GregoryPierroti/tcc_ci/pull/4),
+  integrado por merge em `main` após confirmação de estado `CLEAN` e
+  `MERGEABLE`.
+- **Resultado:** `main` passa a conter os três ETLs executáveis localmente,
+  seus oráculos mínimos e a documentação da linha de base. A próxima fase é a
+  primeira esteira de CI, que chamará os comandos locais já validados.

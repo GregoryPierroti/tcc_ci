@@ -16,7 +16,7 @@ class TransformacoesTrustedSpark:
         coluna = F.upper(F.col(nome_coluna))
         coluna = F.translate(coluna, "ÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇ", "AAAAAEEEEIIIIOOOOOUUUUC")
         coluna = F.regexp_replace(coluna, "[^A-Z0-9 ]", "")
-        padroes = ["S A", "S/A", "LTDA", " - PRUDENCIAL", "BANCO", "BRASIL"]
+        padroes = ["S A", "S/A", "SA", "LTDA", " - PRUDENCIAL", "BANCO", "BRASIL"]
         for p in padroes:
             coluna = F.regexp_replace(coluna, p, "")
         coluna = F.regexp_replace(coluna, "\\s+", " ")

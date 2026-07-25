@@ -16,6 +16,7 @@ em `src/pipeline/Camadas/` e a saída final é gravada no PostgreSQL local como
 cp .env.example .env
 make run
 make status
+make test
 ```
 
 O ambiente inclui Java 17, PySpark 3.5, o driver JDBC PostgreSQL e PostgreSQL

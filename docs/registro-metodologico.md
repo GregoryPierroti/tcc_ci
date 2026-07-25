@@ -305,3 +305,65 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   aberto a partir de `feat/etl-dbt-local` e integrado por merge em `main`.
 - **Critério atendido:** o PR estava `CLEAN` e `MERGEABLE`; a integração só
   ocorreu depois das validações locais descritas na ETP-010.
+
+### 2026-07-25 — DEC-008 — Consolidação da linha de base experimental
+
+- **Estado:** decidido e em execução na branch `feat/experiment-baseline`.
+- **Escopo:** padronizar a documentação e os comandos locais, registrar
+  runtimes e oráculos observáveis e adicionar testes mínimos determinísticos
+  aos três objetos. Nenhum workflow, arquivo de CI ou execução remota será
+  introduzido nesta etapa.
+- **Decisão comparativa:** preservar as regras de negócio e as contagens de
+  delivery já recuperadas. As saídas de Python (11), PySpark (154) e dbt (1)
+  não serão artificialmente igualadas, pois os joins e recortes originais são
+  diferentes; a equivalência será avaliada por oráculos internos a cada
+  objeto.
+- **Entregável:** `docs/baseline-experimental.md`, comandos `make test` e uma
+  execução local documentada dos testes.
+
+### 2026-07-25 — DEC-009 — Oráculos locais mínimos
+
+- **Estado:** decidido e em validação.
+- **Python:** testes unitários da normalização de nomes e da agregação delivery
+  com um adaptador de banco em memória; não exige PostgreSQL ou MinIO ativos.
+- **PySpark:** testes em `local[2]` da normalização e da escrita/leitura
+  Parquet com fixture temporária; não exige cluster nem JDBC.
+- **dbt:** teste singular SQL de contagens basais das três relações trusted e
+  da relação delivery. O alvo `make test` prepara o banco local antes de rodar
+  o teste, de modo que pode ser executado de forma isolada.
+- **Limite explícito:** esses oráculos comprovam a linha de base atual e não
+  são, ainda, uma cobertura ampla de regras de negócio ou uma pipeline de CI.
+
+### 2026-07-25 — ETP-012 — Defeito de normalização Spark encontrado por teste local
+
+- **Estado:** corrigido, pendente de revalidação.
+- **Evidência:** o teste da entrada `Banco Itaú S.A.` produziu `ITAU SA`, não
+  `ITAU`. A ordem existente remove a pontuação antes de aplicar os padrões, de
+  modo que `S.A.` se torna `SA`; esse token não estava na lista de remoção.
+- **Correção:** incluir `SA` na lista de padrões de
+  `TransformacoesTrustedSpark._criar_chave_nome`. A mudança implementa a
+  intenção explícita de remover sufixos societários, sem ampliar o escopo da
+  regra de negócio.
+
+### 2026-07-25 — ETP-013 — Validação da linha de base experimental
+
+- **Estado:** concluída.
+- **Testes locais:** `02_etl_python` passou com 3 testes pytest;
+  `03_etl_pyspark` passou com 2 testes pytest em Spark `local[2]`; e
+  `04_etl_dbt` passou com o teste singular `baseline_counts`.
+- **dbt:** `make test` executou `seed`, `build` e `dbt test`; o build passou
+  27 nós (10 seeds, 16 modelos e 1 teste) e o teste isolado também passou.
+- **Execução integral Python:** após `make reset` e `make run`, foram
+  observadas 1474 linhas de bancos, 918 de reclamações, 39 de empregados, 154
+  correspondências intermediárias e 11 linhas em
+  `delivery.bancos_unificados`.
+- **Execução integral PySpark:** após `make reset` e `make run`, a tabela
+  `reclamacoes_consolidadas` teve 154 linhas. A correção de `SA` não alterou
+  essa contagem basal.
+- **Limitação observada:** Spark emite avisos de divergência nominal entre o
+  schema sem acentos e o cabeçalho CSV com acentos. A leitura com schema
+  explícito, o build e os oráculos passaram; o aviso fica registrado para uma
+  futura análise de qualidade, sem alterar a estrutura de dados nesta fase.
+- **Ambiente:** os contêineres foram encerrados com `make down`/`docker compose
+  down`, preservando os volumes locais; nenhum dado versionado ou artefato de
+  execução entrou no repositório.

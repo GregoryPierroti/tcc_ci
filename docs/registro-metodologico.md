@@ -688,3 +688,14 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   etapa dbt mais específica e registrar cobertura como métrica auxiliar dos
   objetos Python. A próxima feature deve congelar este baseline e criar o
   catálogo/protocolo de injeção, sem inserir falhas ainda.
+
+### 2026-07-25 — ETP-025 — Roteiro operacional dos próximos passos
+
+- **Estado:** concluída, pendente de integração por pull request.
+- **Entregável:** `docs/proximos-passos.md` consolida o estado alcançado, a
+  próxima feature de baseline e catálogo, o protocolo previsto para a primeira
+  rodada de falhas, a coleta de métricas e as melhorias explicitamente não
+  bloqueantes.
+- **Justificativa:** separar o roteiro do diário mantém a rastreabilidade
+  histórica no registro metodológico e oferece uma visão operacional curta
+  para orientar a execução seguinte.

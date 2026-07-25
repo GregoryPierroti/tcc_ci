@@ -39,7 +39,7 @@ with less_v2 as (
     {% if 'segmento' in less_colnames %}
       {{ clean_text('segmento') }} as segmento,
     {% else %}
-      null::text as segmento,
+      null::text as segmento, -- noqa: CV11
     {% endif %}
 
     {{ clean_text('nome') }} as nome,
@@ -100,7 +100,7 @@ v2 as (
     {% if 'segmento' in v2_colnames %}
       {{ clean_text('segmento') }} as segmento,
     {% else %}
-      null::text as segmento,
+      null::text as segmento, -- noqa: CV11
     {% endif %}
 
     {{ clean_text('nome') }} as nome,

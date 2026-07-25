@@ -591,3 +591,24 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   foi transitório ou se ainda existe uma condição não reproduzida localmente;
   mesmo com êxito, a correção de espaçamento não será tomada isoladamente como
   prova causal para a exceção CV11.
+
+### 2026-07-25 — DEC-015 — Supressão localizada de CV11 no modelo dbt
+
+- **Estado:** decidida; pendente da terceira execução remota da PR #9.
+- **Evidência adicional:** após a normalização de espaçamento, a segunda
+  execução remota da PR #9 voltou a falhar exatamente em
+  `int_empregados.sql:42`, com a mesma exceção interna de SQLFluff 3.3.1:
+  `CV11` / `tuple index out of range`. O lint local, inclusive com as mesmas
+  versões principais de `sqlfluff` (3.3.1), `dbt-core` (1.9.0) e
+  `dbt-adapters` (1.16.3), não reproduz a falha.
+- **Decisão:** acrescentar `-- noqa: CV11` somente às duas alternativas
+  condicionais equivalentes que usam `null::text as segmento`. A própria
+  mensagem do SQLFluff indica essa supressão como contorno para a exceção.
+- **Justificativa e limite:** a anotação não desativa CV11 globalmente, não
+  altera o SQL executado e não encobre outras regras ou outros arquivos. Ela
+  torna explícita uma limitação do linter neste padrão de cast, que deverá ser
+  considerada ao interpretar as métricas de detecção. A regra permanece ativa
+  no restante do projeto.
+- **Validação local:** `make lint` passou com as duas supressões; `make test`
+  voltou a concluir os 27 itens do `dbt build` e o teste singular basal. Os
+  serviços foram encerrados após a validação.

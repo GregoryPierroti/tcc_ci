@@ -1,0 +1,50 @@
+name: CI - ETL dbt
+
+on:
+  pull_request:
+    paths:
+      - "projects/04_etl_dbt/**"
+      - ".github/workflows/ci-dbt.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "projects/04_etl_dbt/**"
+      - ".github/workflows/ci-dbt.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-dbt-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: SQLFluff e dbt build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: projects/04_etl_dbt
+
+    steps:
+      - name: Obter código
+        uses: actions/checkout@v4
+
+      - name: Preparar configuração local efêmera
+        run: cp .env.example .env
+
+      - name: Verificar Docker Compose
+        run: docker compose version
+
+      - name: Executar lint SQL
+        run: make lint
+
+      - name: Executar dbt build e testes
+        run: make test
+
+      - name: Encerrar recursos Docker
+        if: always()
+        run: docker compose down -v

@@ -547,3 +547,68 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   O aumento de duração observado (24 segundos no Python; 62 segundos no
   PySpark) é uma primeira evidência de custo adicional do ambiente Spark, e
   não uma medida final de desempenho.
+
+### 2026-07-25 — DEC-014 — Pipeline GitHub Actions: ETL dbt
+
+- **Estado:** decidido e em implementação na branch `feat/ci-dbt`.
+- **Decisão:** criar `.github/workflows/ci-dbt.yml` para executar `make lint`
+  (SQLFluff com templater dbt) e `make test` (seeds, `dbt build` e `dbt test`)
+  no PostgreSQL efêmero fornecido pelo Docker Compose.
+- **Particularidade tecnológica:** dbt não possui testes pytest nem lockfile
+  uv neste objeto; as versões de dbt e SQLFluff permanecem explicitamente
+  fixadas no Dockerfile. `dbt build` já engloba parse, compilação, materialização
+  dos modelos e o teste singular basal, sendo a validação de integração leve
+  adequada neste estágio.
+- **Segurança:** não será adicionado `pip-audit` à imagem dbt nesta feature.
+  A auditoria do conjunto de dependências da imagem requer uma decisão de
+  atualização específica para dbt e seus adaptadores, que seria uma variável
+  adicional no primeiro baseline remoto. Essa lacuna será registrada como
+  limitação comparativa e tratada numa etapa posterior, se mantida no escopo.
+- **Isolamento:** o workflow usa apenas `.env.example`, dados versionados e
+  PostgreSQL local ao runner; não exige credenciais ou banco externos.
+
+### 2026-07-25 — ETP-021 — Correção mínima após a primeira execução remota do dbt
+
+- **Estado:** concluída localmente; pendente de confirmação pela repetição da
+  execução remota da PR #9.
+- **Evidência inicial:** a primeira execução do job `SQLFluff e dbt build` da
+  PR #9 interrompeu em `int_empregados.sql`. O log reportou duas ocorrências
+  de `LT01` (espaçamento excessivo antes de `AS`) e uma exceção interna
+  `CV11` (`tuple index out of range`) na linha 42.
+- **Diagnóstico:** a reconstrução local sem cache da imagem dbt e uma execução
+  com os artefatos `target/` e `logs/` temporariamente removidos não
+  reproduziram a exceção CV11; ambos os lints passaram. Portanto, não há
+  evidência suficiente para classificar o evento como defeito reproduzível do
+  SQLFluff ou para desativar a regra CV11.
+- **Correção aplicada:** normalizar exclusivamente os dois espaçamentos de
+  `null::text as segmento` em
+  `projects/04_etl_dbt/dbt/project/models/trusted/int_empregados.sql`. Não
+  houve alteração de expressão SQL, regra de transformação ou modelo dbt.
+- **Validação local:** após a correção, `make lint` passou e `make test`
+  concluiu o `dbt build` com 27 itens e o teste singular basal aprovados. Os
+  serviços efêmeros foram encerrados com `docker compose down`.
+- **Interpretação pendente:** a nova execução remota dirá se o evento inicial
+  foi transitório ou se ainda existe uma condição não reproduzida localmente;
+  mesmo com êxito, a correção de espaçamento não será tomada isoladamente como
+  prova causal para a exceção CV11.
+
+### 2026-07-25 — DEC-015 — Supressão localizada de CV11 no modelo dbt
+
+- **Estado:** decidida; pendente da terceira execução remota da PR #9.
+- **Evidência adicional:** após a normalização de espaçamento, a segunda
+  execução remota da PR #9 voltou a falhar exatamente em
+  `int_empregados.sql:42`, com a mesma exceção interna de SQLFluff 3.3.1:
+  `CV11` / `tuple index out of range`. O lint local, inclusive com as mesmas
+  versões principais de `sqlfluff` (3.3.1), `dbt-core` (1.9.0) e
+  `dbt-adapters` (1.16.3), não reproduz a falha.
+- **Decisão:** acrescentar `-- noqa: CV11` somente às duas alternativas
+  condicionais equivalentes que usam `null::text as segmento`. A própria
+  mensagem do SQLFluff indica essa supressão como contorno para a exceção.
+- **Justificativa e limite:** a anotação não desativa CV11 globalmente, não
+  altera o SQL executado e não encobre outras regras ou outros arquivos. Ela
+  torna explícita uma limitação do linter neste padrão de cast, que deverá ser
+  considerada ao interpretar as métricas de detecção. A regra permanece ativa
+  no restante do projeto.
+- **Validação local:** `make lint` passou com as duas supressões; `make test`
+  voltou a concluir os 27 itens do `dbt build` e o teste singular basal. Os
+  serviços foram encerrados após a validação.

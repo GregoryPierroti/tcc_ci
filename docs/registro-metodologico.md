@@ -461,3 +461,13 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Justificativa:** a medida reduz a fricção operacional sem tentar substituir
   os controles técnicos do ambiente. Ela também transforma commits e PRs em
   evidências reutilizáveis na redação da metodologia do TCC.
+
+### 2026-07-25 — ETP-017 — Integração do contrato operacional
+
+- **Estado:** concluída.
+- **Pull request:** [#6](https://github.com/GregoryPierroti/tcc_ci/pull/6),
+  aberto na branch `docs/project-workflow` e integrado por merge em `main`
+  após confirmação de estado `CLEAN` e `MERGEABLE`.
+- **Resultado:** `AGENTS.md` e o template de PR passam a orientar as próximas
+  etapas. A próxima mudança prevista é a branch `feat/ci-python`, dedicada
+  exclusivamente à primeira pipeline GitHub Actions do ETL Python.

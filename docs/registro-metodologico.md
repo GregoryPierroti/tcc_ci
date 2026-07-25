@@ -168,3 +168,40 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   em `raw.reclamacoes` e 11 registros em `delivery.bancos_unificados`.
 - **Instruções ao usuário:** `README.md` documenta `make run`, `make status` e
   `make reset`. O último remove somente os volumes Docker locais deste projeto.
+
+### 2026-07-25 — DEC-007 — Estratégia de branches
+
+- **Estado:** decidido.
+- **Decisão:** `main` representa apenas o estado integrado e estável do
+  experimento. Cada recuperação de objeto experimental ocorre em uma branch
+  própria.
+- **Branches iniciais:** `feat/etl-python-local` e
+  `feat/etl-pyspark-local`; a segunda está empilhada sobre a primeira enquanto
+  ambas ainda não foram integradas em `main`.
+- **Regra operacional:** commits de implementação não são feitos diretamente
+  em `main`; após validação, a branch correspondente será revisada e integrada
+  de forma explícita.
+
+### 2026-07-25 — ETP-007 — Preparação de publicação no GitHub
+
+- **Estado:** parcialmente concluída.
+- **Ação:** instalado o GitHub CLI oficial (`gh` 2.96.0) localmente em
+  `tools/gh`, pois a instalação global exigia privilégios administrativos não
+  disponíveis neste ambiente.
+- **Resultado:** a ferramenta está funcional, mas não há sessão GitHub
+  autenticada. Publicação de branches e criação de pull requests aguardam
+  autenticação interativa do proprietário da conta.
+- **Segurança:** nenhuma credencial foi criada, exibida ou versionada.
+
+### 2026-07-25 — ETP-008 — Publicação de branches e pull requests
+
+- **Estado:** concluída.
+- **Publicação:** `main`, `feat/etl-python-local` e
+  `feat/etl-pyspark-local` foram enviados ao repositório GitHub remoto.
+- **Pull requests:** PR #1 abre a recuperação Python contra `main`; PR #2 abre
+  a recuperação PySpark contra `feat/etl-python-local`, refletindo sua
+  dependência de histórico.
+- **Estado dos PRs:** inicialmente em rascunho; integração solicitada após
+  validação local dos objetos.
+- **Próxima ordem de integração:** concluir PR #1 em `main`, atualizar a base
+  do PR #2 para `main` e então integrar PySpark.

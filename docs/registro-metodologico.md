@@ -222,3 +222,23 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Evidência:** em execução limpa, a tabela
   `reclamacoes_consolidadas` possui 154 registros e 38 CNPJs distintos; a
   saída RAW de Bancos contém um único arquivo Parquet, sem resíduo de runs.
+
+### 2026-07-25 — DEC-007 — Estratégia de branches
+
+- **Estado:** decidido.
+- **Decisão:** `main` representa o estado integrado e estável; cada recuperação
+  ocorre em uma feature branch e é integrada explicitamente após validação.
+
+### 2026-07-25 — ETP-007 — Preparação de publicação no GitHub
+
+- **Estado:** concluída.
+- **Ação:** GitHub CLI oficial instalado localmente em `tools/gh`; credenciais
+  não são versionadas.
+
+### 2026-07-25 — ETP-008 — Publicação e integração no GitHub
+
+- **Estado:** em andamento.
+- **Publicação:** `main`, `feat/etl-python-local` e
+  `feat/etl-pyspark-local` foram enviados ao remoto.
+- **PRs:** PR #1 (Python) foi integrado em `main`; PR #2 (PySpark) foi
+  atualizado para ter `main` como base e aguarda conclusão da integração.

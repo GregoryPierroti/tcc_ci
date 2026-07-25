@@ -30,6 +30,12 @@ transformados e unidos na tabela final `delivery.bancos_unificados`.
    make status
    ```
 
+4. Execute os testes locais determinísticos:
+
+   ```sh
+   make test
+   ```
+
 O Compose declara PostgreSQL, MinIO, criação do bucket e os schemas de banco.
 Não são necessárias credenciais AWS, banco remoto ou dados externos.
 

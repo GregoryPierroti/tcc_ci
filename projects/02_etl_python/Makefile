@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := run
 
-.PHONY: up bootstrap run status reset down
+.PHONY: up bootstrap run test status reset down
 
 up:
 	docker compose up -d --wait postgres minio
@@ -10,6 +10,9 @@ bootstrap: up
 
 run: bootstrap
 	docker compose run --rm --no-deps --build pipeline
+
+test:
+	docker compose run --rm --no-deps --build pipeline sh -c 'PYTHONPATH=/app pytest -q tests'
 
 status:
 	docker compose exec -T postgres sh -c 'psql -U "$$POSTGRES_USER" -d "$$POSTGRES_DB" -c "SELECT table_schema, table_name FROM information_schema.tables WHERE table_schema IN ('\''raw'\'', '\''trusted'\'', '\''delivery'\'') ORDER BY 1, 2;"'

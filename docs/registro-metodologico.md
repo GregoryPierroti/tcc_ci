@@ -121,3 +121,15 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   autenticada. Publicação de branches e criação de pull requests aguardam
   autenticação interativa do proprietário da conta.
 - **Segurança:** nenhuma credencial foi criada, exibida ou versionada.
+
+### 2026-07-25 — ETP-008 — Publicação de branches e pull requests
+
+- **Estado:** concluída.
+- **Publicação:** `main`, `feat/etl-python-local` e
+  `feat/etl-pyspark-local` foram enviados ao repositório GitHub remoto.
+- **Pull requests:** PR #1 abre a recuperação Python contra `main`; PR #2 abre
+  a recuperação PySpark contra `feat/etl-python-local`, refletindo sua
+  dependência de histórico.
+- **Estado dos PRs:** rascunho, aguardando revisão e integração explícita.
+- **Próxima ordem de integração:** concluir PR #1 em `main`, atualizar a base
+  do PR #2 para `main` e então integrar PySpark.

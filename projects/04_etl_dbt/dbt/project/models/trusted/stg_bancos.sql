@@ -1,5 +1,5 @@
 with stg_bancos as (
-    select
+    select distinct
         segmento,
         nome,
         nullif(

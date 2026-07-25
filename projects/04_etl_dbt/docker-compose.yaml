@@ -3,9 +3,9 @@ services:
     image: postgres:16
     container_name: pg
     environment:
-      POSTGRES_DB: warehouse
-      POSTGRES_USER: dbt
-      POSTGRES_PASSWORD: dbt
+      POSTGRES_DB: ${POSTGRES_DB:-warehouse}
+      POSTGRES_USER: ${POSTGRES_USER:-dbt}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dbt}
     ports:
       - "5432:5432"
     volumes:
@@ -29,13 +29,17 @@ services:
       DBT_PROFILES_DIR: /root/.dbt
       # variáveis úteis (opcional):
       DBT_TARGET: dev
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ${POSTGRES_DB:-warehouse}
+      POSTGRES_USER: ${POSTGRES_USER:-dbt}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dbt}
     volumes:
-      - ./dbt/project:/app           # seu projeto dbt
+      - ./dbt/project:/app
       - ./dbt/profiles:/root/.dbt    # onde ficará o profiles.yml
       - ./dbt/sqlfluff:/root/.config/sqlfluff  # .sqlfluff e configs
     working_dir: /app
-    # Mantém o contêiner vivo para você executar comandos interativos
-    command: ["bash", "-lc", "tail -f /dev/null"]
+    command: ["dbt", "parse"]
 
 volumes:
   pg_data:

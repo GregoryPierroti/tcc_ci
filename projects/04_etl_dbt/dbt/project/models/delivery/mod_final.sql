@@ -6,7 +6,7 @@ with bancos as (
         segmento,
         nome,
         nome_processed
-    from {{ source('public_trusted', 'mod_bancos') }}
+    from {{ ref('mod_bancos') }}
     where cnpj is not null and cnpj <> '0'
 ),
 reclamacoes as (
@@ -25,7 +25,7 @@ reclamacoes as (
         quantidade_total_de_clientes_ccs_e_scr,
         quantidade_de_clientes_ccs,
         quantidade_de_clientes_scr
-    from {{ source('public_trusted', 'mod_reclamacoes') }}
+    from {{ ref('mod_reclamacoes') }}
     where cnpj_if is not null and cnpj_if <> '0'
 ),
 empregados as (
@@ -55,7 +55,7 @@ empregados as (
         segmento as segmento_empregado,
         match_percent,
         nome as nome_empregado
-    from {{ source('public_trusted', 'mod_empregados') }}
+    from {{ ref('mod_empregados') }}
 ),
 join_br as (
     select

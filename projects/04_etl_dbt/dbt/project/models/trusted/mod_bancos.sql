@@ -1,5 +1,5 @@
 
-{{ config(materialized='incremental', schema='trusted', unique_key=['cnpj', 'segmento', 'cnpj'],
+{{ config(materialized='incremental', schema='trusted', unique_key=['cnpj', 'segmento', 'nome'],
     incremental_strategy='merge') }}
 
 select * from {{ ref('stg_bancos') }}

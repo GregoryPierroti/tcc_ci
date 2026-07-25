@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: reclamacoes
-    database: postgres  
+    database: warehouse
     schema: public  
     tables:
       - name: 2021_tri_01
@@ -14,13 +14,13 @@ sources:
       - name: 2022_tri_04
 
   - name: bancos
-    database: postgres  
+    database: warehouse
     schema: public
     tables:
       - name: EnquadramentoInicia_v2
 
   - name: empregados
-    database: postgres  
+    database: warehouse
     schema: public
     tables:
       - name: glassdoor_consolidado_join_match_less_v2

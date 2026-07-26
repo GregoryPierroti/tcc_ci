@@ -66,7 +66,7 @@ projects:
         expected_outcome: detected
       - id: SP-003
         category: schema
-        mutation: "Alterar o tipo CNPJ do schema de bancos de StringType para IntegerType."
+        mutation: "Alterar o tipo CNPJ do schema de bancos de StringType para DoubleType."
         target: src/pipeline/ingestao_raw_spark.py
         expected_detector: execucao integral e oraculo de dados
         expected_stage: fora da CI basal
@@ -80,9 +80,9 @@ projects:
         expected_outcome: expected_false_negative
       - id: SP-005
         category: dependency_resolution
-        mutation: "Fixar pyspark em uma versão inexistente no pyproject.toml."
-        target: pyproject.toml
-        expected_detector: resolucao de dependencias do container
+        mutation: "Corromper a URL de sdist do pyspark no uv.lock."
+        target: uv.lock
+        expected_detector: validação do lockfile pelo uv
         expected_stage: Verificar formatação
         expected_outcome: detected
 

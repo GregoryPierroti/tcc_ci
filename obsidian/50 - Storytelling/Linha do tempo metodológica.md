@@ -14,15 +14,20 @@ pipelines, as correções mínimas e a ampliação de verificações.
 ## Ato 3 — Experimento controlado
 
 ETP-026 e ETP-027 introduzem o diagrama, a tag basal, o catálogo e o protocolo.
-ETP-028 a ETP-032 cobrem Python; ETP-033 a ETP-038 cobrem PySpark; ETP-039 e
-ETP-040 registram a revisão do vault e o fluxo preliminar do dbt.
+ETP-028 a ETP-032 cobrem Python; ETP-033 a ETP-038 cobrem PySpark; ETP-039 a
+ETP-043 registram a revisão documental, a revalidação basal e o encerramento
+da rodada dbt.
 
-## Tese narrável até o momento
+## Tese narrável
 
 A CI convencional foi transferida para os três objetos com adaptações por
 tecnologia. Ela encontrou muitas falhas, mas a rodada PySpark demonstra que
 checks unitários e de qualidade não substituem oráculos integrais de dados.
-O próximo capítulo empírico é concluir dbt e comparar aplicabilidade, custo e
-lacunas entre as tecnologias.
+Python e dbt detectaram todas as cinco mutações selecionadas; PySpark detectou
+três e deixou passar duas falhas semânticas, reveladas somente pelo oráculo
+integral. A conclusão comparativa é que a CI é reutilizável, desde que checks
+gerais sejam complementados por oráculos específicos de dados.
 
+**Resultados:** [[../40 - Evidências/Matriz comparativa final|matriz]] e
+[[../40 - Evidências/Interpretação comparativa|interpretação]].
 **Diário completo:** [[Registro metodológico|registro metodológico]].

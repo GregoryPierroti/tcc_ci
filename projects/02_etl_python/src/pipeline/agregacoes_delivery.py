@@ -58,7 +58,7 @@ class AgregacoesDelivery:
             df_empregados,
             how="inner",
             left_on="Nome_processed",
-            right_on="Nome_processed",
+            right_on="Nome",
             suffixes=("", "_empregado"),
         )
 

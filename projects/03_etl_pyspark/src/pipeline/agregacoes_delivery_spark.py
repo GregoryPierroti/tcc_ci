@@ -47,7 +47,7 @@ class AgregacoesDeliverySpark:
 
         bancos_renomeado = bancos_join.withColumnRenamed("Segmento", "segmento_banco")
         join_br = bancos_renomeado.join(
-            reclamacoes_join.drop("Nome_processed"), "CNPJ_join", "inner"
+            reclamacoes_join.drop("Nome_processed"), "CNPJ_join", "left"
         )
 
         logging.info(f"Join bancos x reclamações: {join_br.count()} linhas")

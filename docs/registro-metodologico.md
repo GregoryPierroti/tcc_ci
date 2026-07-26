@@ -821,3 +821,48 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   Spark. Formatação e lint passaram; o workflow falhou em 73 s na etapa
   `Executar testes Spark determinísticos`.
 - **Classificação:** `detected`; a PR defeituosa #23 foi fechada sem merge.
+
+### 2026-07-26 — ETP-034 — Execução controlada SP-002
+
+- **Mutação:** `Nome_inexistente` passou a ser referenciada na criação da
+  chave de nome (commit `9fa1668`).
+- **Evidência:** localmente e na CI a análise Spark falhou por coluna não
+  resolvida. Formatação e lint passaram; o workflow falhou em 62 s nos testes
+  Spark.
+- **Classificação:** `detected`; a PR #25 foi encerrada sem merge.
+
+### 2026-07-26 — ETP-035 — Execução controlada SP-003
+
+- **Mutação:** o CNPJ dos bancos foi lido como `DoubleType` (commit
+  `47b9317`). A tentativa preliminar com `IntegerType` não alterou o conjunto
+  de dados disponível e foi substituída por esta mutação observável.
+- **Evidência:** a CI basal passou em 49 s. A execução integral, porém,
+  publicou zero linhas de delivery, ante as 154 da linha de base.
+- **Classificação:** `false_negative`; o oráculo de dados fora da CI basal foi
+  o primeiro detector. A PR #26 foi encerrada sem merge.
+
+### 2026-07-26 — ETP-036 — Execução controlada SP-004
+
+- **Mutação:** o join bancos--reclamações foi alterado de `inner` para `left`
+  (commit `7cda167`).
+- **Evidência:** a CI basal passou em 55 s; a execução integral produziu 1589
+  linhas de delivery, em vez das 154 esperadas.
+- **Classificação:** `false_negative`; o oráculo de contagem fora da CI basal
+  foi o primeiro detector. A PR #27 foi encerrada sem merge.
+
+### 2026-07-26 — ETP-037 — Execução controlada SP-005
+
+- **Mutação:** a URL de sdist do PySpark no `uv.lock` foi corrompida (commit
+  `af7ec93`).
+- **Evidência:** `uv sync --frozen` bloqueou a construção da imagem antes de
+  Ruff; a CI falhou em 31 s na etapa de formatação.
+- **Classificação:** `detected`; a PR #28 foi encerrada sem merge.
+
+### 2026-07-26 — ETP-038 — Encerramento da rodada PySpark
+
+- **Resultado consolidado:** SP-001, SP-002 e SP-005 foram detectadas pela CI;
+  SP-003 e SP-004 passaram na esteira e foram reveladas apenas pelos oráculos
+  de dados e de contagem da execução integral.
+- **Limite:** os testes determinísticos cobrem normalização e falhas de
+  análise, mas ainda não asseguram cardinalidade nem preservação de chaves na
+  integração completa.

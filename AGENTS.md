@@ -19,6 +19,16 @@ As limitações técnicas do ambiente de execução podem ainda solicitar uma
 aprovação pontual. Essa solicitação é infraestrutura, e não falta de
 autorização funcional do mantenedor.
 
+## Continuidade de rodadas autorizadas
+
+Quando o mantenedor autorizar uma rodada inteira de uma tecnologia ou catálogo
+de falhas, o agente deve executá-la até o encerramento: criar e validar cada
+experimento, observar a CI remota, registrar os resultados, integrar somente a
+documentação e encerrar os ramos defeituosos. Atualizações de progresso não
+são um ponto de parada; só devolver o controle ao mantenedor ao concluir a
+rodada ou diante de bloqueio real que exija direção, autorização adicional ou
+alteração de escopo.
+
 ## Rastreabilidade metodológica
 
 - Registrar toda decisão, alteração relevante, validação, falha encontrada e

@@ -24,4 +24,4 @@ checks unitários e de qualidade não substituem oráculos integrais de dados.
 O próximo capítulo empírico é concluir dbt e comparar aplicabilidade, custo e
 lacunas entre as tecnologias.
 
-**Diário completo:** [[../../docs/registro-metodologico|registro metodológico]].
+**Diário completo:** [[Registro metodológico|registro metodológico]].

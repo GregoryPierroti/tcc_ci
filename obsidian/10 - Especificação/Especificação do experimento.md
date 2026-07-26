@@ -24,7 +24,7 @@ de execução.
 Uma base é aceita se Compose é válido, a execução limpa funciona, o oráculo
 mínimo aparece, a reexecução é estável, checks aplicáveis passam e os três
 workflows remotos aprovam. Os oráculos e runtimes concretos estão em
-[[../../docs/baseline-experimental|Linha de base experimental]].
+[[Linha de base experimental]].
 
 ## Premissas comparativas
 
@@ -32,6 +32,6 @@ As três saídas delivery não precisam ter a mesma cardinalidade, pois preserva
 regras herdadas distintas. A comparação mede a capacidade dos checks, não a
 equivalência artificial das regras de negócio.
 
-**Fontes:** [[../../docs/diagrama-experimento-ci.jpeg|diagrama]],
-[[../../docs/baseline-experimental|baseline]] e
-[[../../docs/registro-metodologico|registro]].
+**Fontes:** [[../00 - Início/diagrama-experimento-ci.jpeg|diagrama]],
+[[Linha de base experimental|baseline]] e
+[[../50 - Storytelling/Registro metodológico|registro]].

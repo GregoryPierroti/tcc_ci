@@ -32,7 +32,7 @@ alteração de escopo.
 ## Rastreabilidade metodológica
 
 - Registrar toda decisão, alteração relevante, validação, falha encontrada e
-  integração em `docs/registro-metodologico.md`.
+  integração em `obsidian/50 - Storytelling/Registro metodológico.md`.
 - Cada branch e pull request deve ter um objetivo único e verificável.
 - Atualizar a documentação antes de integrar uma mudança relevante.
 - Registrar comandos executados, resultados observados e limitações que
@@ -42,7 +42,8 @@ alteração de escopo.
 
 - `feat/...`: funcionalidade ou etapa experimental nova.
 - `fix/...`: correção de defeito identificado.
-- `docs/...`: documentação, protocolo ou organização do fluxo.
+- `docs/...`: documentação, protocolo ou organização do fluxo (legado; novas
+  notas e especificações ficam em `obsidian/`).
 - Preferir um commit coeso por objetivo e uma branch por pull request.
 - Antes de commit, executar as validações pertinentes e `git diff --check`.
 - Antes de merge, confirmar que o pull request está limpo e mesclável.

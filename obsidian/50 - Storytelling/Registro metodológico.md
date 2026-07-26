@@ -14,6 +14,12 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 
 ## Registro
 
+> [!note] Migração documental — 2026-07-26
+> A partir desta data, o vault `obsidian/` é a única casa da especificação,
+> protocolo, fluxos de checks e diário metodológico. Menções a `docs/` nas
+> entradas históricas abaixo descrevem o caminho válido no momento do evento;
+> os arquivos foram migrados para o vault sem alterar o conteúdo da evidência.
+
 ### 2026-07-25 — DEC-001 — Registro metodológico obrigatório
 
 - **Estado:** decidido.
@@ -866,3 +872,15 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Limite:** os testes determinísticos cobrem normalização e falhas de
   análise, mas ainda não asseguram cardinalidade nem preservação de chaves na
   integração completa.
+
+### 2026-07-26 — DEC-017 — Obsidian como fonte única de especificação
+
+- **Estado:** decidido.
+- **Decisão:** migrar para `obsidian/` o diagrama, a linha de base, o
+  protocolo de falhas, os fluxos de checks, os próximos passos e este diário.
+  A pasta `docs/` deixa de ser uma segunda localização de especificação.
+- **Justificativa:** permitir navegação por links, leitura narrativa e contexto
+  consistente para IA sem manter cópias resumidas e fontes paralelas.
+- **Evidência estruturada preservada:** código, `fault-catalog/falhas.yml` e
+  `results/resultados.csv` permanecem fora do vault por serem artefatos
+  executáveis ou tabulares, mas são indexados por notas do Obsidian.

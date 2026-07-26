@@ -1,7 +1,7 @@
 # TCC — mapa de conhecimento
 
 > [!abstract] Propósito
-> Este vault organiza o experimento para leitura humana, storytelling da monografia e consumo por IA. As fontes técnicas versionadas continuam sendo a verdade factual.
+> Este vault é a casa única da especificação, do protocolo, do diário e da narrativa do experimento. Código, catálogo e CSV permanecem como evidência técnica estruturada.
 
 ## Navegação pelo diagrama
 
@@ -16,8 +16,8 @@
 
 ## Fontes primárias
 
-- [[../docs/diagrama-experimento-ci.jpeg|Diagrama do experimento]]
-- [[../docs/registro-metodologico|Registro metodológico]]
+- [[00 - Início/diagrama-experimento-ci.jpeg|Diagrama do experimento]]
+- [[50 - Storytelling/Registro metodológico|Registro metodológico]]
 - [[../fault-catalog/falhas.yml|Catálogo de falhas]]
 - [[../results/resultados.csv|Resultados estruturados]]
 

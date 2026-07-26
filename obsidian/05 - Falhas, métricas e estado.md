@@ -15,4 +15,4 @@ Uma falha é uma mutação mínima, deliberada e rastreável. `detected` signifi
 3. nível de adaptação por tecnologia;
 4. estabilidade, quando aplicável.
 
-Os números canônicos estão em [[../results/resultados.csv|resultados.csv]]. Definição esperada e observado devem ser distinguidos por meio do [[../fault-catalog/falhas.yml|catálogo]] e do [[../docs/registro-metodologico|registro]].
+Os números canônicos estão em [[../results/resultados.csv|resultados.csv]]. Definição esperada e observado devem ser distinguidos por meio do [[../fault-catalog/falhas.yml|catálogo]] e do [[50 - Storytelling/Registro metodológico|registro]].

@@ -23,4 +23,4 @@ Ambas passaram pela CI basal e só foram reveladas pela execução integral.
 
 - [[../../results/resultados.csv|CSV]]: valores por execução e URL de job.
 - [[../../fault-catalog/falhas.yml|Catálogo]]: mutação e expectativa.
-- [[../../docs/registro-metodologico|Registro]]: justificativa e limitações.
+- [[../50 - Storytelling/Registro metodológico|Registro]]: justificativa e limitações.

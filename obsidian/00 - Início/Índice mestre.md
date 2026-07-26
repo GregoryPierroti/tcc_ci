@@ -2,7 +2,7 @@
 
 > [!abstract] Um único ponto de entrada
 > Este índice reúne a especificação, a operação, a evidência e a narrativa do
-> TCC. `docs/` preserva documentos-fonte; `obsidian/` organiza sua leitura.
+> TCC. O vault é a fonte única de documentação e especificação do projeto.
 
 ## Para entender o projeto
 
@@ -17,7 +17,7 @@
 
 - [[../20 - Execução/Protocolo de falhas controladas]] — procedimento canônico.
 - [[../20 - Execução/Estado e próximos passos]] — estado real e prioridade.
-- [[../20 - Execução/Fontes operacionais em docs]] — mapa completo de `docs/`.
+- [[../20 - Execução/Estado e próximos passos]] — estado e prioridade de trabalho.
 
 ## Para escrever a monografia ou analisar resultados
 

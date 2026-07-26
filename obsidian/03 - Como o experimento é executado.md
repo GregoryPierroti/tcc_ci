@@ -6,4 +6,4 @@
 4. Validar localmente e observar a execução remota.
 5. Registrar detector, duração e resultado; integrar somente documentação.
 
-Cada falha parte de `baseline-ci-v1`. O protocolo é [[../docs/protocolo-execucao-falhas|documentado]], a cronologia está no [[../docs/registro-metodologico|registro]] e o inventário em [[../fault-catalog/falhas.yml|falhas.yml]].
+Cada falha parte de `baseline-ci-v1`. O protocolo é [[20 - Execução/Protocolo de falhas controladas|documentado]], a cronologia está no [[50 - Storytelling/Registro metodológico|registro]] e o inventário em [[../fault-catalog/falhas.yml|falhas.yml]].

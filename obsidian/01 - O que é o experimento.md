@@ -12,4 +12,4 @@ O TCC avalia a aplicação de uma esteira convencional de integração contínua
 
 O objetivo não é provar qualidade geral: a evidência vale para as mutações do [[05 - Falhas, métricas e estado|catálogo experimental]].
 
-**Fonte:** [[../docs/registro-metodologico|registro metodológico]].
+**Fonte:** [[50 - Storytelling/Registro metodológico|registro metodológico]].

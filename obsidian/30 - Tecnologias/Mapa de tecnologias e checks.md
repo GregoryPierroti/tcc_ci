@@ -22,5 +22,5 @@ Os READMEs dos objetos são as instruções executáveis:
 [[../../projects/03_etl_pyspark/README|PySpark]] e
 [[../../projects/04_etl_dbt/README|dbt]].
 
-Para evidência detalhada: [[../../docs/fluxo-checks-python|fluxo Python]] e
-[[../../docs/fluxo-checks-pyspark|fluxo PySpark]].
+Para evidência detalhada: [[Fluxo de checks Python|fluxo Python]] e
+[[Fluxo de checks PySpark|fluxo PySpark]].

@@ -12,7 +12,7 @@
 
 ## Registro metodológico
 
-<!-- Indique a decisão/etapa adicionada em docs/registro-metodologico.md. -->
+<!-- Indique a decisão/etapa adicionada em obsidian/50 - Storytelling/Registro metodológico.md. -->
 
 ## Fora de escopo
 

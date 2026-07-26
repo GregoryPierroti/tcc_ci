@@ -8,4 +8,4 @@
 
 O mesmo check não protege igualmente todas as tecnologias. Em PySpark, por exemplo, a esteira detectou normalização e coluna ausente, mas não cardinalidade de join.
 
-**Leituras:** [[../docs/fluxo-checks-python|Python]], [[../docs/fluxo-checks-pyspark|PySpark]] e [[../.github/workflows/ci-dbt.yml|workflow dbt]].
+**Leituras:** [[30 - Tecnologias/Fluxo de checks Python|Python]], [[30 - Tecnologias/Fluxo de checks PySpark|PySpark]] e [[../.github/workflows/ci-dbt.yml|workflow dbt]].

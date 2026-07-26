@@ -813,3 +813,11 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   `detected` e registrada no CSV.
 - **Documentação:** `docs/fluxo-checks-python.md` consolida a ordem dos checks,
   os cinco detectores observados e os limites de interpretação da rodada.
+
+### 2026-07-26 — ETP-033 — Execução controlada SP-001
+
+- **Estado:** concluída; resultado pendente de integração por pull request.
+- **Resultado:** a troca de `F.upper` por `F.lower` foi detectada pelos testes
+  Spark. Formatação e lint passaram; o workflow falhou em 73 s na etapa
+  `Executar testes Spark determinísticos`.
+- **Classificação:** `detected`; a PR defeituosa #23 foi fechada sem merge.

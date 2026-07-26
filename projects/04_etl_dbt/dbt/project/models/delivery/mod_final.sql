@@ -73,7 +73,7 @@ final as (
     jb.*,
     e.*
   from join_br as jb
-  inner join empregados as e on jb.nome_processed = e.nome_processed_empregado
+  left join empregados as e on jb.nome_processed = e.nome_processed_empregado
 )
 
 select * from final

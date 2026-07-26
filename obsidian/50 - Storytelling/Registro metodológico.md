@@ -316,18 +316,18 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 
 - **Estado:** decidido e em execução na branch `feat/experiment-baseline`.
 - **Escopo:** padronizar a documentação e os comandos locais, registrar
-  runtimes e oráculos observáveis e adicionar testes mínimos determinísticos
+  runtimes e validações observáveis e adicionar testes mínimos determinísticos
   aos três objetos. Nenhum workflow, arquivo de CI ou execução remota será
   introduzido nesta etapa.
 - **Decisão comparativa:** preservar as regras de negócio e as contagens de
   delivery já recuperadas. As saídas de Python (11), PySpark (154) e dbt (1)
   não serão artificialmente igualadas, pois os joins e recortes originais são
-  diferentes; a equivalência será avaliada por oráculos internos a cada
+  diferentes; a equivalência será avaliada por validações internas a cada
   objeto.
 - **Entregável:** `docs/baseline-experimental.md`, comandos `make test` e uma
   execução local documentada dos testes.
 
-### 2026-07-25 — DEC-009 — Oráculos locais mínimos
+### 2026-07-25 — DEC-009 — Validações locais mínimas
 
 - **Estado:** decidido e em validação.
 - **Python:** testes unitários da normalização de nomes e da agregação delivery
@@ -337,7 +337,7 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **dbt:** teste singular SQL de contagens basais das três relações trusted e
   da relação delivery. O alvo `make test` prepara o banco local antes de rodar
   o teste, de modo que pode ser executado de forma isolada.
-- **Limite explícito:** esses oráculos comprovam a linha de base atual e não
+- **Limite explícito:** essas validações comprovam a linha de base atual e não
   são, ainda, uma cobertura ampla de regras de negócio ou uma pipeline de CI.
 
 ### 2026-07-25 — ETP-012 — Defeito de normalização Spark encontrado por teste local
@@ -368,7 +368,7 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   essa contagem basal.
 - **Limitação observada:** Spark emite avisos de divergência nominal entre o
   schema sem acentos e o cabeçalho CSV com acentos. A leitura com schema
-  explícito, o build e os oráculos passaram; o aviso fica registrado para uma
+  explícito, o build e as validações passaram; o aviso fica registrado para uma
   futura análise de qualidade, sem alterar a estrutura de dados nesta fase.
 - **Ambiente:** os contêineres foram encerrados com `make down`/`docker compose
   down`, preservando os volumes locais; nenhum dado versionado ou artefato de
@@ -381,7 +381,7 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   integrado por merge em `main` após confirmação de estado `CLEAN` e
   `MERGEABLE`.
 - **Resultado:** `main` passa a conter os três ETLs executáveis localmente,
-  seus oráculos mínimos e a documentação da linha de base. A próxima fase é a
+  suas validações mínimas e a documentação da linha de base. A próxima fase é a
   primeira esteira de CI, que chamará os comandos locais já validados.
 
 ### 2026-07-25 — DEC-010 — Ferramentas da preparação local de qualidade
@@ -732,7 +732,7 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   descarte das branches defeituosas; `results/resultados.csv` fornece o
   esquema inicial de coleta.
 - **Delimitação:** as falhas SP-003 e SP-004 são hipóteses explícitas de
-  falso negativo da CI basal, pois exigem execução integral/oráculo de dados,
+  falso negativo da CI basal, pois exigem execução integral/validação de dados,
   ainda ausentes do workflow. Elas serão medidas, não removidas do catálogo.
 - **Mypy:** permanece uma melhoria posterior deliberada, a ser reavaliada
   após a primeira rodada e uma eventual tipagem explícita de funções de
@@ -844,7 +844,7 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   de dados disponível e foi substituída por esta mutação observável.
 - **Evidência:** a CI basal passou em 49 s. A execução integral, porém,
   publicou zero linhas de delivery, ante as 154 da linha de base.
-- **Classificação:** `false_negative`; o oráculo de dados fora da CI basal foi
+- **Classificação:** `false_negative`; a validação de dados fora da CI basal foi
   o primeiro detector. A PR #26 foi encerrada sem merge.
 
 ### 2026-07-26 — ETP-036 — Execução controlada SP-004
@@ -853,7 +853,7 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   (commit `7cda167`).
 - **Evidência:** a CI basal passou em 55 s; a execução integral produziu 1589
   linhas de delivery, em vez das 154 esperadas.
-- **Classificação:** `false_negative`; o oráculo de contagem fora da CI basal
+- **Classificação:** `false_negative`; a validação de contagem fora da CI basal
   foi o primeiro detector. A PR #27 foi encerrada sem merge.
 
 ### 2026-07-26 — ETP-037 — Execução controlada SP-005
@@ -867,7 +867,7 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 ### 2026-07-26 — ETP-038 — Encerramento da rodada PySpark
 
 - **Resultado consolidado:** SP-001, SP-002 e SP-005 foram detectadas pela CI;
-  SP-003 e SP-004 passaram na esteira e foram reveladas apenas pelos oráculos
+  SP-003 e SP-004 passaram na esteira e foram reveladas apenas pelas validações
   de dados e de contagem da execução integral.
 - **Limite:** os testes determinísticos cobrem normalização e falhas de
   análise, mas ainda não asseguram cardinalidade nem preservação de chaves na
@@ -966,7 +966,7 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   nota de rastreabilidade em `40 - Evidências/`; atualizados o índice,
   dashboard, mapa de tecnologias, estado de execução e linha do tempo.
 - **Resultado:** Python e dbt registram 5/5 detecções; PySpark, 3/5, com dois
-  falsos negativos confirmados por oráculos integrais. No conjunto, são 13
+  falsos negativos confirmados por validações integrais. No conjunto, são 13
   detecções e 2 falsos negativos em 15 execuções (86,7%).
 - **Limite preservado:** os números descrevem o catálogo de mutações
   executado e as durações do ambiente GitHub Actions; não provam cobertura
@@ -974,3 +974,17 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Verificação:** a matriz foi conferida contra `results/resultados.csv`; os
   links internos do vault e o diff do repositório foram validados antes da
   integração.
+
+### 2026-07-26 — DEC-018 — Padronização das validações de dados
+
+- **Estado:** decidido.
+- **Decisão:** substituir o jargão anterior por “validação” nos artefatos do
+  experimento. As expressões padronizadas são “validação de dados”, “validação
+  de contagem”, “validação de cardinalidade” e “validação integral”.
+- **Justificativa:** comunicar a função dos checks com linguagem direta para
+  leitores não especializados, sem alterar a lógica experimental.
+- **Escopo:** documentação, catálogo de falhas, CSV de resultados e README do
+  dbt. Não havia identificador correspondente no código executável.
+- **Preservação da evidência:** somente o rótulo textual de detector esperado
+  foi normalizado; identificadores, commits, etapas, durações, desfechos e URLs
+  dos jobs permanecem inalterados.

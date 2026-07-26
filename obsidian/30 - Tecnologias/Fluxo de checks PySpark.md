@@ -27,6 +27,6 @@ dependências reproduzível.
 ## Limite de interpretação
 
 Os resultados demonstram a detecção ou a lacuna das mutações específicas. A
-CI ainda não executa o oráculo de cardinalidade e integridade de chaves da
+CI ainda não executa a validação de cardinalidade e integridade de chaves da
 execução integral; essa é a principal melhoria a avaliar antes de tratar a
 esteira como proteção suficiente para transformações de join e schema.

@@ -8,8 +8,8 @@
 - **baseline:** estado reprodutível `baseline-ci-v1`.
 - **falha controlada:** mutação intencional, isolada e não integrável.
 - **detector:** primeiro check que bloqueou uma falha.
-- **falso negativo:** CI aprovada apesar de efeito revelado por oráculo externo.
-- **oráculo de dados:** valida conteúdo, cardinalidade ou integridade da saída integral.
+- **falso negativo:** CI aprovada apesar de efeito revelado por validação externa.
+- **validação de dados:** verifica conteúdo, cardinalidade ou integridade da saída integral.
 
 ## Ordem recomendada
 

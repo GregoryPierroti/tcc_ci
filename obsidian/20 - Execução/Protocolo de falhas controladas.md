@@ -20,7 +20,7 @@ resultado é registrado separadamente após a observação.
 2. Registrar no CSV o commit, o status do workflow, a primeira etapa que
    falhou e a duração total do job exibida pelo GitHub Actions.
 3. Comparar o detector e a etapa observados com os valores esperados.
-4. Se a CI passar, executar localmente o comando de integração ou o oráculo
+4. Se a CI passar, executar localmente o comando de integração ou a validação
    indicado no catálogo para confirmar que a mutação realmente produziu o
    defeito; registrar o caso como falso negativo se confirmado.
 5. Classificar como falso positivo somente se a CI falhar sem relação causal
@@ -40,7 +40,7 @@ resultado é registrado separadamente após a observação.
 
 - `detected`: a CI falhou na etapa esperada ou em uma etapa anterior que
   inequivocamente detecta a mesma mutação.
-- `false_negative`: a CI passou e o oráculo independente confirmou o defeito.
+- `false_negative`: a CI passou e a validação independente confirmou o defeito.
 - `false_positive`: a CI falhou por causa não relacionada à mutação.
 - `inconclusive`: não foi possível atribuir o resultado; exige repetição e
   registro da limitação antes de qualquer interpretação quantitativa.

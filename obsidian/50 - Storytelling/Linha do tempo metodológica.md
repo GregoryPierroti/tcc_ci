@@ -22,11 +22,11 @@ da rodada dbt.
 
 A CI convencional foi transferida para os três objetos com adaptações por
 tecnologia. Ela encontrou muitas falhas, mas a rodada PySpark demonstra que
-checks unitários e de qualidade não substituem oráculos integrais de dados.
+checks unitários e de qualidade não substituem validações integrais de dados.
 Python e dbt detectaram todas as cinco mutações selecionadas; PySpark detectou
-três e deixou passar duas falhas semânticas, reveladas somente pelo oráculo
+três e deixou passar duas falhas semânticas, reveladas somente pela validação
 integral. A conclusão comparativa é que a CI é reutilizável, desde que checks
-gerais sejam complementados por oráculos específicos de dados.
+gerais sejam complementados por validações específicas de dados.
 
 **Resultados:** [[../40 - Evidências/Matriz comparativa final|matriz final das 15 execuções]] e
 [[../40 - Evidências/Interpretação comparativa|discussão comparativa]].

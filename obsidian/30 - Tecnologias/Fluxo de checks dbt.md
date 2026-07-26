@@ -10,7 +10,7 @@ mesmo em caso de falha.
 | 1 | Executar lint SQL | `make lint` | SQLFluff com templater dbt, incluindo estilo e sintaxe SQL renderizada. |
 | 2 | Validar estrutura do projeto dbt | `make parse` | Grafo, referências e estrutura do projeto dbt. |
 | 3 | Compilar modelos dbt | `make compile` | Renderização e compilação dos modelos SQL. |
-| 4 | Executar dbt build e testes | `make test` | Recarrega seeds, executa `dbt build` e depois `dbt test`, incluindo os oráculos de dados declarados. |
+| 4 | Executar dbt build e testes | `make test` | Recarrega seeds, executa `dbt build` e depois `dbt test`, incluindo as validações de dados declaradas. |
 
 ## Evidência da rodada concluída
 
@@ -34,7 +34,7 @@ esperado e observado permanece registrada no CSV.
 O workflow torna visíveis falhas de estilo/sintaxe, do grafo e da compilação,
 além de testes de dados durante a construção. As cinco mutações selecionadas
 foram detectadas, mas essa taxa não prova suficiência geral: ela mede apenas o
-catálogo executado e depende dos oráculos de dados explicitamente declarados.
+catálogo executado e depende das validações de dados explicitamente declaradas.
 
 **Fontes:** [[../../.github/workflows/ci-dbt.yml|workflow de CI do dbt]],
 [[../../projects/04_etl_dbt/Makefile|comandos locais do dbt]],

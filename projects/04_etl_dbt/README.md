@@ -29,7 +29,7 @@ make debug  # valida imagem, perfil e conexão com o banco local
 make parse  # valida a estrutura dbt
 make seed   # recarrega somente os dados de exemplo
 make build  # materializa e valida os modelos
-make test   # executa os oráculos SQL da linha de base
+make test   # executa as validações SQL da linha de base
 make lint   # valida o SQL com SQLFluff e o templater dbt
 make down   # interrompe os serviços preservando o volume local
 make reset  # remove somente o volume PostgreSQL deste projeto

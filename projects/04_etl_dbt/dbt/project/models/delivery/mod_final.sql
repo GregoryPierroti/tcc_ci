@@ -2,7 +2,8 @@
 
 with bancos as (
   select
-    cnpj,
+    cnpj as cnpj_join,
+    cast(null as text) as cnpj,
     segmento,
     nome,
     nome_processed
@@ -65,7 +66,7 @@ join_br as (
     b.*,
     r.*
   from bancos as b
-  inner join reclamacoes as r on cast(b.cnpj as text) = cast(r.cnpj_if as text)
+  inner join reclamacoes as r on cast(b.cnpj_join as text) = cast(r.cnpj_if as text)
 ),
 
 final as (

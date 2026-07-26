@@ -956,3 +956,21 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Interpretação:** a rodada obteve cinco detecções no catálogo selecionado.
   Os detectores antecipados por SQLFluff são registrados como observados, sem
   substituir os detectores esperados no catálogo.
+
+### 2026-07-26 — ETP-044 — Consolidação comparativa e narrativa final
+
+- **Estado:** concluída.
+- **Objetivo:** transformar as 15 observações estruturadas em uma leitura
+  comparativa verificável, sem alterar o dado primário do experimento.
+- **Entregas:** criadas a matriz comparativa, a nota de interpretação e a
+  nota de rastreabilidade em `40 - Evidências/`; atualizados o índice,
+  dashboard, mapa de tecnologias, estado de execução e linha do tempo.
+- **Resultado:** Python e dbt registram 5/5 detecções; PySpark, 3/5, com dois
+  falsos negativos confirmados por oráculos integrais. No conjunto, são 13
+  detecções e 2 falsos negativos em 15 execuções (86,7%).
+- **Limite preservado:** os números descrevem o catálogo de mutações
+  executado e as durações do ambiente GitHub Actions; não provam cobertura
+  geral, nem equivalência de desempenho entre tecnologias.
+- **Verificação:** a matriz foi conferida contra `results/resultados.csv`; os
+  links internos do vault e o diff do repositório foram validados antes da
+  integração.

@@ -1,9 +1,10 @@
 # Estado e próximos passos
 
 > [!important] Ponto de handoff — 2026-07-26
-> Antes de retomar experimentos, a próxima sessão deve revalidar a organização
-> do vault Obsidian. A organização documental é a prioridade imediata; a rodada
-> dbt permanece pausada até essa validação.
+> As três rodadas estão concluídas e a análise comparativa foi consolidada. O
+> próximo trabalho é transformar as evidências em redação de monografia ou
+> implementar melhorias futuras de cobertura, sem misturá-las aos resultados
+> já medidos.
 
 ## Estado consolidado
 
@@ -12,41 +13,30 @@
 | Linha de base e CI | concluídas para Python, PySpark e dbt | [[../10 - Especificação/Linha de base experimental]] |
 | Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas]] |
 | Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas]] |
-| Rodada dbt | concluída: 5 detecções | [[Fluxo de checks dbt]] |
-| Obsidian | migrado e reorganizado; requer revisão de navegação | [[../00 - Início/00 - Dashboard]] |
+| Rodada dbt | concluída: 5 detecções | [[../30 - Tecnologias/Fluxo de checks dbt]] |
+| Obsidian | matriz, interpretação, evidências e narrativa final consolidadas | [[../40 - Evidências/Matriz comparativa final]] |
 
 ## Pendência experimental preservada
 
 As PRs DBT-001 a DBT-005 foram fechadas sem merge após a observação; nenhum
 código defeituoso foi integrado ao `main`. Os cinco resultados estão
-consolidados no CSV e no [[Fluxo de checks dbt]].
+consolidados no CSV e no [[../30 - Tecnologias/Fluxo de checks dbt|fluxo dbt]].
 
 ## Revalidação metodológica da rodada dbt
 
-DBT-002 e DBT-003 foram observadas e suas PRs foram encerradas sem merge, mas
-não foram consolidadas no CSV. A suspeita de falha basal foi revalidada em
-2026-07-26: `make lint` passou localmente no `main` e o workflow manual
-**CI - ETL dbt** passou remotamente em todas as etapas. Portanto, não há
-correção basal necessária; DBT-002 e DBT-003 devem ser repetidas a partir da
-referência saudável antes de DBT-004 e DBT-005.
+DBT-002 e DBT-003 foram repetidas a partir da referência saudável após a
+revalidação. `make lint` passou localmente no `main` e o workflow manual
+**CI - ETL dbt** passou remotamente em todas as etapas; as repetições, DBT-004
+e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
-## Próxima sessão: revalidar o vault
+## Próximos passos de redação
 
-1. Abrir `obsidian/` como vault e iniciar em [[../00 - Início/00 - Dashboard]].
-2. Percorrer o fluxo: dashboard → índice mestre → visão/problema → desenho →
-   tecnologias → evidências → storytelling.
-3. Confirmar que cada assunto tem **uma única nota canônica** e que não há
-   conteúdo de especificação fora de `obsidian/`.
-4. Verificar se os links para código, catálogo YAML e CSV ajudam a recuperar a
-   evidência sem criar uma segunda especificação.
-5. Avaliar se os nomes, a granularidade e a ordem servem simultaneamente para
-   leitura humana, redação da monografia e contexto de IA.
-6. Registrar qualquer ajuste estrutural no [[../50 - Storytelling/Registro metodológico]].
-
-## Após a validação documental
-
-1. Consolidar a matriz final de detecção, duração, adaptação e falsos negativos.
-2. Revisar a narrativa comparativa para a monografia.
+1. Usar a [[../40 - Evidências/Matriz comparativa final|matriz]] como tabela de
+   resultados da monografia.
+2. Converter a [[../40 - Evidências/Interpretação comparativa|interpretação]]
+   em discussão, ameaças à validade e conclusão.
+3. Manter a [[../40 - Evidências/Rastreabilidade das evidências|rastreabilidade]]
+   como apêndice ou guia de auditoria.
 
 ## Fora de escopo até então
 

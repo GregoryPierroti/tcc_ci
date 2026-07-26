@@ -17,10 +17,12 @@
 
 - [[../20 - Execução/Protocolo de falhas controladas]] — procedimento canônico.
 - [[../20 - Execução/Estado e próximos passos]] — estado real e prioridade.
-- [[../20 - Execução/Estado e próximos passos]] — estado e prioridade de trabalho.
 
 ## Para escrever a monografia ou analisar resultados
 
 - [[../40 - Evidências/Resultados e métricas]] — resultados e interpretação.
+- [[../40 - Evidências/Matriz comparativa final]] — comparação final das 15 execuções.
+- [[../40 - Evidências/Interpretação comparativa]] — discussão e limites.
+- [[../40 - Evidências/Rastreabilidade das evidências]] — caminho até CSV, jobs e diário.
 - [[../50 - Storytelling/Linha do tempo metodológica]] — narrativa cronológica.
 - [[../90 - Governança e IA/Contexto para IA]] — vocabulário e ordem de leitura segura.

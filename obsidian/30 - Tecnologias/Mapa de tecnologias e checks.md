@@ -4,7 +4,7 @@
 | --- | --- | --- | --- | --- |
 | Python | Python 3.11, PostgreSQL 16, MinIO | Ruff → pytest/cobertura → pip-audit | 11 delivery / 3 CNPJs | rodada concluída |
 | PySpark | Python 3.11, Java 17, PySpark 3.5.2, PostgreSQL 16 | Ruff → testes Spark → pip-audit | 154 linhas / 38 CNPJs | rodada concluída |
-| dbt | Python 3.11, dbt 1.9, PostgreSQL 16 | SQLFluff → parse → compile → build/test | 1 linha delivery | rodada pendente |
+| dbt | Python 3.11, dbt 1.9, PostgreSQL 16 | SQLFluff → parse → compile → build/test | 1 linha delivery | rodada concluída |
 
 ## Interpretação por tecnologia
 
@@ -12,8 +12,8 @@
   formatador também pode ser primeiro detector.
 - **PySpark:** detecta normalização e coluna ausente; não protege, por si só,
   integridade de chaves e cardinalidade da execução integral.
-- **dbt:** valida SQL, grafo e testes de dados; sua rodada é necessária para
-  concluir a comparação.
+- **dbt:** valida SQL, grafo e testes de dados; detectou as cinco mutações
+  selecionadas, inclusive nulidade, duplicidade e cardinalidade.
 
 ## Operação
 
@@ -24,3 +24,4 @@ Os READMEs dos objetos são as instruções executáveis:
 
 Para evidência detalhada: [[Fluxo de checks Python|fluxo Python]],
 [[Fluxo de checks PySpark|fluxo PySpark]] e [[Fluxo de checks dbt|fluxo dbt]].
+Para a síntese transversal: [[../40 - Evidências/Matriz comparativa final|matriz comparativa]].

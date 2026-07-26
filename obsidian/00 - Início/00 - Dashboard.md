@@ -10,6 +10,7 @@
 3. [[../10 - Especificação/Desenho metodológico]] — como a hipótese é testada.
 4. [[../20 - Execução/Estado e próximos passos]] — retomar o trabalho.
 5. [[../40 - Evidências/Resultados e métricas]] — achados atuais.
+6. [[../40 - Evidências/Matriz comparativa final]] — comparação consolidada.
 
 ## Fontes primárias
 

@@ -928,3 +928,18 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   preservada no CSV, sem reescrever o catálogo posteriori.
 - **Limitação:** SQLFluff também emitiu uma exceção conhecida da regra CV11 em
   arquivo não alterado; ela não altera a atribuição causal de `AL02` à mutação.
+
+### 2026-07-26 — ETP-042 — Revalidação do baseline dbt
+
+- **Estado:** concluída.
+- **DBT-002:** a `ref` inexistente foi revelada pelo templater dbt durante o
+  lint, antes do `dbt parse` explícito; a PR #33 foi encerrada sem merge.
+- **DBT-003:** a projeção nula foi confirmada localmente pelo teste
+  `not_null_mod_final_cnpj`, mas a CI falhou primeiro no lint por CV11; a PR
+  #34 foi encerrada sem merge.
+- **Revalidação:** `make lint` passou localmente no `main`. O workflow manual
+  [CI - ETL dbt #30215534482](https://github.com/GregoryPierroti/tcc_ci/actions/runs/30215534482)
+  passou remotamente em lint, parse, compile, build e testes.
+- **Decisão operacional:** não há correção basal a integrar. Repetir DBT-002 e
+  DBT-003 a partir da referência saudável e só então continuar DBT-004 e
+  DBT-005; as observações anteriores permanecem fora do CSV.

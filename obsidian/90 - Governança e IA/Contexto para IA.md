@@ -13,6 +13,11 @@
 
 ## Ordem recomendada
 
-Leia [[01 - O que é o experimento]], [[02 - Por que investigar]], [[03 - Como o experimento é executado]], [[04 - Checks e tecnologias]] e [[05 - Falhas, métricas e estado]]. Abra fontes primárias para números, decisões e resultados específicos.
+Leia [[../00 - Início/00 - Dashboard]],
+[[../10 - Especificação/Visão e problema de pesquisa]],
+[[../10 - Especificação/Desenho metodológico]],
+[[../30 - Tecnologias/Mapa de tecnologias e checks]] e
+[[../40 - Evidências/Resultados e métricas]]. Abra catálogo, CSV e diário para
+números, decisões e resultados específicos.
 
 Ao responder, diferencie esperado de observado, cite tecnologia e identificador de falha e declare que a rodada dbt ainda não está consolidada.

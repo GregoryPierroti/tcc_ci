@@ -6,8 +6,8 @@
 
 ## Para entender o projeto
 
-- [[../01 - O que é o experimento]] — escopo e unidade de análise.
-- [[../02 - Por que investigar]] — pergunta e motivação.
+- [[../10 - Especificação/Visão e problema de pesquisa]] — escopo, pergunta e motivação.
+- [[../10 - Especificação/Desenho metodológico]] — hipótese e método.
 - [[../10 - Especificação/Especificação do experimento]] — especificação
   consolidada baseada no diagrama e no baseline.
 - [[../30 - Tecnologias/Mapa de tecnologias e checks]] — comparação das três
@@ -23,4 +23,4 @@
 
 - [[../40 - Evidências/Resultados e métricas]] — resultados e interpretação.
 - [[../50 - Storytelling/Linha do tempo metodológica]] — narrativa cronológica.
-- [[../06 - Contexto para IA]] — vocabulário e ordem de leitura segura.
+- [[../90 - Governança e IA/Contexto para IA]] — vocabulário e ordem de leitura segura.

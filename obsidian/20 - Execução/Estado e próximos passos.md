@@ -1,77 +1,50 @@
-# Próximos passos do experimento
+# Estado e próximos passos
 
-Este documento organiza a sequência de trabalho após a preparação dos três
-objetos experimentais e da primeira versão das pipelines GitHub Actions.
+> [!important] Ponto de handoff — 2026-07-26
+> Antes de retomar experimentos, a próxima sessão deve revalidar a organização
+> do vault Obsidian. A organização documental é a prioridade imediata; a rodada
+> dbt permanece pausada até essa validação.
 
-O [diagrama do experimento](diagrama-experimento-ci.jpeg) apresenta a visão
-geral que orienta esta sequência: checks de CI aplicados aos três objetos,
-falhas controladas e coleta de métricas de detecção, duração e adaptação.
-Ele é uma referência metodológica; os checks efetivamente disponíveis em cada
-objeto são os registrados neste documento e no diário metodológico.
+## Estado consolidado
 
-## Estado atual
+| Frente | Situação | Evidência de entrada |
+| --- | --- | --- |
+| Linha de base e CI | concluídas para Python, PySpark e dbt | [[../10 - Especificação/Linha de base experimental]] |
+| Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas]] |
+| Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas]] |
+| Rodada dbt | pausada; catálogo preparado | [[../40 - Evidências/Catálogo de falhas]] |
+| Obsidian | migrado e reorganizado; requer revisão de navegação | [[../00 - Início/00 - Dashboard]] |
 
-- ETL Python, ETL PySpark e ETL dbt executam localmente com Docker Compose e
-  dados versionados.
-- Cada objeto possui pipeline bloqueante no GitHub Actions.
-- Python e PySpark executam Ruff, pytest, pytest-cov e pip-audit.
-- dbt executa SQLFluff, `dbt parse`, `dbt compile`, `dbt build` e `dbt test`.
-- O diário metodológico registra decisões, evidências e limitações em
-  `obsidian/50 - Storytelling/Registro metodológico.md`.
+## Pendência experimental preservada
 
-## Próxima feature: baseline e catálogo de falhas
+A PR experimental **#30 / DBT-001** permanece aberta na branch `fault/DBT-001`
+e não foi integrada ao `main`. A CI remota falhou em **57 s** no job
+`SQLFluff, parse, compile e dbt build`; localmente, o lint falhou enquanto
+`dbt parse` e `dbt compile` passaram. O resultado ainda **não** foi registrado
+no CSV nem no diário, portanto a próxima sessão deve primeiro decidir se a
+mutação/catálogo será mantida como evidência válida ou ajustada.
 
-Objetivo: definir as falhas controladas antes de modificar qualquer objeto
-experimental.
+## Próxima sessão: revalidar o vault
 
-1. Criar uma tag Git do baseline saudável, por exemplo `baseline-ci-v1`.
-2. Criar `fault-catalog/falhas.yml` com 5 a 6 falhas iniciais por projeto.
-3. Criar o protocolo de falhas controladas com o procedimento repetível de
-   injeção, execução, registro e retorno ao baseline.
-4. Criar o modelo inicial de `results/resultados.csv`.
+1. Abrir `obsidian/` como vault e iniciar em [[../00 - Início/00 - Dashboard]].
+2. Percorrer o fluxo: dashboard → índice mestre → visão/problema → desenho →
+   tecnologias → evidências → storytelling.
+3. Confirmar que cada assunto tem **uma única nota canônica** e que não há
+   conteúdo de especificação fora de `obsidian/`.
+4. Verificar se os links para código, catálogo YAML e CSV ajudam a recuperar a
+   evidência sem criar uma segunda especificação.
+5. Avaliar se os nomes, a granularidade e a ordem servem simultaneamente para
+   leitura humana, redação da monografia e contexto de IA.
+6. Registrar qualquer ajuste estrutural no [[../50 - Storytelling/Registro metodológico]].
 
-Critério de conclusão: uma pessoa deve conseguir escolher uma falha do
-catálogo, aplicá-la em uma branch própria, executar a pipeline e registrar o
-resultado sem decidir o procedimento durante a execução.
+## Após a validação documental
 
-Os artefatos desta feature são `fault-catalog/falhas.yml`,
-`results/resultados.csv`. A tag
-`baseline-ci-v1` identifica o commit saudável a partir do qual toda execução
-de falha deve começar.
+1. Fechar ou registrar DBT-001 conforme a evidência já observada.
+2. Executar DBT-002 a DBT-005 pelo [[Protocolo de falhas controladas]].
+3. Consolidar a matriz final de detecção, duração, adaptação e falsos negativos.
 
-## Primeira rodada de falhas
+## Fora de escopo até então
 
-Aplicar uma falha por branch e por pull request. Cada PR deve partir do
-baseline e conter somente a mutação listada no catálogo.
-
-Ordem recomendada:
-
-1. Python: sintaxe, regra de transformação, cardinalidade de join e dependência.
-2. PySpark: schema, coluna inexistente, cardinalidade de join e agregação.
-3. dbt: SQL inválido, `ref` inexistente, violação de `not_null`/`unique` e
-   transformação que compila mas produz resultado incorreto.
-
-Para cada execução, registrar projeto, identificador da falha, commit,
-detector esperado, etapa que falhou, status observado, duração e classificação
-de falso positivo ou falso negativo.
-
-## Coleta e análise
-
-Depois da primeira rodada:
-
-1. Consolidar os resultados no CSV.
-2. Calcular taxa de detecção, falhas por etapa, falsos negativos e duração.
-3. Comparar os objetos sem tratar cobertura como prova de qualidade.
-4. Registrar limitações: diferenças de runtime, dependências, testes
-   disponíveis e limitações conhecidas das ferramentas.
-
-## Melhorias posteriores, somente se necessárias
-
-- Publicar `coverage.xml` e relatórios de teste como artefatos do GitHub Actions.
-- Adicionar JUnit XML para facilitar a consolidação automática.
-- Avaliar `pip-audit` para a imagem dbt.
-- Reavaliar mypy após haver mais funções Python com tipos explícitos.
-- Avaliar testes unitários nativos do dbt sem substituir os testes de dados
-  já adotados.
-
-Esses itens não devem bloquear o início da primeira rodada de falhas.
+Mypy, artefatos de cobertura/JUnit, auditoria de dependências dbt e testes
+unitários nativos dbt continuam como melhorias posteriores. Eles não bloqueiam
+a revisão do vault nem a rodada atual de falhas.

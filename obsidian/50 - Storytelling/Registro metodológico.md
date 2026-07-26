@@ -884,3 +884,16 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Evidência estruturada preservada:** código, `fault-catalog/falhas.yml` e
   `results/resultados.csv` permanecem fora do vault por serem artefatos
   executáveis ou tabulares, mas são indexados por notas do Obsidian.
+
+### 2026-07-26 — ETP-039 — Handoff para revalidação do vault Obsidian
+
+- **Estado:** pendente de revalidação na próxima sessão.
+- **Decisão operacional:** pausar a rodada dbt para revisar se a taxonomia,
+  links e granularidade do vault permitem recuperar todo o contexto sem manter
+  uma segunda especificação fora de `obsidian/`.
+- **Pendência preservada:** a PR experimental #30 (DBT-001) segue aberta e
+  não integrada. A CI falhou em 57 s no job de dbt; o resultado não foi
+  consolidado no CSV até a próxima decisão sobre a validade da mutação.
+- **Critério de retomada:** concluir a checklist em
+  `20 - Execução/Estado e próximos passos` e registrar quaisquer ajustes antes
+  de retomar DBT-002 a DBT-005.

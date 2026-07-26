@@ -2,7 +2,7 @@
 
 with bancos as (
   select
-    cnpj,
+    cnpj
     segmento,
     nome,
     nome_processed

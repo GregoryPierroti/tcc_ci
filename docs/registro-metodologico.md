@@ -699,3 +699,16 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Justificativa:** separar o roteiro do diário mantém a rastreabilidade
   histórica no registro metodológico e oferece uma visão operacional curta
   para orientar a execução seguinte.
+
+### 2026-07-26 — ETP-026 — Diagrama de referência do experimento
+
+- **Estado:** concluída.
+- **Entregável:** o diagrama fornecido pelo mantenedor foi versionado como
+  `docs/diagrama-experimento-ci.jpeg` e referenciado em
+  `docs/proximos-passos.md`.
+- **Escopo representado:** a imagem descreve o objetivo comparativo do TCC,
+  os objetos Python, PySpark e SQL, as falhas controladas e as métricas de
+  detecção, duração e adaptação.
+- **Limite de interpretação:** itens ilustrados no diagrama não passam a ser
+  automaticamente requisitos implementados. A disponibilidade efetiva de
+  cada check continua sendo a documentada para cada objeto experimental.

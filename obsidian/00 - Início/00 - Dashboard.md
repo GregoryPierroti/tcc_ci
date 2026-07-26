@@ -15,8 +15,8 @@
 
 - [[diagrama-experimento-ci.jpeg|Diagrama do experimento]]
 - [[../50 - Storytelling/Registro metodológico|Registro metodológico]]
-- [[../fault-catalog/falhas.yml|Catálogo de falhas]]
-- [[../results/resultados.csv|Resultados estruturados]]
+- [[../../fault-catalog/falhas.yml|Catálogo de falhas]]
+- [[../../results/resultados.csv|Resultados estruturados]]
 
 > [!tip] Convenção
 > Cada assunto tem uma nota canônica no vault. Catálogo YAML, CSV e código são

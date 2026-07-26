@@ -897,3 +897,34 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Critério de retomada:** concluir a checklist em
   `20 - Execução/Estado e próximos passos` e registrar quaisquer ajustes antes
   de retomar DBT-002 a DBT-005.
+
+### 2026-07-26 — ETP-040 — Fluxo de checks dbt documentado
+
+- **Estado:** concluída.
+- **Objetivo:** completar a navegação comparativa das três tecnologias com uma
+  nota específica para a ordem, o propósito e os limites dos checks do dbt.
+- **Alterações:** criada `30 - Tecnologias/Fluxo de checks dbt` e adicionada a
+  ligação correspondente no mapa de tecnologias; também foram corrigidos os
+  links do dashboard para o catálogo YAML e o CSV de resultados.
+- **Evidência preservada:** DBT-001 é registrada apenas como observação
+  preliminar. O catálogo previa `dbt parse`, mas o primeiro detector observado
+  foi SQLFluff; `dbt parse` e `dbt compile` passaram localmente. Por isso o
+  resultado continua fora do CSV até a decisão sobre a validade da mutação.
+- **Verificação:** todos os links wiki do vault com destino de arquivo foram
+  verificados e possuem alvo existente; `git diff --check` passou.
+
+### 2026-07-26 — ETP-041 — Consolidação da falha controlada DBT-001
+
+- **Estado:** concluída.
+- **Mutação:** remoção da vírgula entre `cnpj` e `segmento` no CTE `bancos` de
+  `mod_final.sql`, no commit experimental `f3c41e8` e na PR #30.
+- **Esperado no catálogo:** `dbt parse`, na etapa de validação da estrutura.
+- **Observado:** a CI falhou em 57 s no lint SQL; a reprodução isolada da
+  branch confirmou `make lint` com `AL02` (alias implícito de coluna), enquanto
+  `make parse` e `make compile` passaram.
+- **Classificação:** `detected`. A vírgula removida transforma `segmento` em
+  alias implícito de `cnpj`, e SQLFluff intercepta diretamente essa mesma
+  mutação antes da etapa esperada. A divergência esperado/observado foi
+  preservada no CSV, sem reescrever o catálogo posteriori.
+- **Limitação:** SQLFluff também emitiu uma exceção conhecida da regra CV11 em
+  arquivo não alterado; ela não altera a atribuição causal de `AL02` à mutação.

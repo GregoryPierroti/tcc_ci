@@ -8,7 +8,7 @@ nota define como ele entra na narrativa.
 | --- | --- | --- |
 | Python | PY-001 a PY-005 | executada e consolidada |
 | PySpark | SP-001 a SP-005 | executada e consolidada |
-| dbt | DBT-001 a DBT-005 | em andamento; DBT-001 a DBT-003 consolidadas |
+| dbt | DBT-001 a DBT-005 | executada e consolidada |
 
 O catálogo não é o resultado: a observação canônica está em
 [[Resultados e métricas]] e no [[../../results/resultados.csv|CSV]].

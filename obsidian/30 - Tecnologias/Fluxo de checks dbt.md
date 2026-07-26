@@ -12,13 +12,15 @@ mesmo em caso de falha.
 | 3 | Compilar modelos dbt | `make compile` | Renderização e compilação dos modelos SQL. |
 | 4 | Executar dbt build e testes | `make test` | Recarrega seeds, executa `dbt build` e depois `dbt test`, incluindo os oráculos de dados declarados. |
 
-## Evidência preliminar: DBT-001
+## Evidência da rodada concluída
 
 | Falha | Detector esperado no catálogo | Primeiro detector observado | Etapa | Duração | Situação |
 | --- | --- | --- | --- | ---: | --- |
 | DBT-001, SQL inválido | `dbt parse` | SQLFluff | Executar lint SQL | 57 s | detectada |
 | DBT-002, ref inexistente | `dbt parse` | SQLFluff/templater dbt | Executar lint SQL | 67 s | detectada |
 | DBT-003, CNPJ nulo | teste `not_null` | `not_null_mod_final_cnpj` | Executar dbt build e testes | 73 s | detectada |
+| DBT-004, chave duplicada | teste `unique` | `unique_mod_empregados_employer_sk` | Executar dbt build e testes | 67 s | detectada |
+| DBT-005, join semântico | teste `baseline_counts` | `baseline_counts` | Executar dbt build e testes | 82 s | detectada |
 
 A mutação remove uma vírgula no CTE `bancos` de `mod_final.sql`. Na PR
 experimental #30, o job falhou no lint; localmente, `dbt parse` e `dbt compile`
@@ -30,9 +32,9 @@ esperado e observado permanece registrada no CSV.
 ## Limite de interpretação
 
 O workflow torna visíveis falhas de estilo/sintaxe, do grafo e da compilação,
-além de testes de dados durante a construção. A rodada DBT-002 a DBT-005 ainda
-não está consolidada; não se deve inferir taxa de detecção nem suficiência dos
-testes dbt antes da conclusão da rodada.
+além de testes de dados durante a construção. As cinco mutações selecionadas
+foram detectadas, mas essa taxa não prova suficiência geral: ela mede apenas o
+catálogo executado e depende dos oráculos de dados explicitamente declarados.
 
 **Fontes:** [[../../.github/workflows/ci-dbt.yml|workflow]],
 [[../../projects/04_etl_dbt/Makefile|comandos locais]],

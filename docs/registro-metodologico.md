@@ -772,3 +772,19 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Rastreabilidade:** a linha `2026-07-26-PY-002-01` em
   `results/resultados.csv` registra o resultado e a URL do job. A branch e a
   pull request defeituosas não serão integradas ao `main`.
+
+### 2026-07-26 — ETP-030 — Execução controlada PY-003
+
+- **Estado:** concluída; resultado pendente de integração por pull request.
+- **Mutação:** a branch `fault/PY-003`, criada a partir de `baseline-ci-v1`,
+  trocou exclusivamente o filtro de CNPJ de `!= "0"` para `== "0"` antes do
+  join bancos-reclamações. O commit da falha é `667a3c1`.
+- **Evidência local:** `make test` executou três testes; o teste de delivery
+  falhou porque a mutação deixou o join vazio e nenhum resultado foi enviado.
+- **Evidência remota:** o workflow `CI - ETL Python` falhou em 18 s. As
+  etapas de formatação e lint passaram; `Executar testes determinísticos` foi
+  a primeira etapa bloqueante, e a auditoria de dependências foi ignorada.
+- **Classificação:** `detected`, com detector e etapa correspondentes ao
+  catálogo. A linha `2026-07-26-PY-003-01` em `results/resultados.csv`
+  preserva a evidência do job; a branch e a pull request defeituosas não serão
+  integradas ao `main`.

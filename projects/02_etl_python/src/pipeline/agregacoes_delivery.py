@@ -30,7 +30,7 @@ class AgregacoesDelivery:
         logging.info(f"Linhas lidas de 'reclamacoes': {len(df_reclamacoes)}")
 
         # JOIN 1 - Bancos x Reclamações pelo CNPJ
-        df_bancos = df_bancos[df_bancos["CNPJ"].notnull() & (df_bancos["CNPJ"] != "0")]
+        df_bancos = df_bancos[df_bancos["CNPJ"].notnull() & (df_bancos["CNPJ"] == "0")]
         df_reclamacoes = df_reclamacoes[
             df_reclamacoes["CNPJ IF"].notnull() & (df_reclamacoes["CNPJ IF"] != "0")
         ]

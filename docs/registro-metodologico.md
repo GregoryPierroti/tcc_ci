@@ -731,3 +731,26 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Mypy:** permanece uma melhoria posterior deliberada, a ser reavaliada
   após a primeira rodada e uma eventual tipagem explícita de funções de
   produção; não será introduzido no meio deste baseline.
+
+### 2026-07-26 — ETP-028 — Execução controlada PY-001
+
+- **Estado:** concluída; resultado pendente de integração por pull request.
+- **Mutação:** a branch `fault/PY-001`, criada a partir de `baseline-ci-v1`,
+  introduziu exclusivamente um parêntese não fechado no retorno de
+  `_criar_chave_nome` em `transformacoes_trusted.py`. O commit da falha é
+  `ab131f8`.
+- **Expectativa:** o catálogo previa detecção por Ruff na etapa `Executar
+  lint` do workflow do ETL Python.
+- **Evidência local:** `make lint` falhou com `SyntaxError: Expected ')',
+  found newline` na linha 86 do arquivo mutado.
+- **Evidência remota:** a pull request experimental executou o workflow
+  `CI - ETL Python`, que falhou em 22 s. A primeira etapa bloqueante foi
+  `Verificar formatação`: `ruff format --check` também faz parse do arquivo e
+  reportou o mesmo erro de sintaxe antes de o lint ser alcançado.
+- **Classificação:** `detected`. A detecção ocorreu em uma etapa anterior,
+  mas pelo mesmo ecossistema de ferramenta e com relação causal direta à
+  mutação; portanto não é falso negativo nem falso positivo.
+- **Rastreabilidade:** a linha `2026-07-26-PY-001-01` em
+  `results/resultados.csv` preserva os detectores esperado e observado, a
+  duração e o link da execução. A branch e a pull request defeituosas não
+  serão integradas ao `main`.

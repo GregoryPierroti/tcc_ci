@@ -3,6 +3,12 @@
 Este documento organiza a sequência de trabalho após a preparação dos três
 objetos experimentais e da primeira versão das pipelines GitHub Actions.
 
+O [diagrama do experimento](diagrama-experimento-ci.jpeg) apresenta a visão
+geral que orienta esta sequência: checks de CI aplicados aos três objetos,
+falhas controladas e coleta de métricas de detecção, duração e adaptação.
+Ele é uma referência metodológica; os checks efetivamente disponíveis em cada
+objeto são os registrados neste documento e no diário metodológico.
+
 ## Estado atual
 
 - ETL Python, ETL PySpark e ETL dbt executam localmente com Docker Compose e
@@ -27,6 +33,11 @@ experimental.
 Critério de conclusão: uma pessoa deve conseguir escolher uma falha do
 catálogo, aplicá-la em uma branch própria, executar a pipeline e registrar o
 resultado sem decidir o procedimento durante a execução.
+
+Os artefatos desta feature são `fault-catalog/falhas.yml`,
+`docs/protocolo-execucao-falhas.md` e `results/resultados.csv`. A tag
+`baseline-ci-v1` identifica o commit saudável a partir do qual toda execução
+de falha deve começar.
 
 ## Primeira rodada de falhas
 

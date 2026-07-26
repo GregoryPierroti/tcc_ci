@@ -12,17 +12,18 @@
 | Linha de base e CI | concluídas para Python, PySpark e dbt | [[../10 - Especificação/Linha de base experimental]] |
 | Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas]] |
 | Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas]] |
-| Rodada dbt | pausada; catálogo preparado | [[../40 - Evidências/Catálogo de falhas]] |
+| Rodada dbt | em andamento: DBT-001 detectada; DBT-002 a DBT-005 pendentes | [[../40 - Evidências/Resultados e métricas]] |
 | Obsidian | migrado e reorganizado; requer revisão de navegação | [[../00 - Início/00 - Dashboard]] |
 
 ## Pendência experimental preservada
 
 A PR experimental **#30 / DBT-001** permanece aberta na branch `fault/DBT-001`
 e não foi integrada ao `main`. A CI remota falhou em **57 s** no job
-`SQLFluff, parse, compile e dbt build`; localmente, o lint falhou enquanto
-`dbt parse` e `dbt compile` passaram. O resultado ainda **não** foi registrado
-no CSV nem no diário, portanto a próxima sessão deve primeiro decidir se a
-mutação/catálogo será mantida como evidência válida ou ajustada.
+`SQLFluff, parse, compile e dbt build`; a reprodução local confirmou que o
+lint falha por `AL02` (alias implícito), enquanto `dbt parse` e `dbt compile`
+passam. Pelo protocolo, DBT-001 é uma detecção válida em etapa anterior; o
+resultado foi consolidado no CSV. A PR deve ser fechada sem merge antes de
+executar DBT-002.
 
 ## Próxima sessão: revalidar o vault
 
@@ -39,12 +40,20 @@ mutação/catálogo será mantida como evidência válida ou ajustada.
 
 ## Após a validação documental
 
-1. Fechar ou registrar DBT-001 conforme a evidência já observada.
+1. Fechar a PR #30 sem merge e remover a branch `fault/DBT-001` após preservar
+   a evidência.
 2. Executar DBT-002 a DBT-005 pelo [[Protocolo de falhas controladas]].
 3. Consolidar a matriz final de detecção, duração, adaptação e falsos negativos.
 
 ## Fora de escopo até então
 
-Mypy, artefatos de cobertura/JUnit, auditoria de dependências dbt e testes
-unitários nativos dbt continuam como melhorias posteriores. Eles não bloqueiam
-a revisão do vault nem a rodada atual de falhas.
+Estas melhorias ficam para depois da rodada dbt e da consolidação comparativa.
+Elas não bloqueiam a revisão do vault nem o experimento atual.
+
+| Prioridade | Melhoria | Objetivo | Estado |
+| --- | --- | --- | --- |
+| 1 | Oráculos integrais de dados na CI | Detectar regressões de cardinalidade e integridade de chaves, como SP-003 e SP-004, que testes unitários não capturaram. | recomendada antes de considerar a esteira suficiente para joins e schemas |
+| 2 | Testes nativos dbt | Acrescentar testes unitários/semânticos para ampliar a cobertura das transformações dbt. | a avaliar após DBT-001 a DBT-005 |
+| 3 | Auditoria de dependências dbt | Verificar vulnerabilidades nas dependências Python usadas pelo projeto dbt. | não implementada |
+| 4 | Mypy | Adicionar análise estática de tipos aos objetos Python e PySpark. | não implementado |
+| 5 | Artefatos de cobertura e JUnit | Publicar cobertura e resultados estruturados dos testes na CI para rastreabilidade e visualização. | não implementados; não alteram a capacidade de detecção por si só |

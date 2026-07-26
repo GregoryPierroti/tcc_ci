@@ -14,7 +14,8 @@ pipelines, as correções mínimas e a ampliação de verificações.
 ## Ato 3 — Experimento controlado
 
 ETP-026 e ETP-027 introduzem o diagrama, a tag basal, o catálogo e o protocolo.
-ETP-028 a ETP-032 cobrem Python; ETP-033 a ETP-038 cobrem PySpark.
+ETP-028 a ETP-032 cobrem Python; ETP-033 a ETP-038 cobrem PySpark; ETP-039 e
+ETP-040 registram a revisão do vault e o fluxo preliminar do dbt.
 
 ## Tese narrável até o momento
 

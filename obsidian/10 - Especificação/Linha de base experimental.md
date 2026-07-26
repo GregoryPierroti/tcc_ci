@@ -9,7 +9,7 @@ após a consolidação das pipelines de CI. Os dados de entrada são pequenos,
 versionados e determinísticos, e cada projeto fornece comandos `make` para a
 execução local e para as verificações chamadas pelo GitHub Actions.
 
-| Objeto | Runtime e infraestrutura | Comando de execução | Oráculo mínimo observado |
+| Objeto | Runtime e infraestrutura | Comando de execução | Validação mínima observada |
 | --- | --- | --- | --- |
 | `02_etl_python` | Python 3.11, PostgreSQL 16 e MinIO | `make run` | `raw/trusted`: bancos 1474, reclamações 918, empregados 39; `delivery.bancos_unificados`: 11 linhas e 3 CNPJs distintos |
 | `03_etl_pyspark` | Python 3.11, Java 17, PySpark 3.5.2 e PostgreSQL 16 | `make run` | `reclamacoes_consolidadas`: 154 linhas e 38 CNPJs distintos |
@@ -44,7 +44,7 @@ Uma versão basal é aceita quando:
 
 1. `docker compose config` é válido;
 2. a execução descrita no README termina sem erro em banco local vazio;
-3. os oráculos mínimos da tabela acima são observados;
+3. as validações mínimas da tabela acima são observadas;
 4. a reexecução não falha e preserva a saída esperada;
 5. os testes locais determinísticos passam.
 6. os checks locais de formatação, lint e dependências aplicáveis passam.

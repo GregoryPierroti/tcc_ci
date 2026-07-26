@@ -21,9 +21,9 @@ de execução.
 
 ## Critérios de baseline
 
-Uma base é aceita se Compose é válido, a execução limpa funciona, o oráculo
+Uma base é aceita se Compose é válido, a execução limpa funciona, a validação
 mínimo aparece, a reexecução é estável, checks aplicáveis passam e os três
-workflows remotos aprovam. Os oráculos e runtimes concretos estão em
+workflows remotos aprovam. As validações e runtimes concretos estão em
 [[Linha de base experimental|linha de base experimental]].
 
 ## Premissas comparativas

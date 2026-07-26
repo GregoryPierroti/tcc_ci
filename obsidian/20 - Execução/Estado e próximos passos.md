@@ -45,7 +45,7 @@ Elas não bloqueiam a revisão do vault nem o experimento atual.
 
 | Prioridade | Melhoria | Objetivo | Estado |
 | --- | --- | --- | --- |
-| 1 | Oráculos integrais de dados na CI | Detectar regressões de cardinalidade e integridade de chaves, como SP-003 e SP-004, que testes unitários não capturaram. | recomendada antes de considerar a esteira suficiente para joins e schemas |
+| 1 | Validações integrais de dados na CI | Detectar regressões de cardinalidade e integridade de chaves, como SP-003 e SP-004, que testes unitários não capturaram. | recomendada antes de considerar a esteira suficiente para joins e schemas |
 | 2 | Testes nativos dbt | Acrescentar testes unitários/semânticos para ampliar a cobertura das transformações dbt. | a avaliar após DBT-001 a DBT-005 |
 | 3 | Auditoria de dependências dbt | Verificar vulnerabilidades nas dependências Python usadas pelo projeto dbt. | não implementada |
 | 4 | Mypy | Adicionar análise estática de tipos aos objetos Python e PySpark. | não implementado |

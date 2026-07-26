@@ -1,6 +1,6 @@
 # Mapa de tecnologias e checks
 
-| Tecnologia | Runtime | Esteira | Oráculo basal | Estado experimental |
+| Tecnologia | Runtime | Esteira | Validação basal | Estado experimental |
 | --- | --- | --- | --- | --- |
 | Python | Python 3.11, PostgreSQL 16, MinIO | Ruff → pytest/cobertura → pip-audit | 11 delivery / 3 CNPJs | rodada concluída |
 | PySpark | Python 3.11, Java 17, PySpark 3.5.2, PostgreSQL 16 | Ruff → testes Spark → pip-audit | 154 linhas / 38 CNPJs | rodada concluída |

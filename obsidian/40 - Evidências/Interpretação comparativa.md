@@ -5,7 +5,7 @@
 A esteira convencional de CI foi reutilizável nos três objetos, mas não de
 forma idêntica. Python recebeu checks diretamente familiares ao ecossistema de
 software; PySpark exigiu runtime e testes Spark e revelou a necessidade de
-oráculos integrais; dbt exigiu lint consciente de templates, compilação do
+validações integrais; dbt exigiu lint consciente de templates, compilação do
 grafo e testes de dados. Portanto, a reutilização é viável quando os checks
 genéricos são combinados com verificações específicas da transformação e dos
 dados.
@@ -32,7 +32,7 @@ dados.
   da hipótese experimental.
 - Duração inclui provisionamento e execução no GitHub Actions; ela descreve
   este ambiente e não substitui medição de desempenho de produção.
-- Os oráculos integrais foram usados para confirmar aprovados da CI. Eles são
+- As validações integrais foram usadas para confirmar aprovados da CI. Elas são
   essenciais para interpretar falsos negativos, mas ainda não pertencem à
   esteira basal PySpark.
 
@@ -40,8 +40,8 @@ dados.
 
 Para Python e dbt, a combinação atual forneceu cobertura observada para o
 catálogo executado. Para PySpark, o próximo reforço prioritário é trazer para a
-CI os oráculos de contagem, cardinalidade e integridade de chaves usados na
-execução integral. Cobertura de código, sozinha, não substitui esses oráculos.
+CI as validações de contagem, cardinalidade e integridade de chaves usadas na
+execução integral. Cobertura de código, sozinha, não substitui essas validações.
 
 Veja a [[Matriz comparativa final|matriz final de resultados]], o [[Resultados e métricas|resumo
 numérico consolidado]] e o [[../20 - Execução/Estado e próximos passos|plano de continuidade]].

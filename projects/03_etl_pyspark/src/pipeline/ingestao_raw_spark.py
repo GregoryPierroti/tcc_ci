@@ -34,7 +34,7 @@ class IngestaoRawSpark:
         schema_bancos = StructType(
             [
                 StructField("Segmento", StringType(), True),
-                StructField("CNPJ", StringType(), True),
+                StructField("CNPJ", DoubleType(), True),
                 StructField("Nome", StringType(), True),
             ]
         )

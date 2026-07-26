@@ -12,18 +12,14 @@
 | Linha de base e CI | concluídas para Python, PySpark e dbt | [[../10 - Especificação/Linha de base experimental]] |
 | Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas]] |
 | Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas]] |
-| Rodada dbt | em andamento: DBT-001 a DBT-003 detectadas; DBT-004 e DBT-005 pendentes | [[Fluxo de checks dbt]] |
+| Rodada dbt | concluída: 5 detecções | [[Fluxo de checks dbt]] |
 | Obsidian | migrado e reorganizado; requer revisão de navegação | [[../00 - Início/00 - Dashboard]] |
 
 ## Pendência experimental preservada
 
-A PR experimental **#30 / DBT-001** permanece aberta na branch `fault/DBT-001`
-e não foi integrada ao `main`. A CI remota falhou em **57 s** no job
-`SQLFluff, parse, compile e dbt build`; a reprodução local confirmou que o
-lint falha por `AL02` (alias implícito), enquanto `dbt parse` e `dbt compile`
-passam. Pelo protocolo, DBT-001 é uma detecção válida em etapa anterior; o
-resultado foi consolidado no CSV. A PR deve ser fechada sem merge antes de
-executar DBT-002.
+As PRs DBT-001 a DBT-005 foram fechadas sem merge após a observação; nenhum
+código defeituoso foi integrado ao `main`. Os cinco resultados estão
+consolidados no CSV e no [[Fluxo de checks dbt]].
 
 ## Revalidação metodológica da rodada dbt
 
@@ -49,8 +45,8 @@ referência saudável antes de DBT-004 e DBT-005.
 
 ## Após a validação documental
 
-1. Executar DBT-004 e DBT-005 pelo [[Protocolo de falhas controladas]].
-2. Consolidar a matriz final de detecção, duração, adaptação e falsos negativos.
+1. Consolidar a matriz final de detecção, duração, adaptação e falsos negativos.
+2. Revisar a narrativa comparativa para a monografia.
 
 ## Fora de escopo até então
 

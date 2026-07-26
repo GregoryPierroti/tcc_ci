@@ -943,3 +943,16 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Decisão operacional:** não há correção basal a integrar. Repetir DBT-002 e
   DBT-003 a partir da referência saudável e só então continuar DBT-004 e
   DBT-005; as observações anteriores permanecem fora do CSV.
+
+### 2026-07-26 — ETP-043 — Encerramento da rodada dbt
+
+- **Estado:** concluída.
+- **Resultados:** DBT-002 foi detectada pelo templater dbt/SQLFluff no lint
+  (67 s); DBT-003 pelo teste `not_null_mod_final_cnpj` (73 s); DBT-004 pelo
+  teste `unique_mod_empregados_employer_sk`, com 39 duplicidades (67 s); e
+  DBT-005 por `baseline_counts`, após produzir 327 linhas em vez de 1 (82 s).
+- **Consolidação:** DBT-001 a DBT-005 constam no CSV como `detected`; as PRs
+  experimentais foram fechadas sem merge e as branches remotas removidas.
+- **Interpretação:** a rodada obteve cinco detecções no catálogo selecionado.
+  Os detectores antecipados por SQLFluff são registrados como observados, sem
+  substituir os detectores esperados no catálogo.

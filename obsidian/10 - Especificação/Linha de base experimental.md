@@ -44,7 +44,7 @@ Uma versão basal é aceita quando:
 
 1. `docker compose config` é válido;
 2. a execução descrita no README termina sem erro em banco local vazio;
-3. os oráculos mínimos da tabela acima são observados;
+3. as validações mínimas da tabela acima são observadas;
 4. a reexecução não falha e preserva a saída esperada;
 5. os testes locais determinísticos passam.
 6. os checks locais de formatação, lint e dependências aplicáveis passam.

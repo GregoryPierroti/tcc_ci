@@ -788,3 +788,19 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   catálogo. A linha `2026-07-26-PY-003-01` em `results/resultados.csv`
   preserva a evidência do job; a branch e a pull request defeituosas não serão
   integradas ao `main`.
+
+### 2026-07-26 — ETP-031 — Execução controlada PY-004
+
+- **Estado:** concluída; resultado pendente de integração por pull request.
+- **Mutação:** a branch `fault/PY-004`, criada a partir de `baseline-ci-v1`,
+  trocou exclusivamente `right_on="Nome_processed"` por `right_on="Nome"`
+  no segundo join. O commit da falha é `20d5667`.
+- **Evidência local:** `make test` executou três testes; o teste de delivery
+  falhou com `KeyError: 'Nome'` porque a coluna não existe na tabela direita.
+- **Evidência remota:** o workflow falhou em 22 s. Formatação e lint
+  passaram; `Executar testes determinísticos` foi a primeira etapa
+  bloqueante, e a auditoria de dependências foi ignorada.
+- **Classificação:** `detected`, com detector e etapa correspondentes ao
+  catálogo. A linha `2026-07-26-PY-004-01` em `results/resultados.csv`
+  preserva a evidência; a branch e a pull request defeituosas não serão
+  integradas ao `main`.

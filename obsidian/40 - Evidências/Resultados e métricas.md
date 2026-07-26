@@ -26,14 +26,14 @@ ambos em PySpark. A taxa global observada é 86,7%. A duração média dos
 workflows foi 18,0 s (Python), 54,0 s (PySpark) e 69,2 s (dbt); esses valores
 incluem o ambiente da CI e não são benchmarks de produção.
 
-A [[Matriz comparativa final|matriz comparativa final]] detalha cada execução,
+A [[Matriz comparativa final|matriz final das 15 execuções]] detalha cada execução,
 as adaptações por tecnologia e a leitura adequada das taxas. A
-[[Interpretação comparativa|interpretação comparativa]] separa os achados que
+[[Interpretação comparativa|discussão e limites dos resultados]] separa os achados que
 os dados sustentam de seus limites metodológicos.
 
 ## Evidência canônica
 
-- [[../../results/resultados.csv|CSV]]: valores por execução e URL de job.
-- [[Catálogo de falhas]]: mutação e expectativa.
-- [[../50 - Storytelling/Registro metodológico|Registro]]: justificativa e limitações.
-- [[Rastreabilidade das evidências]]: caminho de auditoria entre as fontes.
+- [[../../results/resultados.csv|dados brutos em CSV]]: valores por execução e URL de job.
+- [[Catálogo de falhas|catálogo das mutações]]: mutação e expectativa.
+- [[../50 - Storytelling/Registro metodológico|diário metodológico]]: justificativa e limitações.
+- [[Rastreabilidade das evidências|guia de rastreabilidade]]: caminho de auditoria entre as fontes.

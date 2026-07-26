@@ -17,8 +17,8 @@ operacional acrescenta?
 
 Uma matriz por tecnologia relacionando checks aplicáveis, falhas detectadas,
 falsos negativos, duração, estabilidade e nível de adaptação. O diagrama em
-[[../00 - Início/diagrama-experimento-ci.jpeg]] é a representação visual desse
+[[../00 - Início/diagrama-experimento-ci.jpeg|diagrama do experimento]] é a representação visual desse
 desenho.
 
-Veja [[Especificação do experimento]] para critérios e [[Desenho metodológico]]
+Veja a [[Especificação do experimento|especificação consolidada]] para critérios e o [[Desenho metodológico|desenho metodológico]]
 para o procedimento.

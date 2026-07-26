@@ -28,6 +28,6 @@ três e deixou passar duas falhas semânticas, reveladas somente pelo oráculo
 integral. A conclusão comparativa é que a CI é reutilizável, desde que checks
 gerais sejam complementados por oráculos específicos de dados.
 
-**Resultados:** [[../40 - Evidências/Matriz comparativa final|matriz]] e
-[[../40 - Evidências/Interpretação comparativa|interpretação]].
-**Diário completo:** [[Registro metodológico|registro metodológico]].
+**Resultados:** [[../40 - Evidências/Matriz comparativa final|matriz final das 15 execuções]] e
+[[../40 - Evidências/Interpretação comparativa|discussão comparativa]].
+**Diário completo:** [[Registro metodológico|diário metodológico completo]].

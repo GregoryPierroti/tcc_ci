@@ -1,7 +1,7 @@
 # Matriz comparativa final
 
 Esta é a síntese comparativa da rodada controlada. A unidade é uma execução
-registrada no [[../../results/resultados.csv|CSV]]; a duração representa o tempo
+registrada no [[../../results/resultados.csv|arquivo CSV de resultados]]; a duração representa o tempo
 total do workflow até aprovação ou primeira falha, e não o tempo isolado de um
 check.
 
@@ -50,7 +50,7 @@ não nas detecções.
   mostra que a esteira basal, sem oráculos de cardinalidade e de chaves, não
   detectou as duas mutações semânticas selecionadas.
 
-**Rastreabilidade:** [[Resultados e métricas|resumo de métricas]],
-[[Interpretação comparativa|discussão]], [[Rastreabilidade das evidências|fontes]],
-[[../../fault-catalog/falhas.yml|catálogo YAML]] e
-[[../../results/resultados.csv|CSV canônico]].
+**Rastreabilidade:** [[Resultados e métricas|resumo numérico dos resultados]],
+[[Interpretação comparativa|discussão comparativa]], [[Rastreabilidade das evidências|guia de rastreabilidade]],
+[[../../fault-catalog/falhas.yml|catálogo YAML das falhas]] e
+[[../../results/resultados.csv|dados canônicos em CSV]].

@@ -754,3 +754,21 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   `results/resultados.csv` preserva os detectores esperado e observado, a
   duração e o link da execução. A branch e a pull request defeituosas não
   serão integradas ao `main`.
+
+### 2026-07-26 — ETP-029 — Execução controlada PY-002
+
+- **Estado:** concluída; resultado pendente de integração por pull request.
+- **Mutação:** a branch `fault/PY-002`, criada a partir de `baseline-ci-v1`,
+  trocou exclusivamente `.upper()` por `.lower()` na normalização de nomes em
+  `transformacoes_trusted.py`. O commit da falha é `321e06e`.
+- **Evidência local:** `make test` executou três testes; dois falharam por
+  receber a chave não normalizada em vez de `ITAU`.
+- **Evidência remota:** o workflow `CI - ETL Python` falhou em 20 s. As
+  etapas `Verificar formatação` e `Executar lint` passaram; a primeira etapa
+  bloqueante foi `Executar testes determinísticos`, e a auditoria de
+  dependências foi corretamente ignorada após a falha.
+- **Classificação:** `detected`. O detector e a etapa observados correspondem
+  à expectativa do catálogo; não há falso positivo ou falso negativo.
+- **Rastreabilidade:** a linha `2026-07-26-PY-002-01` em
+  `results/resultados.csv` registra o resultado e a URL do job. A branch e a
+  pull request defeituosas não serão integradas ao `main`.

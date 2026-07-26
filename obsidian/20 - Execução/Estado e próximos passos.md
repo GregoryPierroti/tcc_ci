@@ -12,7 +12,7 @@
 | Linha de base e CI | concluídas para Python, PySpark e dbt | [[../10 - Especificação/Linha de base experimental]] |
 | Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas]] |
 | Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas]] |
-| Rodada dbt | em andamento: DBT-001 detectada; DBT-002 a DBT-005 pendentes | [[../40 - Evidências/Resultados e métricas]] |
+| Rodada dbt | em andamento: DBT-001 consolidada; DBT-002 e DBT-003 devem ser repetidas após revalidação basal | [[Fluxo de checks dbt]] |
 | Obsidian | migrado e reorganizado; requer revisão de navegação | [[../00 - Início/00 - Dashboard]] |
 
 ## Pendência experimental preservada
@@ -24,6 +24,15 @@ lint falha por `AL02` (alias implícito), enquanto `dbt parse` e `dbt compile`
 passam. Pelo protocolo, DBT-001 é uma detecção válida em etapa anterior; o
 resultado foi consolidado no CSV. A PR deve ser fechada sem merge antes de
 executar DBT-002.
+
+## Revalidação metodológica da rodada dbt
+
+DBT-002 e DBT-003 foram observadas e suas PRs foram encerradas sem merge, mas
+não foram consolidadas no CSV. A suspeita de falha basal foi revalidada em
+2026-07-26: `make lint` passou localmente no `main` e o workflow manual
+**CI - ETL dbt** passou remotamente em todas as etapas. Portanto, não há
+correção basal necessária; DBT-002 e DBT-003 devem ser repetidas a partir da
+referência saudável antes de DBT-004 e DBT-005.
 
 ## Próxima sessão: revalidar o vault
 
@@ -40,10 +49,10 @@ executar DBT-002.
 
 ## Após a validação documental
 
-1. Fechar a PR #30 sem merge e remover a branch `fault/DBT-001` após preservar
-   a evidência.
-2. Executar DBT-002 a DBT-005 pelo [[Protocolo de falhas controladas]].
-3. Consolidar a matriz final de detecção, duração, adaptação e falsos negativos.
+1. Reexecutar DBT-002 e DBT-003 a partir da referência basal revalidada, pelo
+   [[Protocolo de falhas controladas]].
+3. Executar DBT-004 e DBT-005 somente com baseline de lint saudável.
+4. Consolidar a matriz final de detecção, duração, adaptação e falsos negativos.
 
 ## Fora de escopo até então
 

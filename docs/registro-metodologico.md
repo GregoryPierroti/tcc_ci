@@ -804,3 +804,12 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   catálogo. A linha `2026-07-26-PY-004-01` em `results/resultados.csv`
   preserva a evidência; a branch e a pull request defeituosas não serão
   integradas ao `main`.
+
+### 2026-07-26 — ETP-032 — Encerramento da rodada Python
+
+- **PY-005:** a mutação inicial no `pyproject.toml` não teve efeito porque
+  `uv sync --frozen` consome o lockfile. A mutação corrigida no `uv.lock`
+  falhou em 8 s na construção da imagem, antes de Ruff; foi classificada como
+  `detected` e registrada no CSV.
+- **Documentação:** `docs/fluxo-checks-python.md` consolida a ordem dos checks,
+  os cinco detectores observados e os limites de interpretação da rodada.

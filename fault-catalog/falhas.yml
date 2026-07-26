@@ -40,9 +40,9 @@ projects:
         expected_outcome: detected
       - id: PY-005
         category: dependency_resolution
-        mutation: "Fixar pandas em uma versão inexistente no pyproject.toml."
-        target: pyproject.toml
-        expected_detector: resolucao de dependencias do container
+        mutation: "Corromper a entrada da wheel Linux do pandas no uv.lock com versão inconsistente."
+        target: uv.lock
+        expected_detector: validação do lockfile pelo uv
         expected_stage: Verificar formatação
         expected_outcome: detected
 

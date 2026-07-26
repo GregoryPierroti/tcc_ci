@@ -17,6 +17,8 @@ mesmo em caso de falha.
 | Falha | Detector esperado no catálogo | Primeiro detector observado | Etapa | Duração | Situação |
 | --- | --- | --- | --- | ---: | --- |
 | DBT-001, SQL inválido | `dbt parse` | SQLFluff | Executar lint SQL | 57 s | detectada |
+| DBT-002, ref inexistente | `dbt parse` | SQLFluff/templater dbt | Executar lint SQL | 67 s | detectada |
+| DBT-003, CNPJ nulo | teste `not_null` | `not_null_mod_final_cnpj` | Executar dbt build e testes | 73 s | detectada |
 
 A mutação remove uma vírgula no CTE `bancos` de `mod_final.sql`. Na PR
 experimental #30, o job falhou no lint; localmente, `dbt parse` e `dbt compile`

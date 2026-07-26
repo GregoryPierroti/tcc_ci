@@ -12,7 +12,7 @@
 | Linha de base e CI | concluídas para Python, PySpark e dbt | [[../10 - Especificação/Linha de base experimental]] |
 | Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas]] |
 | Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas]] |
-| Rodada dbt | em andamento: DBT-001 consolidada; DBT-002 e DBT-003 devem ser repetidas após revalidação basal | [[Fluxo de checks dbt]] |
+| Rodada dbt | em andamento: DBT-001 a DBT-003 detectadas; DBT-004 e DBT-005 pendentes | [[Fluxo de checks dbt]] |
 | Obsidian | migrado e reorganizado; requer revisão de navegação | [[../00 - Início/00 - Dashboard]] |
 
 ## Pendência experimental preservada
@@ -49,10 +49,8 @@ referência saudável antes de DBT-004 e DBT-005.
 
 ## Após a validação documental
 
-1. Reexecutar DBT-002 e DBT-003 a partir da referência basal revalidada, pelo
-   [[Protocolo de falhas controladas]].
-3. Executar DBT-004 e DBT-005 somente com baseline de lint saudável.
-4. Consolidar a matriz final de detecção, duração, adaptação e falsos negativos.
+1. Executar DBT-004 e DBT-005 pelo [[Protocolo de falhas controladas]].
+2. Consolidar a matriz final de detecção, duração, adaptação e falsos negativos.
 
 ## Fora de escopo até então
 

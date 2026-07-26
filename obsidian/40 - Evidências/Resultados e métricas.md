@@ -13,7 +13,7 @@
 | --- | ---: | ---: | ---: | --- |
 | Python | 5 | 5 | 0 | concluída |
 | PySpark | 5 | 3 | 2 | concluída |
-| dbt | 1 | 1 | 0 | em andamento |
+| dbt | 3 | 3 | 0 | em andamento |
 
 Os falsos negativos PySpark são informação metodológica relevante: SP-003
 quebrou a chave e produziu delivery vazio; SP-004 aumentou a cardinalidade.

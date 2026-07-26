@@ -43,5 +43,5 @@ catálogo executado. Para PySpark, o próximo reforço prioritário é trazer pa
 CI os oráculos de contagem, cardinalidade e integridade de chaves usados na
 execução integral. Cobertura de código, sozinha, não substitui esses oráculos.
 
-Veja a [[Matriz comparativa final|matriz]], o [[Resultados e métricas|resumo
-numérico]] e o [[../20 - Execução/Estado e próximos passos|backlog posterior]].
+Veja a [[Matriz comparativa final|matriz final de resultados]], o [[Resultados e métricas|resumo
+numérico consolidado]] e o [[../20 - Execução/Estado e próximos passos|plano de continuidade]].

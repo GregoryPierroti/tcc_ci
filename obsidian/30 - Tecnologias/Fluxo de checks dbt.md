@@ -36,7 +36,7 @@ além de testes de dados durante a construção. As cinco mutações selecionada
 foram detectadas, mas essa taxa não prova suficiência geral: ela mede apenas o
 catálogo executado e depende dos oráculos de dados explicitamente declarados.
 
-**Fontes:** [[../../.github/workflows/ci-dbt.yml|workflow]],
-[[../../projects/04_etl_dbt/Makefile|comandos locais]],
-[[../40 - Evidências/Catálogo de falhas|catálogo]] e
-[[../20 - Execução/Estado e próximos passos|estado da rodada]].
+**Fontes:** [[../../.github/workflows/ci-dbt.yml|workflow de CI do dbt]],
+[[../../projects/04_etl_dbt/Makefile|comandos locais do dbt]],
+[[../40 - Evidências/Catálogo de falhas|catálogo de falhas controladas]] e
+[[../20 - Execução/Estado e próximos passos|estado atual do experimento]].

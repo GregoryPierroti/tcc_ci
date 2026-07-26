@@ -18,10 +18,10 @@
 ## Operação
 
 Os READMEs dos objetos são as instruções executáveis:
-[[../../projects/02_etl_python/README|Python]],
-[[../../projects/03_etl_pyspark/README|PySpark]] e
-[[../../projects/04_etl_dbt/README|dbt]].
+[[../../projects/02_etl_python/README|guia de execução do ETL Python]],
+[[../../projects/03_etl_pyspark/README|guia de execução do ETL PySpark]] e
+[[../../projects/04_etl_dbt/README|guia de execução do projeto dbt]].
 
-Para evidência detalhada: [[Fluxo de checks Python|fluxo Python]],
-[[Fluxo de checks PySpark|fluxo PySpark]] e [[Fluxo de checks dbt|fluxo dbt]].
-Para a síntese transversal: [[../40 - Evidências/Matriz comparativa final|matriz comparativa]].
+Para evidência detalhada: [[Fluxo de checks Python|fluxo de checks do Python]],
+[[Fluxo de checks PySpark|fluxo de checks do PySpark]] e [[Fluxo de checks dbt|fluxo de checks do dbt]].
+Para a síntese transversal: [[../40 - Evidências/Matriz comparativa final|matriz comparativa final]].

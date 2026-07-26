@@ -1,12 +1,12 @@
 # Rastreabilidade das evidências
 
-| Evidência | Papel no experimento | Fonte canônica |
-| --- | --- | --- |
-| Mutações e detector/etapa esperados | hipótese operacional de cada falha | [[../../fault-catalog/falhas.yml|falhas.yml]] |
-| Resultado observado, duração e URL do job | dado primário de cada execução | [[../../results/resultados.csv|resultados.csv]] |
-| PRs e jobs remotos | reprodução auditável da execução | URL `evidence_url` de cada linha do CSV |
-| Decisões, reexecuções e exceções | contexto metodológico e limitações | [[../50 - Storytelling/Registro metodológico|registro]] |
-| Workflows e comandos | implementação da esteira observada | [[../../.github/workflows|workflows]] e READMEs dos projetos |
+| Evidência                                 | Papel no experimento               | Fonte canônica                               |                                    |
+| ----------------------------------------- | ---------------------------------- | -------------------------------------------- | ---------------------------------- |
+| Mutações e detector/etapa esperados       | hipótese operacional de cada falha | [[../../fault-catalog/falhas.yml|catálogo YAML das falhas]] |
+| Resultado observado, duração e URL do job | dado primário de cada execução     | [[../../results/resultados.csv|dados brutos em CSV]] |
+| PRs e jobs remotos                        | reprodução auditável da execução   | URL `evidence_url` de cada linha do CSV      |                                    |
+| Decisões, reexecuções e exceções          | contexto metodológico e limitações | [[../50 - Storytelling/Registro metodológico|diário metodológico]] |
+| Workflows e comandos                      | implementação da esteira observada | [[../../.github/workflows|workflows de CI]] e READMEs dos projetos |
 
 ## Regras de leitura
 
@@ -20,5 +20,5 @@
    [#30215534482](https://github.com/GregoryPierroti/tcc_ci/actions/runs/30215534482),
    aprovado em todas as etapas antes das repetições consolidadas.
 
-Use esta nota para recuperar uma afirmação da [[Matriz comparativa final]] até
+Use esta nota para recuperar uma afirmação da [[Matriz comparativa final|matriz final]] até
 o registro estruturado e, quando necessário, até o job remoto correspondente.

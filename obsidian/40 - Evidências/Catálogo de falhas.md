@@ -1,6 +1,6 @@
 # Catálogo de falhas
 
-O [[../../fault-catalog/falhas.yml|catálogo YAML]] é a evidência estruturada
+O [[../../fault-catalog/falhas.yml|catálogo YAML das falhas]] é a evidência estruturada
 das mutações: identificador, arquivo-alvo, detector e etapa esperados. Esta
 nota define como ele entra na narrativa.
 
@@ -11,4 +11,4 @@ nota define como ele entra na narrativa.
 | dbt | DBT-001 a DBT-005 | executada e consolidada |
 
 O catálogo não é o resultado: a observação canônica está em
-[[Resultados e métricas]] e no [[../../results/resultados.csv|CSV]].
+[[Resultados e métricas|resumo dos resultados]] e no [[../../results/resultados.csv|arquivo CSV canônico]].

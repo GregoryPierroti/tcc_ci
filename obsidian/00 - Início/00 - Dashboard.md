@@ -5,12 +5,12 @@
 
 ## Navegação pelo diagrama
 
-1. [[Índice mestre]] — navegação por intenção.
-2. [[../10 - Especificação/Visão e problema de pesquisa]] — pergunta, escopo e resultado esperado.
-3. [[../10 - Especificação/Desenho metodológico]] — como a hipótese é testada.
-4. [[../20 - Execução/Estado e próximos passos]] — retomar o trabalho.
-5. [[../40 - Evidências/Resultados e métricas]] — achados atuais.
-6. [[../40 - Evidências/Matriz comparativa final]] — comparação consolidada.
+1. [[Índice mestre|Índice mestre do projeto]] — navegação por intenção.
+2. [[../10 - Especificação/Visão e problema de pesquisa|Pergunta de pesquisa e escopo]] — pergunta, escopo e resultado esperado.
+3. [[../10 - Especificação/Desenho metodológico|Desenho metodológico]] — como a hipótese é testada.
+4. [[../20 - Execução/Estado e próximos passos|Estado atual e próximos passos]] — retomar o trabalho.
+5. [[../40 - Evidências/Resultados e métricas|Resumo de resultados e métricas]] — achados atuais.
+6. [[../40 - Evidências/Matriz comparativa final|Matriz comparativa final]] — comparação consolidada.
 
 ## Fontes primárias
 

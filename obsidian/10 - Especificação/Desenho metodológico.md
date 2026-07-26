@@ -13,4 +13,4 @@
 - Resultado esperado (catálogo) e resultado observado (CSV) são separados.
 - Falsos negativos são confirmados por oráculo de dados independente.
 
-O procedimento executável está em [[../20 - Execução/Protocolo de falhas controladas]].
+O procedimento executável está no [[../20 - Execução/Protocolo de falhas controladas|protocolo de falhas controladas]].

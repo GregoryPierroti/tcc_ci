@@ -10,17 +10,17 @@
 
 | Frente | Situação | Evidência de entrada |
 | --- | --- | --- |
-| Linha de base e CI | concluídas para Python, PySpark e dbt | [[../10 - Especificação/Linha de base experimental]] |
-| Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas]] |
-| Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas]] |
-| Rodada dbt | concluída: 5 detecções | [[../30 - Tecnologias/Fluxo de checks dbt]] |
-| Obsidian | matriz, interpretação, evidências e narrativa final consolidadas | [[../40 - Evidências/Matriz comparativa final]] |
+| Linha de base e CI | concluídas para Python, PySpark e dbt | [[../10 - Especificação/Linha de base experimental|linha de base experimental]] |
+| Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
+| Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
+| Rodada dbt | concluída: 5 detecções | [[../30 - Tecnologias/Fluxo de checks dbt|fluxo de checks do dbt]] |
+| Obsidian | matriz, interpretação, evidências e narrativa final consolidadas | [[../40 - Evidências/Matriz comparativa final|matriz comparativa final]] |
 
 ## Pendência experimental preservada
 
 As PRs DBT-001 a DBT-005 foram fechadas sem merge após a observação; nenhum
 código defeituoso foi integrado ao `main`. Os cinco resultados estão
-consolidados no CSV e no [[../30 - Tecnologias/Fluxo de checks dbt|fluxo dbt]].
+consolidados no CSV e no [[../30 - Tecnologias/Fluxo de checks dbt|fluxo de checks do dbt]].
 
 ## Revalidação metodológica da rodada dbt
 
@@ -31,11 +31,11 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
 ## Próximos passos de redação
 
-1. Usar a [[../40 - Evidências/Matriz comparativa final|matriz]] como tabela de
+1. Usar a [[../40 - Evidências/Matriz comparativa final|matriz comparativa final]] como tabela de
    resultados da monografia.
-2. Converter a [[../40 - Evidências/Interpretação comparativa|interpretação]]
+2. Converter a [[../40 - Evidências/Interpretação comparativa|discussão comparativa]]
    em discussão, ameaças à validade e conclusão.
-3. Manter a [[../40 - Evidências/Rastreabilidade das evidências|rastreabilidade]]
+3. Manter a [[../40 - Evidências/Rastreabilidade das evidências|rastreabilidade das evidências]]
    como apêndice ou guia de auditoria.
 
 ## Fora de escopo até então

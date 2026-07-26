@@ -1,0 +1,127 @@
+version: 1
+baseline_tag: baseline-ci-v1
+purpose: >-
+  Catálogo de mutações controladas para avaliar a detecção pelas pipelines de
+  CI. Cada execução usa uma branch nova criada exclusivamente a partir da tag
+  de referência; nenhuma branch com falha é integrada ao main.
+
+projects:
+  - id: python
+    path: projects/02_etl_python
+    workflow: CI - ETL Python
+    faults:
+      - id: PY-001
+        category: syntax
+        mutation: "Introduzir um parêntese não fechado no retorno de _criar_chave_nome."
+        target: src/pipeline/transformacoes_trusted.py
+        expected_detector: Ruff
+        expected_stage: Executar lint
+        expected_outcome: detected
+      - id: PY-002
+        category: transformation
+        mutation: "Trocar .upper() por .lower() em _criar_chave_nome."
+        target: src/pipeline/transformacoes_trusted.py
+        expected_detector: pytest
+        expected_stage: Executar testes determinísticos
+        expected_outcome: detected
+      - id: PY-003
+        category: join_cardinality
+        mutation: "Trocar o filtro de CNPJ válido de != '0' para == '0' antes do join."
+        target: src/pipeline/agregacoes_delivery.py
+        expected_detector: pytest
+        expected_stage: Executar testes determinísticos
+        expected_outcome: detected
+      - id: PY-004
+        category: missing_join_column
+        mutation: "Usar a coluna inexistente Nome no segundo join da agregação."
+        target: src/pipeline/agregacoes_delivery.py
+        expected_detector: pytest
+        expected_stage: Executar testes determinísticos
+        expected_outcome: detected
+      - id: PY-005
+        category: dependency_resolution
+        mutation: "Fixar pandas em uma versão inexistente no pyproject.toml."
+        target: pyproject.toml
+        expected_detector: resolucao de dependencias do container
+        expected_stage: Verificar formatação
+        expected_outcome: detected
+
+  - id: pyspark
+    path: projects/03_etl_pyspark
+    workflow: CI - ETL PySpark
+    faults:
+      - id: SP-001
+        category: transformation
+        mutation: "Trocar F.upper por F.lower em _criar_chave_nome."
+        target: src/pipeline/transformacoes_trusted_spark.py
+        expected_detector: pytest
+        expected_stage: Executar testes Spark determinísticos
+        expected_outcome: detected
+      - id: SP-002
+        category: missing_column
+        mutation: "Referenciar Nome_inexistente no lugar da coluna recebida por _criar_chave_nome."
+        target: src/pipeline/transformacoes_trusted_spark.py
+        expected_detector: pytest
+        expected_stage: Executar testes Spark determinísticos
+        expected_outcome: detected
+      - id: SP-003
+        category: schema
+        mutation: "Alterar o tipo CNPJ do schema de bancos de StringType para IntegerType."
+        target: src/pipeline/ingestao_raw_spark.py
+        expected_detector: execucao integral e oraculo de dados
+        expected_stage: fora da CI basal
+        expected_outcome: expected_false_negative
+      - id: SP-004
+        category: join_type
+        mutation: "Trocar o join bancos-reclamações de inner para left."
+        target: src/pipeline/agregacoes_delivery_spark.py
+        expected_detector: execucao integral e oraculo de contagem
+        expected_stage: fora da CI basal
+        expected_outcome: expected_false_negative
+      - id: SP-005
+        category: dependency_resolution
+        mutation: "Fixar pyspark em uma versão inexistente no pyproject.toml."
+        target: pyproject.toml
+        expected_detector: resolucao de dependencias do container
+        expected_stage: Verificar formatação
+        expected_outcome: detected
+
+  - id: dbt
+    path: projects/04_etl_dbt
+    workflow: CI - ETL dbt
+    faults:
+      - id: DBT-001
+        category: invalid_sql
+        mutation: "Remover a vírgula entre duas colunas do CTE bancos."
+        target: dbt/project/models/delivery/mod_final.sql
+        expected_detector: dbt parse
+        expected_stage: Validar estrutura do projeto dbt
+        expected_outcome: detected
+      - id: DBT-002
+        category: missing_ref
+        mutation: "Substituir ref('mod_bancos') por ref('modelo_inexistente')."
+        target: dbt/project/models/delivery/mod_final.sql
+        expected_detector: dbt parse
+        expected_stage: Validar estrutura do projeto dbt
+        expected_outcome: detected
+      - id: DBT-003
+        category: not_null_violation
+        mutation: "Projetar null::text como cnpj em mod_final."
+        target: dbt/project/models/delivery/mod_final.sql
+        expected_detector: teste not_null
+        expected_stage: Executar dbt build e testes
+        expected_outcome: detected
+      - id: DBT-004
+        category: unique_violation
+        mutation: "Duplicar employer_sk em mod_empregados por union all com a própria relação."
+        target: dbt/project/models/trusted/mod_empregados.sql
+        expected_detector: teste unique
+        expected_stage: Executar dbt build e testes
+        expected_outcome: detected
+      - id: DBT-005
+        category: semantic_transformation
+        mutation: "Trocar o join final de inner para left."
+        target: dbt/project/models/delivery/mod_final.sql
+        expected_detector: teste singular baseline_counts
+        expected_stage: Executar dbt build e testes
+        expected_outcome: detected

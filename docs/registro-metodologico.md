@@ -712,3 +712,22 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Limite de interpretação:** itens ilustrados no diagrama não passam a ser
   automaticamente requisitos implementados. A disponibilidade efetiva de
   cada check continua sendo a documentada para cada objeto experimental.
+
+### 2026-07-26 — ETP-027 — Congelamento do baseline e protocolo de falhas
+
+- **Estado:** concluída localmente; pendente de revisão e integração por pull
+  request.
+- **Baseline:** criada a tag anotada `baseline-ci-v1` no commit saudável que
+  contém as três pipelines, as verificações ampliadas e o diagrama de
+  referência. A linha de base foi atualizada para registrar esse marco e a
+  versão PySpark 3.5.2 efetivamente utilizada.
+- **Entregáveis:** `fault-catalog/falhas.yml` define cinco mutações por
+  objeto; `docs/protocolo-execucao-falhas.md` define isolamento, observação e
+  descarte das branches defeituosas; `results/resultados.csv` fornece o
+  esquema inicial de coleta.
+- **Delimitação:** as falhas SP-003 e SP-004 são hipóteses explícitas de
+  falso negativo da CI basal, pois exigem execução integral/oráculo de dados,
+  ainda ausentes do workflow. Elas serão medidas, não removidas do catálogo.
+- **Mypy:** permanece uma melhoria posterior deliberada, a ser reavaliada
+  após a primeira rodada e uma eventual tipagem explícita de funções de
+  produção; não será introduzido no meio deste baseline.

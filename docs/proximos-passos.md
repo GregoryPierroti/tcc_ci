@@ -34,6 +34,11 @@ Critério de conclusão: uma pessoa deve conseguir escolher uma falha do
 catálogo, aplicá-la em uma branch própria, executar a pipeline e registrar o
 resultado sem decidir o procedimento durante a execução.
 
+Os artefatos desta feature são `fault-catalog/falhas.yml`,
+`docs/protocolo-execucao-falhas.md` e `results/resultados.csv`. A tag
+`baseline-ci-v1` identifica o commit saudável a partir do qual toda execução
+de falha deve começar.
+
 ## Primeira rodada de falhas
 
 Aplicar uma falha por branch e por pull request. Cada PR deve partir do

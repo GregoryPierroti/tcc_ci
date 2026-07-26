@@ -5,12 +5,14 @@
 
 ## Navegação pelo diagrama
 
-1. [[01 - O que é o experimento]]
-2. [[02 - Por que investigar]]
-3. [[03 - Como o experimento é executado]]
-4. [[04 - Checks e tecnologias]]
-5. [[05 - Falhas, métricas e estado]]
-6. [[06 - Contexto para IA]]
+1. [[00 - Início/Índice mestre]]
+2. [[01 - O que é o experimento]] e [[02 - Por que investigar]]
+3. [[10 - Especificação/Especificação do experimento]]
+4. [[20 - Execução/Protocolo de falhas controladas]]
+5. [[30 - Tecnologias/Mapa de tecnologias e checks]]
+6. [[40 - Evidências/Resultados e métricas]]
+7. [[50 - Storytelling/Linha do tempo metodológica]]
+8. [[06 - Contexto para IA]]
 
 ## Fontes primárias
 
@@ -21,3 +23,7 @@
 
 > [!tip] Convenção
 > Atualize primeiro a fonte primária e depois a nota-resumo que a referencia.
+
+> [!info] Uso no Obsidian
+> Abra esta pasta como vault. Não há configuração `.obsidian/` versionada: o
+> leiaute e plugins continuam escolhas locais do leitor.

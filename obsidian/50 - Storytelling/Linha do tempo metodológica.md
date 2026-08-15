@@ -18,7 +18,15 @@ ETP-028 a ETP-032 cobrem Python; ETP-033 a ETP-038 cobrem PySpark; ETP-039 a
 ETP-043 registram a revisão documental, a revalidação basal e o encerramento
 da rodada dbt.
 
-## Tese narrável
+## Ato 4 — Ampliação da esteira de engenharia (planejado)
+
+A v2 ampliará a esteira com checks de análise estática, documentação,
+complexidade, segurança, cobertura e testes separados de unidade e integração.
+Ela terá nova baseline e catálogo, preservando os resultados da v1. O foco é
+confiabilidade do software e da integração técnica de pipelines, não *data
+quality*.
+
+## Tese narrável da v1
 
 A CI convencional foi transferida para os três objetos com adaptações por
 tecnologia. Ela encontrou muitas falhas, mas a rodada PySpark demonstra que
@@ -28,6 +36,7 @@ três e deixou passar duas falhas semânticas, reveladas somente pela validaçã
 integral. A conclusão comparativa é que a CI é reutilizável, desde que checks
 gerais sejam complementados por validações específicas de dados.
 
-**Resultados:** [[../40 - Evidências/Matriz comparativa final|matriz final das 15 execuções]] e
+**Resultados v1:** [[../40 - Evidências/Matriz comparativa final|matriz das 15 execuções]] e
 [[../40 - Evidências/Interpretação comparativa|discussão comparativa]].
 **Diário completo:** [[Registro metodológico|diário metodológico completo]].
+**Próxima rodada:** [[../10 - Especificação/Plano da rodada v2|plano da v2]].

@@ -9,8 +9,9 @@
 2. [[../10 - Especificação/Visão e problema de pesquisa|Pergunta de pesquisa e escopo]] — pergunta, escopo e resultado esperado.
 3. [[../10 - Especificação/Desenho metodológico|Desenho metodológico]] — como a hipótese é testada.
 4. [[../20 - Execução/Estado e próximos passos|Estado atual e próximos passos]] — retomar o trabalho.
-5. [[../40 - Evidências/Resultados e métricas|Resumo de resultados e métricas]] — achados atuais.
-6. [[../40 - Evidências/Matriz comparativa final|Matriz comparativa final]] — comparação consolidada.
+5. [[../10 - Especificação/Plano da rodada v2|Plano da rodada v2]] — escopo da próxima rodada.
+6. [[../40 - Evidências/Resultados e métricas|Resumo de resultados v1]] — achados históricos.
+7. [[../40 - Evidências/Matriz comparativa final|Matriz comparativa v1]] — comparação das 15 execuções iniciais.
 
 ## Fontes primárias
 

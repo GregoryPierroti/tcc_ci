@@ -1,6 +1,6 @@
-# Interpretação comparativa
+# Interpretação comparativa da v1
 
-## Resposta à pergunta orientadora
+## Resposta à pergunta orientadora na v1
 
 A esteira convencional de CI foi reutilizável nos três objetos, mas não de
 forma idêntica. Python recebeu checks diretamente familiares ao ecossistema de
@@ -10,7 +10,7 @@ grafo e testes de dados. Portanto, a reutilização é viável quando os checks
 genéricos são combinados com verificações específicas da transformação e dos
 dados.
 
-## O que os resultados sustentam
+## O que os resultados v1 sustentam
 
 1. Checks antecipados são úteis: Ruff, `uv` e SQLFluff impediram falhas antes
    das etapas de testes previstas em alguns casos.
@@ -22,7 +22,7 @@ dados.
    SP-003 gerou delivery vazio e SP-004 elevou-o de 154 para 1.589 linhas sem
    falhar no workflow.
 
-## Limites e ameaças à validade
+## Limites e ameaças à validade da v1
 
 - O experimento possui cinco mutações por tecnologia, selecionadas e
   controladas. As proporções observadas não são estimativas estatísticas de
@@ -36,12 +36,14 @@ dados.
   essenciais para interpretar falsos negativos, mas ainda não pertencem à
   esteira basal PySpark.
 
-## Implicação prática
+## Implicação prática e transição para a v2
 
 Para Python e dbt, a combinação atual forneceu cobertura observada para o
-catálogo executado. Para PySpark, o próximo reforço prioritário é trazer para a
-CI as validações de contagem, cardinalidade e integridade de chaves usadas na
-execução integral. Cobertura de código, sozinha, não substitui essas validações.
+catálogo executado. A v2 não ampliará avaliação de dados: seu próximo reforço
+é engenharia de software aplicada a pipelines — tipagem, segurança,
+manutenibilidade, cobertura, contratos e integração técnica. Os achados de
+cardinalidade e integridade de chaves da v1 permanecem como limite histórico,
+não como novo critério experimental.
 
-Veja a [[Matriz comparativa final|matriz final de resultados]], o [[Resultados e métricas|resumo
+Veja a [[Matriz comparativa final|matriz de resultados v1]], o [[Resultados e métricas|resumo
 numérico consolidado]] e o [[../20 - Execução/Estado e próximos passos|plano de continuidade]].

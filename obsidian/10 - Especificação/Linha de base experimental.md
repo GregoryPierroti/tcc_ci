@@ -1,4 +1,4 @@
-# Linha de base experimental
+# Linha de base experimental da v1
 
 Data de consolidação: 2026-07-26.
 
@@ -8,6 +8,9 @@ Este documento registra o estado reproduzível dos três objetos experimentais
 após a consolidação das pipelines de CI. Os dados de entrada são pequenos,
 versionados e determinísticos, e cada projeto fornece comandos `make` para a
 execução local e para as verificações chamadas pelo GitHub Actions.
+
+Esta baseline permanece como referência histórica da v1. A v2 terá documento e
+tag próprios após a implementação e validação da esteira ampliada.
 
 | Objeto           | Runtime e infraestrutura                                 | Comando de execução | Validação mínima observada                                                                                              |
 | ---------------- | -------------------------------------------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------- |

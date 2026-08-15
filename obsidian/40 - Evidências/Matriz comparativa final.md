@@ -1,6 +1,6 @@
-# Matriz comparativa final
+# Matriz comparativa da v1
 
-Esta é a síntese comparativa da rodada controlada. A unidade é uma execução
+Esta é a síntese comparativa da rodada v1. A unidade é uma execução
 registrada no [[../../results/resultados.csv|arquivo CSV de resultados]]; a duração representa o tempo
 total do workflow até aprovação ou primeira falha, e não o tempo isolado de um
 check.
@@ -50,6 +50,8 @@ não nas detecções.
 - O resultado de PySpark não significa que a tecnologia seja inferior; ele
   mostra que a esteira basal, sem validações de cardinalidade e de chaves, não
   detectou as duas mutações semânticas selecionadas.
+
+Uma matriz transversal v1–v2 será produzida somente após a nova rodada.
 
 **Rastreabilidade:** [[Resultados e métricas|resumo numérico dos resultados]],
 [[Interpretação comparativa|discussão comparativa]], [[Rastreabilidade das evidências|guia de rastreabilidade]],

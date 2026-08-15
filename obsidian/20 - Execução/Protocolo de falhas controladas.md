@@ -8,9 +8,9 @@ resultado é registrado separadamente após a observação.
 
 ## Preparação
 
-1. Confirmar que `baseline-ci-v1` aponta para o baseline saudável.
-2. Escolher uma entrada em `fault-catalog/falhas.yml` ainda não executada.
-3. Criar uma branch a partir da tag: `git switch -c fault/<id> baseline-ci-v1`.
+1. Confirmar a tag saudável da rodada ativa, declarada no catálogo.
+2. Escolher uma entrada ainda não executada no catálogo daquela rodada.
+3. Criar uma branch a partir da tag: `git switch -c fault/<id> <baseline-tag>`.
 4. Aplicar somente a mutação descrita no catálogo e criar um único commit.
 5. Abrir uma pull request com o identificador da falha e sem solicitar merge.
 
@@ -20,9 +20,10 @@ resultado é registrado separadamente após a observação.
 2. Registrar no CSV o commit, o status do workflow, a primeira etapa que
    falhou e a duração total do job exibida pelo GitHub Actions.
 3. Comparar o detector e a etapa observados com os valores esperados.
-4. Se a CI passar, executar localmente o comando de integração ou a validação
-   indicado no catálogo para confirmar que a mutação realmente produziu o
-   defeito; registrar o caso como falso negativo se confirmado.
+4. Se a CI passar, executar localmente o teste técnico independente indicado
+   no catálogo para confirmar que a mutação realmente produziu o defeito;
+   registrar o caso como falso negativo se confirmado. Na v2, esse teste pode
+   cobrir contrato, integração, bootstrap ou reexecução, mas não *data quality*.
 5. Classificar como falso positivo somente se a CI falhar sem relação causal
    com a mutação; registrar a evidência no diário metodológico.
 
@@ -44,3 +45,10 @@ resultado é registrado separadamente após a observação.
 - `false_positive`: a CI falhou por causa não relacionada à mutação.
 - `inconclusive`: não foi possível atribuir o resultado; exige repetição e
   registro da limitação antes de qualquer interpretação quantitativa.
+
+## Informações obrigatórias da v2
+
+Além dos campos canônicos, cada entrada v2 deve documentar técnica de
+engenharia, princípio, hipótese do detector, confirmação técnica independente e
+limite conhecido. A v1 permanece imutável em `fault-catalog/falhas.yml`; a v2
+receberá catálogo próprio após a criação da baseline saudável.

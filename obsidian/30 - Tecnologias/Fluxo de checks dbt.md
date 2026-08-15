@@ -12,7 +12,7 @@ mesmo em caso de falha.
 | 3 | Compilar modelos dbt | `make compile` | Renderização e compilação dos modelos SQL. |
 | 4 | Executar dbt build e testes | `make test` | Recarrega seeds, executa `dbt build` e depois `dbt test`, incluindo as validações de dados declaradas. |
 
-## Evidência da rodada concluída
+## Evidência da rodada v1
 
 | Falha | Detector esperado no catálogo | Primeiro detector observado | Etapa | Duração | Situação |
 | --- | --- | --- | --- | ---: | --- |
@@ -29,7 +29,7 @@ SQLFluff o reportou como `AL02`. Pelo protocolo, uma etapa anterior que detecta
 inequivocamente a mesma mutação conta como `detected`; a divergência entre
 esperado e observado permanece registrada no CSV.
 
-## Limite de interpretação
+## Limite de interpretação da v1
 
 O workflow torna visíveis falhas de estilo/sintaxe, do grafo e da compilação,
 além de testes de dados durante a construção. As cinco mutações selecionadas
@@ -40,3 +40,10 @@ catálogo executado e depende das validações de dados explicitamente declarada
 [[../../projects/04_etl_dbt/Makefile|comandos locais do dbt]],
 [[../40 - Evidências/Catálogo de falhas|catálogo de falhas controladas]] e
 [[../20 - Execução/Estado e próximos passos|estado atual do experimento]].
+
+## Papel previsto na v2
+
+O objeto dbt continuará contribuindo com lint SQL, parse, compile e integração
+técnica de execução. Os testes declarativos de nulidade, unicidade e
+cardinalidade permanecem registrados na v1, mas não serão ampliados nem usados
+como foco analítico da v2, que exclui *data quality*.

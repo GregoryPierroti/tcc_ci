@@ -48,6 +48,19 @@ alteração de escopo.
 - Antes de commit, executar as validações pertinentes e `git diff --check`.
 - Antes de merge, confirmar que o pull request está limpo e mesclável.
 
+## Encerramento de tópicos
+
+Ao concluir um tópico coeso e verificável — por exemplo, uma camada de checks,
+uma suíte de testes, uma baseline ou uma rodada de falhas — o agente deve:
+
+1. executar as validações pertinentes e `git diff --check`;
+2. registrar a decisão, as evidências e as limitações no diário metodológico;
+3. criar um commit coeso que contenha somente os arquivos daquele tópico;
+4. informar o hash e aguardar a próxima direção do mantenedor.
+
+Mudanças preexistentes ou fora do tópico nunca devem ser incluídas
+automaticamente no commit.
+
 ## Segurança e limites
 
 - Não adicionar automaticamente arquivos não rastreados, anexos pessoais,
@@ -61,8 +74,24 @@ alteração de escopo.
 
 ## Ordem experimental atual
 
-1. Recuperar e validar localmente os objetos experimentais.
-2. Consolidar qualidade e testes locais reproduzíveis.
-3. Implementar CI por projeto, começando pelo ETL Python.
-4. Catalogar e injetar falhas de forma controlada.
-5. Consolidar métricas e resultados para a monografia.
+1. Preservar como evidência histórica a rodada v1 (`baseline-ci-v1` e 15
+   execuções), sem reescrever seus resultados.
+2. Especificar a rodada v2, limitada a práticas de engenharia de software
+   aplicadas a pipelines: análise estática, segurança, testabilidade,
+   integração técnica e reprodutibilidade.
+3. Implementar e validar localmente os checks aprovados para v2.
+4. Criar uma nova linha de base saudável (`baseline-ci-v2`) e um catálogo de
+   falhas próprio; não reutilizar a tag ou o catálogo executado da v1.
+5. Executar as mutações v2 de forma controlada e consolidar a comparação entre
+   as rodadas.
+
+## Delimitação da rodada v2
+
+- A v2 não avalia *data quality*, como completude, nulidade, unicidade ou
+  cardinalidade do conteúdo produzido.
+- Testes de contrato e integração podem verificar interfaces técnicas entre
+  componentes — arquivo, schema técnico, tabela, conexão, bootstrap e
+  reexecução — sem alegações sobre qualidade dos dados.
+- A ampliação permanece limitada às técnicas documentadas no
+  `obsidian/10 - Especificação/Plano da rodada v2.md`; não transformar o
+  experimento em uma plataforma genérica de CI.

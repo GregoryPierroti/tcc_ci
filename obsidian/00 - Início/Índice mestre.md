@@ -10,6 +10,7 @@
 - [[../10 - Especificação/Desenho metodológico|Desenho metodológico]] — hipótese e método.
 - [[../10 - Especificação/Especificação do experimento|Especificação consolidada]] — especificação
   consolidada baseada no diagrama e no baseline.
+- [[../10 - Especificação/Plano da rodada v2|Plano da rodada v2]] — escopo, técnicas e hipóteses da ampliação.
 - [[../30 - Tecnologias/Mapa de tecnologias e checks|Mapa de tecnologias e checks]] — comparação das três
   tecnologias.
 
@@ -20,9 +21,9 @@
 
 ## Para escrever a monografia ou analisar resultados
 
-- [[../40 - Evidências/Resultados e métricas|Resumo de resultados e métricas]] — resultados e interpretação.
-- [[../40 - Evidências/Matriz comparativa final|Matriz comparativa final]] — comparação final das 15 execuções.
-- [[../40 - Evidências/Interpretação comparativa|Discussão comparativa e limites]] — discussão e limites.
+- [[../40 - Evidências/Resultados e métricas|Resumo de resultados v1]] — resultados e interpretação histórica.
+- [[../40 - Evidências/Matriz comparativa final|Matriz comparativa v1]] — comparação das 15 execuções.
+- [[../40 - Evidências/Interpretação comparativa|Discussão comparativa v1 e limites]] — discussão e limites.
 - [[../40 - Evidências/Rastreabilidade das evidências|Rastreabilidade das evidências]] — caminho até CSV, jobs e diário.
 - [[../50 - Storytelling/Linha do tempo metodológica|Linha do tempo metodológica]] — narrativa cronológica.
 - [[../90 - Governança e IA/Contexto para IA|Guia de leitura para IA]] — vocabulário e ordem de leitura segura.

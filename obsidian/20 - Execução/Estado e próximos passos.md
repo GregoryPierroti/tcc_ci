@@ -2,9 +2,8 @@
 
 > [!important] Ponto de handoff — 2026-07-26
 > As três rodadas estão concluídas e a análise comparativa foi consolidada. O
-> próximo trabalho é transformar as evidências em redação de monografia ou
-> implementar melhorias futuras de cobertura, sem misturá-las aos resultados
-> já medidos.
+> próximo trabalho é executar a v2 de engenharia de software, mantendo as
+> evidências v1 separadas dos novos resultados.
 
 ## Estado consolidado
 
@@ -14,7 +13,7 @@
 | Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada dbt | concluída: 5 detecções | [[../30 - Tecnologias/Fluxo de checks dbt|fluxo de checks do dbt]] |
-| Obsidian | matriz, interpretação, evidências e narrativa final consolidadas | [[../40 - Evidências/Matriz comparativa final|matriz comparativa final]] |
+| Obsidian | documentação e narrativa da v1 consolidadas | [[../40 - Evidências/Matriz comparativa final|matriz da v1]] |
 
 ## Pendência experimental preservada
 
@@ -29,24 +28,27 @@ revalidação. `make lint` passou localmente no `main` e o workflow manual
 **CI - ETL dbt** passou remotamente em todas as etapas; as repetições, DBT-004
 e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
-## Próximos passos de redação
+## Próximos passos da v2
 
-1. Usar a [[../40 - Evidências/Matriz comparativa final|matriz comparativa final]] como tabela de
-   resultados da monografia.
-2. Converter a [[../40 - Evidências/Interpretação comparativa|discussão comparativa]]
-   em discussão, ameaças à validade e conclusão.
-3. Manter a [[../40 - Evidências/Rastreabilidade das evidências|rastreabilidade das evidências]]
-   como apêndice ou guia de auditoria.
+1. Consolidar o [[../10 - Especificação/Plano da rodada v2|plano da rodada v2]] e
+   atualizar protocolo, governança e documentação de checks.
+2. Implementar os checks v2, separar testes unitários de integração e validar
+   uma nova baseline saudável.
+3. Criar `baseline-ci-v2`, o catálogo v2 e executar as mutações sem alterar
+   as 15 evidências v1.
+4. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
 
-## Fora de escopo até então
+## Escopo aprovado para a v2
 
-Estas melhorias ficam para depois da rodada dbt e da consolidação comparativa.
-Elas não bloqueiam a revisão do vault nem o experimento atual.
+O foco é engenharia de software aplicada a pipelines, não *data quality*.
+Nulidade, unicidade, completude e cardinalidade do conteúdo não serão novos
+critérios experimentais. Contrato, bootstrap, integração e reexecução são
+avaliados como comportamentos técnicos entre componentes.
 
-| Prioridade | Melhoria                            | Objetivo                                                                                                                 | Estado                                                                    |
-| ---------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
-| 1          | Validações integrais de dados na CI | Detectar regressões de cardinalidade e integridade de chaves, como SP-003 e SP-004, que testes unitários não capturaram. | recomendada antes de considerar a esteira suficiente para joins e schemas |
-| 2          | Testes nativos dbt                  | Acrescentar testes unitários/semânticos para ampliar a cobertura das transformações dbt.                                 | a avaliar após DBT-001 a DBT-005                                          |
-| 3          | Auditoria de dependências dbt       | Verificar vulnerabilidades nas dependências Python usadas pelo projeto dbt.                                              | não implementada                                                          |
-| 4          | Mypy                                | Adicionar análise estática de tipos aos objetos Python e PySpark.                                                        | não implementado                                                          |
-| 5          | Artefatos de cobertura e JUnit      | Publicar cobertura e resultados estruturados dos testes na CI para rastreabilidade e visualização.                       | não implementados; não alteram a capacidade de detecção por si só         |
+| Prioridade | Ampliação | Objetivo | Estado |
+| --- | --- | --- | --- |
+| 1 | Ruff expandido, mypy, docstrings, Radon e cobertura mínima | Prevenir defeitos estáticos e tornar a testabilidade mensurável. | planejada |
+| 2 | Bandit, Gitleaks, Actionlint e Hadolint | Cobrir segurança de código, segredos, workflow e contêiner. | planejada |
+| 3 | Testes unitários, contratos e integração separados | Verificar código isolado e integração técnica em ambiente efêmero. | planejada |
+| 4 | Bootstrap e reexecução | Verificar criação de recursos e idempotência técnica. | planejada |
+| 5 | Artefatos JUnit/cobertura, SBOM e governança de merge | Produzir rastreabilidade e reforçar o processo de CI. | planejada |

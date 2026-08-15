@@ -988,3 +988,49 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Preservação da evidência:** somente o rótulo textual de detector esperado
   foi normalizado; identificadores, commits, etapas, durações, desfechos e URLs
   dos jobs permanecem inalterados.
+
+### 2026-08-15 — DEC-019 — Delimitação e preparação documental da rodada v2
+
+- **Estado:** decidido e documentado; implementação pendente.
+- **Decisão:** preservar integralmente a v1 (`baseline-ci-v1`, catálogo e 15
+  resultados) e preparar uma v2 separada, focada em engenharia de software
+  aplicada a pipelines: análise estática, documentação, complexidade,
+  segurança, testabilidade, integração técnica e reprodutibilidade.
+- **Fora de escopo:** a v2 não avaliará *data quality*. Nulidade, unicidade,
+  completude e cardinalidade do conteúdo não são novas métricas nem mutações da
+  rodada; contratos e integrações verificam somente interfaces e ciclo de vida
+  técnico.
+- **Documentação alterada:** criado o plano da v2; protocolo parametrizado por
+  rodada; AGENTS, mapa, fluxos, evidências, navegação e template de PR passaram
+  a distinguir v1 histórica, planejamento v2 e resultados v2 observados.
+- **Próximo critério:** implementar os checks aprovados, separar testes
+  unitários e de integração, validar a baseline saudável e só então criar
+  `baseline-ci-v2` e o catálogo de 28 novas mutações.
+- **Verificação:** `git diff --check` passou após a atualização documental.
+
+### 2026-08-15 — ETP-045 — Primeira camada de checks da v2
+
+- **Estado:** em implementação; ainda não é baseline v2.
+- **Alterações:** adicionados Ruff expandido, mypy, pydocstringformatter,
+  Radon, Vulture, Bandit, Hypothesis e import-linter às dependências de
+  desenvolvimento dos objetos Python e PySpark. Foram criados comandos locais
+  para docstrings, tipagem, complexidade, código morto, segurança e testes
+  unitários; os workflows Python e PySpark passaram a chamar os checks já
+  configurados.
+- **Ajustes revelados pelos checks:** Ruff simplificou fluxos de retorno e
+  corrigiu o tipo padrão da porta PostgreSQL; o mypy levou à introdução de uma
+  porta tipada para persistência, reduzindo o acoplamento entre agregação e o
+  adaptador real; Bandit passou a validar identificadores SQL antes da consulta.
+- **Evidência local:** os checks estáticos dos dois projetos passaram no
+  ambiente local. No contêiner, o ETL Python passou em docstrings, mypy,
+  complexidade, Vulture, Bandit, pip-audit e três testes unitários.
+- **Limite atual:** a cobertura observada do ETL Python é 34%; o gate de 95%
+  e os testes de integração ainda não foram ativados. Logo, `baseline-ci-v2`
+  e o catálogo v2 continuam pendentes.
+
+### 2026-08-15 — DEC-020 — Encerramento rastreável de tópicos
+
+- **Decisão:** cada tópico coeso concluído deverá ser validado, registrado e
+  consolidado em commit próprio antes de aguardar nova direção.
+- **Limite:** o commit conterá somente arquivos do tópico encerrado; mudanças
+  preexistentes ou alheias permanecem fora dele até decisão explícita.

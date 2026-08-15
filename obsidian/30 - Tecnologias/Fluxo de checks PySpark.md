@@ -5,7 +5,7 @@ Spark determinísticos com cobertura e auditoria de dependências. Uma falha
 bloqueia as etapas seguintes; o encerramento dos recursos Docker ainda é
 executado.
 
-## Evidência da rodada inicial
+## Evidência da rodada v1
 
 | Falha | Primeiro detector observado | Etapa | Duração |
 | --- | --- | --- | --- |
@@ -24,9 +24,21 @@ SP-005 confirmou que `uv sync --frozen` consome o `uv.lock`: a mutação deve
 atingir o lockfile, e não apenas o `pyproject.toml`, para testar a resolução de
 dependências reproduzível.
 
-## Limite de interpretação
+## Limite de interpretação da v1
 
 Os resultados demonstram a detecção ou a lacuna das mutações específicas. A
 CI ainda não executa a validação de cardinalidade e integridade de chaves da
 execução integral; essa é a principal melhoria a avaliar antes de tratar a
 esteira como proteção suficiente para transformações de join e schema.
+
+## Fluxo alvo da v2
+
+A v2 separará checks estáticos, testes unitários Spark e testes de integração
+com PostgreSQL e runtime Spark. A ordem prevista inclui Ruff expandido,
+formatador de docstrings, mypy no código Python de orquestração, Radon,
+cobertura mínima de 95%, testes unitários, contrato, bootstrap, integração e
+reexecução, além de Bandit, pip-audit, Gitleaks e relatórios estruturados.
+
+Mypy não será apresentado como validador do schema dinâmico de DataFrames; seu
+alcance é o código Python tipável nas fronteiras de orquestração. Os testes de
+integração verificam interfaces e ciclo de vida técnico, não *data quality*.

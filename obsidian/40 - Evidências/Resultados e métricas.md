@@ -1,4 +1,4 @@
-# Resultados e métricas
+# Resultados e métricas da v1
 
 ## Medidas
 
@@ -7,7 +7,7 @@
 3. adaptação: direta, configurada, complementar ou não aplicável;
 4. estabilidade, quando houver reexecuções comparáveis.
 
-## Resultado consolidado até agora
+## Resultado consolidado da v1
 
 | Tecnologia | Falhas executadas | Detectadas | Falsos negativos | Situação |
 | --- | ---: | ---: | ---: | --- |
@@ -19,14 +19,14 @@ Os falsos negativos PySpark são informação metodológica relevante: SP-003
 quebrou a chave e produziu delivery vazio; SP-004 aumentou a cardinalidade.
 Ambas passaram pela CI basal e só foram reveladas pela execução integral.
 
-## Síntese final da rodada
+## Síntese da rodada v1
 
 Foram registradas 15 execuções: 13 detecções na CI e dois falsos negativos,
 ambos em PySpark. A taxa global observada é 86,7%. A duração média dos
 workflows foi 18,0 s (Python), 54,0 s (PySpark) e 69,2 s (dbt); esses valores
 incluem o ambiente da CI e não são benchmarks de produção.
 
-A [[Matriz comparativa final|matriz final das 15 execuções]] detalha cada execução,
+A [[Matriz comparativa final|matriz da v1 com 15 execuções]] detalha cada execução,
 as adaptações por tecnologia e a leitura adequada das taxas. A
 [[Interpretação comparativa|discussão e limites dos resultados]] separa os achados que
 os dados sustentam de seus limites metodológicos.
@@ -37,3 +37,6 @@ os dados sustentam de seus limites metodológicos.
 - [[Catálogo de falhas|catálogo das mutações]]: mutação e expectativa.
 - [[../50 - Storytelling/Registro metodológico|diário metodológico]]: justificativa e limitações.
 - [[Rastreabilidade das evidências|guia de rastreabilidade]]: caminho de auditoria entre as fontes.
+
+Os resultados v2 serão registrados no mesmo CSV com baseline própria, mas só
+serão sintetizados após o encerramento da nova rodada.

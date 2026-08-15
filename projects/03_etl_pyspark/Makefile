@@ -33,7 +33,7 @@ security:
 test: test-unit test-integration
 
 test-unit:
-	docker compose run --rm --no-deps --build spark pytest -q -m unit --cov=pipeline --cov-report=term-missing --cov-report=xml:coverage.xml
+	docker compose run --rm --no-deps --build spark pytest -q -m unit --cov=pipeline --cov-fail-under=95 --cov-report=term-missing --cov-report=xml:coverage.xml
 
 test-integration: up
 	docker compose run --rm --build spark pytest -q -m integration

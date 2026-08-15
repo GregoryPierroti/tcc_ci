@@ -36,7 +36,7 @@ security:
 test: test-unit test-integration
 
 test-unit:
-	docker compose run --rm --no-deps --build pipeline pytest -q -m unit --cov=pipeline --cov-report=term-missing --cov-report=xml:coverage.xml
+	docker compose run --rm --no-deps --build pipeline pytest -q -m unit --cov=pipeline --cov-fail-under=95 --cov-report=term-missing --cov-report=xml:coverage.xml
 
 test-integration: bootstrap
 	docker compose run --rm --build pipeline pytest -q -m integration

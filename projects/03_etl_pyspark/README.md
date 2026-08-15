@@ -32,7 +32,7 @@ make lint            # verifica código, imports e padrões propensos a defeito
 make type-check      # verifica o código Python de orquestração com mypy
 make complexity      # reporta complexidade ciclomática com Radon
 make dead-code       # procura código não utilizado com Vulture
-make test-unit       # executa os testes unitários isolados com Spark local[2]
+make test-unit       # executa testes isolados com Spark local[2] (cobertura >= 95% de pipeline)
 make test-integration # executa a integração técnica Spark-JDBC-PostgreSQL
 make test            # executa as duas camadas de teste
 make security        # executa Bandit e audita dependências instaladas

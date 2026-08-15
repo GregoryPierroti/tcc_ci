@@ -1053,3 +1053,22 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Limite atual:** a separação melhora diagnóstico e reprodutibilidade, mas
   não ativa o gate de cobertura de 95%; essa meta depende da expansão posterior
   dos testes unitários e da validação integral da baseline.
+
+### 2026-08-15 — ETP-047 — Cobertura unitária mínima da v2
+
+- **Estado:** concluída; ainda não é baseline v2.
+- **Decisão implementada:** `make test-unit` dos objetos Python e PySpark
+  passou a exigir `--cov-fail-under=95` sobre seus respectivos pacotes
+  `pipeline`. A medição está deliberadamente restrita ao código de orquestração
+  do pipeline; adaptadores externos continuam cobertos por testes de integração
+  técnica, não por uma alegação de cobertura total do repositório.
+- **Ampliação dos testes:** foram adicionados cenários de construção,
+  roteamento, caminhos vazios, exceções, persistência de arquivos, publicação
+  JDBC simulada no limite unitário e orquestração das etapas. Os testes não
+  introduzem métricas de nulidade, unicidade, completude ou qualidade de dados.
+- **Evidência local:** ETL Python: 15 testes unitários aprovados e 100,00%
+  (194 statements); ETL PySpark: 11 testes unitários aprovados e 97,50%
+  (160 statements). Os dois gates de 95% passaram.
+- **Limite preservado:** cobertura de linhas não prova ausência de defeitos;
+  os testes de integração permanecem necessários para verificar os adaptadores
+  contra PostgreSQL, MinIO e JDBC reais.

@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := run
 
-.PHONY: up run format-check lint security test status down reset
+.PHONY: up run format-check docformat-check lint type-check complexity dead-code security test test-unit status down reset
 
 up:
 	docker compose up -d --wait postgres
@@ -11,14 +11,29 @@ run: up
 format-check:
 	docker compose run --rm --no-deps --build spark ruff format --check .
 
+docformat-check:
+	docker compose run --rm --no-deps --build spark pydocstringformatter --exit-code --quiet .
+
 lint:
 	docker compose run --rm --no-deps --build spark ruff check .
 
+type-check:
+	docker compose run --rm --no-deps --build spark mypy .
+
+complexity:
+	docker compose run --rm --no-deps --build spark radon cc . -n B -s
+
+dead-code:
+	docker compose run --rm --no-deps --build spark vulture . --min-confidence 100
+
 security:
+	docker compose run --rm --no-deps --build spark bandit -q -r . -x ./tests
 	docker compose run --rm --no-deps --build spark pip-audit --strict
 
-test:
-	docker compose run --rm --no-deps --build spark pytest -q --cov=pipeline --cov-report=term-missing --cov-report=xml:coverage.xml
+test: test-unit
+
+test-unit:
+	docker compose run --rm --no-deps --build spark pytest -q -m unit --cov=pipeline --cov-report=term-missing --cov-report=xml:coverage.xml
 
 status:
 	docker compose exec -T postgres sh -c 'psql -U "$$POSTGRES_USER" -d "$$POSTGRES_DB" -c "SELECT count(*) AS registros FROM reclamacoes_consolidadas;"'

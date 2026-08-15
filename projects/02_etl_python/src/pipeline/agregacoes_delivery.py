@@ -1,4 +1,5 @@
 import logging
+from typing import Protocol
 
 import pandas as pd
 
@@ -7,9 +8,19 @@ from utils.postgres_uploader import PostgresUploader
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
+class RepositorioDataFrame(Protocol):
+    """Porta mínima para leitura e publicação de DataFrames."""
+
+    def read_table(self, schema: str, table_name: str) -> pd.DataFrame:
+        """Lê uma tabela identificada por schema e nome."""
+
+    def upload_df(self, dataframe: pd.DataFrame, schema: str, table_name: str) -> None:
+        """Publica um DataFrame no destino informado."""
+
+
 class AgregacoesDelivery:
     def __init__(self):
-        self.db = PostgresUploader()
+        self.db: RepositorioDataFrame = PostgresUploader()
         self.trusted_schema = "trusted"
         self.delivery_schema = "delivery"
         logging.info("AgregacoesDelivery inicializada.")

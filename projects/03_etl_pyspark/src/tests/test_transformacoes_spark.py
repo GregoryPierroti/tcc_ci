@@ -6,6 +6,11 @@ from pyspark.sql import SparkSession
 from pipeline.ingestao_raw_spark import IngestaoRawSpark
 from pipeline.transformacoes_trusted_spark import TransformacoesTrustedSpark
 
+QUANTIDADE_REGISTROS_FIXTURE = 2
+
+
+pytestmark = pytest.mark.unit
+
 
 @pytest.fixture(scope="session")
 def spark():
@@ -35,4 +40,4 @@ def test_ingestao_grava_parquet_com_mesma_quantidade_de_linhas(spark, tmp_path):
     ingestao.ler_e_salvar_parquet(lambda _: entrada, "fixture", "ignorado", "fixture_parquet")
 
     destino = Path(ingestao.output_dir) / "fixture_parquet"
-    assert spark.read.parquet(str(destino)).count() == 2
+    assert spark.read.parquet(str(destino)).count() == QUANTIDADE_REGISTROS_FIXTURE

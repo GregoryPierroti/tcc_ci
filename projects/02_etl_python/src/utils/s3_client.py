@@ -19,9 +19,7 @@ class S3Client:
         )
 
     def list_files(self, prefix):
-        """
-        List all files under a given prefix (folder) in the bucket.
-        """
+        """Lista arquivos sob um prefixo no bucket."""
         try:
             response = self.s3.list_objects_v2(Bucket=self.bucket, Prefix=prefix)
             return [
@@ -72,15 +70,7 @@ class S3Client:
         #    )
 
     def move_file(self, source_key, destination_prefix, add_timestamp=True):
-        """
-        Moves a file by copying and deleting original.
-        Optionally adds timestamp before file extension in destination filename.
-
-        Args:
-            source_key (str): original file key
-            destination_prefix (str): prefix/folder for destination (must end with /)
-            add_timestamp (bool): if True, appends timestamp to filename
-        """
+        """Move um objeto e opcionalmente acrescenta timestamp ao nome."""
         try:
             filename = source_key.split("/")[-1]
             if add_timestamp:
@@ -100,10 +90,7 @@ class S3Client:
             print(f"❌ Error moving file {source_key}: {e}")
 
     def ensure_base_structure(self):
-        """
-        Ensures the base folder structure exists in the bucket by creating
-        empty .keep files inside them.
-        """
+        """Garante a estrutura base por meio de arquivos ``.keep`` vazios."""
         folders = ["Dados/Bancos/", "Dados/Reclamacoes/", "Dados/Empregados/"]
 
         for folder in folders:
@@ -115,7 +102,5 @@ class S3Client:
                 print(f"❌ Failed to ensure structure for {folder}: {e}")
 
     def get_object_metadata(self, key):
-        """
-        Retorna os metadados de um objeto no S3 (ex: tamanho do arquivo).
-        """
+        """Retorna metadados de um objeto no S3."""
         return self.s3.head_object(Bucket=self.bucket, Key=key)

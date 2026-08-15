@@ -27,9 +27,13 @@ driver JDBC durante a execução.
 
 ```sh
 make format-check  # confirma a formatação com Ruff
-make lint          # verifica código e imports com Ruff
-make test          # executa pytest com Spark local[2]
-make security      # audita dependências Python instaladas
+make docformat-check # confirma a formatação das docstrings
+make lint            # verifica código, imports e padrões propensos a defeito
+make type-check      # verifica o código Python de orquestração com mypy
+make complexity      # reporta complexidade ciclomática com Radon
+make dead-code       # procura código não utilizado com Vulture
+make test            # executa os testes unitários com Spark local[2]
+make security        # executa Bandit e audita dependências instaladas
 ```
 
 As dependências e configurações Python estão em `pyproject.toml`; `uv.lock`

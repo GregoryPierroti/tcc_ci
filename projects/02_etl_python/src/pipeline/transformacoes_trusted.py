@@ -11,10 +11,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 
 class TransformacoesTrusted:
-    """
-    Classe responsável por ler dados da camada RAW, aplicar as regras de
-    negócio e limpeza, e preparar os dados para a camada TRUSTED.
-    """
+    """Transforma registros RAW em tabelas TRUSTED."""
 
     def __init__(self):
         self.db = PostgresUploader()
@@ -47,11 +44,10 @@ class TransformacoesTrusted:
     def _aplicar_transformacoes(self, df: pd.DataFrame, nome: str) -> pd.DataFrame:
         if nome == "bancos":
             return self._transformar_bancos(df)
-        elif nome == "empregados":
+        if nome == "empregados":
             return self._transformar_empregados(df)
-        else:
-            logging.info(f"Nenhuma transformação aplicada para '{nome}'.")
-            return df
+        logging.info(f"Nenhuma transformação aplicada para '{nome}'.")
+        return df
 
     def _remover_caracteres_invalidos(self, texto):
         """Remove acentos e caracteres não ASCII."""
@@ -81,9 +77,7 @@ class TransformacoesTrusted:
             nome_limpo = re.sub(pattern, "", nome_limpo)
 
         nome_limpo = re.sub(r"[^\w\s]", "", nome_limpo)  # Remove pontuação
-        nome_limpo = re.sub(r"\s+", " ", nome_limpo).strip()  # Remove espaços extras
-
-        return nome_limpo
+        return re.sub(r"\s+", " ", nome_limpo).strip()  # Remove espaços extras
 
     def _transformar_bancos(self, df: pd.DataFrame) -> pd.DataFrame:
         if "Nome" in df.columns:

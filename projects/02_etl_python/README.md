@@ -43,9 +43,13 @@ Não são necessárias credenciais AWS, banco remoto ou dados externos.
 
 ```sh
 make format-check  # confirma a formatação com Ruff
-make lint          # verifica código e imports com Ruff
-make test          # executa os testes pytest
-make security      # audita dependências Python instaladas
+make docformat-check # confirma a formatação das docstrings
+make lint            # verifica código, imports e padrões propensos a defeito
+make type-check      # verifica contratos estáticos com mypy
+make complexity      # reporta complexidade ciclomática com Radon
+make dead-code       # procura código não utilizado com Vulture
+make test            # executa os testes unitários pytest
+make security        # executa Bandit e audita dependências instaladas
 ```
 
 As dependências e configurações Python estão em `pyproject.toml`; `uv.lock`

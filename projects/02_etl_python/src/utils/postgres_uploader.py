@@ -16,7 +16,7 @@ class PostgresUploader:
         user = os.getenv("DB_USER")
         password = os.getenv("DB_PASSWORD")
         host = os.getenv("DB_HOST")
-        port = os.getenv("DB_PORT", 5432)
+        port = os.getenv("DB_PORT", "5432")
 
         conn_str = f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{db_name}"
         self.engine = create_engine(conn_str)
@@ -40,7 +40,9 @@ class PostgresUploader:
     def read_table(self, schema, table_name):
         """Lê uma tabela do PostgreSQL e retorna como DataFrame."""
         try:
-            query = text(f'SELECT * FROM "{schema}"."{table_name}"')
+            if not schema.isidentifier() or not table_name.isidentifier():
+                raise ValueError("Schema e tabela devem ser identificadores SQL simples.")
+            query = text(f'SELECT * FROM "{schema}"."{table_name}"')  # nosec B608
             df = pd.read_sql(query, self.engine)
             logging.info(f"Tabela '{schema}.{table_name}' lida com sucesso.")
             return df

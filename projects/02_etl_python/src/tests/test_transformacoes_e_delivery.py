@@ -1,7 +1,10 @@
 import pandas as pd
+import pytest
 
 from pipeline.agregacoes_delivery import AgregacoesDelivery
 from pipeline.transformacoes_trusted import TransformacoesTrusted
+
+pytestmark = pytest.mark.unit
 
 
 def trusted_sem_banco():

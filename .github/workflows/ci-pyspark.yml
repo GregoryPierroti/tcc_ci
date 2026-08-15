@@ -42,10 +42,22 @@ jobs:
       - name: Verificar formatação
         run: make format-check
 
+      - name: Verificar docstrings
+        run: make docformat-check
+
       - name: Executar lint
         run: make lint
 
-      - name: Executar testes Spark determinísticos
+      - name: Verificar tipos
+        run: make type-check
+
+      - name: Medir complexidade
+        run: make complexity
+
+      - name: Verificar código morto
+        run: make dead-code
+
+      - name: Executar testes unitários Spark
         run: make test
 
       - name: Auditar dependências

@@ -9,11 +9,11 @@ após a consolidação das pipelines de CI. Os dados de entrada são pequenos,
 versionados e determinísticos, e cada projeto fornece comandos `make` para a
 execução local e para as verificações chamadas pelo GitHub Actions.
 
-| Objeto | Runtime e infraestrutura | Comando de execução | Validação mínima observada |
-| --- | --- | --- | --- |
-| `02_etl_python` | Python 3.11, PostgreSQL 16 e MinIO | `make run` | `raw/trusted`: bancos 1474, reclamações 918, empregados 39; `delivery.bancos_unificados`: 11 linhas e 3 CNPJs distintos |
-| `03_etl_pyspark` | Python 3.11, Java 17, PySpark 3.5.2 e PostgreSQL 16 | `make run` | `reclamacoes_consolidadas`: 154 linhas e 38 CNPJs distintos |
-| `04_etl_dbt` | Python 3.11, dbt-core/dbt-postgres 1.9.0 e PostgreSQL 16 | `make run` | trusted: bancos 1474, reclamações 918, empregados 39; `public_delivery.mod_final`: 1 linha |
+| Objeto           | Runtime e infraestrutura                                 | Comando de execução | Validação mínima observada                                                                                              |
+| ---------------- | -------------------------------------------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `02_etl_python`  | Python 3.11, PostgreSQL 16 e MinIO                       | `make run`          | `raw/trusted`: bancos 1474, reclamações 918, empregados 39; `delivery.bancos_unificados`: 11 linhas e 3 CNPJs distintos |
+| `03_etl_pyspark` | Python 3.11, Java 17, PySpark 3.5.2 e PostgreSQL 16      | `make run`          | `reclamacoes_consolidadas`: 154 linhas e 38 CNPJs distintos                                                             |
+| `04_etl_dbt`     | Python 3.11, dbt-core/dbt-postgres 1.9.0 e PostgreSQL 16 | `make run`          | trusted: bancos 1474, reclamações 918, empregados 39; `public_delivery.mod_final`: 1 linha                              |
 
 ## Convenções comuns
 

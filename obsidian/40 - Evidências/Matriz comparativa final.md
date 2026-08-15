@@ -21,23 +21,24 @@ não nas detecções.
 
 ## Matriz de execuções
 
-| ID | Tecnologia | Classe de falha | Primeiro detector observado | Etapa | Duração | Resultado |
-| --- | --- | --- | --- | --- | ---: | --- |
-| PY-001 | Python | sintaxe | Ruff format | formatação | 22 s | detectada |
-| PY-002 | Python | transformação | pytest | testes determinísticos | 20 s | detectada |
-| PY-003 | Python | filtro de join | pytest | testes determinísticos | 18 s | detectada |
-| PY-004 | Python | coluna inexistente | pytest | testes determinísticos | 22 s | detectada |
-| PY-005 | Python | lockfile inválido | uv | preparação/formatação | 8 s | detectada |
-| SP-001 | PySpark | normalização | pytest | testes Spark | 73 s | detectada |
-| SP-002 | PySpark | coluna inexistente | pytest | testes Spark | 62 s | detectada |
-| SP-003 | PySpark | schema de CNPJ | nenhum na CI basal | validação integral externa | 49 s | falso negativo |
-| SP-004 | PySpark | tipo de join | nenhum na CI basal | validação integral externa | 55 s | falso negativo |
-| SP-005 | PySpark | lockfile inválido | uv | preparação/formatação | 31 s | detectada |
-| DBT-001 | dbt | SQL inválido | SQLFluff | lint SQL | 57 s | detectada |
-| DBT-002 | dbt | referência inexistente | SQLFluff/templater dbt | lint SQL | 67 s | detectada |
-| DBT-003 | dbt | CNPJ nulo | teste `not_null` | build/test | 73 s | detectada |
-| DBT-004 | dbt | chave duplicada | teste `unique` | build/test | 67 s | detectada |
-| DBT-005 | dbt | join semântico | `baseline_counts` | build/test | 82 s | detectada |
+| ID      | Tecnologia | Classe de falha        | Primeiro detector observado | Etapa                      | Duração | Resultado      |
+| ------- | ---------- | ---------------------- | --------------------------- | -------------------------- | ------: | -------------- |
+| PY-001  | Python     | sintaxe                | Ruff format                 | formatação                 |    22 s | detectada      |
+| PY-002  | Python     | transformação          | pytest                      | testes determinísticos     |    20 s | detectada      |
+| PY-003  | Python     | filtro de join         | pytest                      | testes determinísticos     |    18 s | detectada      |
+| PY-004  | Python     | coluna inexistente     | pytest                      | testes determinísticos     |    22 s | detectada      |
+| PY-005  | Python     | lockfile inválido      | uv                          | preparação/formatação      |     8 s | detectada      |
+| SP-001  | PySpark    | normalização           | pytest                      | testes Spark               |    73 s | detectada      |
+| SP-002  | PySpark    | coluna inexistente     | pytest                      | testes Spark               |    62 s | detectada      |
+| SP-003  | PySpark    | schema de CNPJ         | nenhum na CI basal          | validação integral externa |    49 s | falso negativo |
+| SP-004  | PySpark    | tipo de join           | nenhum na CI basal          | validação integral externa |    55 s | falso negativo |
+| SP-005  | PySpark    | lockfile inválido      | uv                          | preparação/formatação      |    31 s | detectada      |
+| DBT-001 | dbt        | SQL inválido           | SQLFluff                    | lint SQL                   |    57 s | detectada      |
+| DBT-002 | dbt        | referência inexistente | SQLFluff/templater dbt      | lint SQL                   |    67 s | detectada      |
+| DBT-003 | dbt        | CNPJ nulo              | teste `not_null`            | build/test                 |    73 s | detectada      |
+| DBT-004 | dbt        | chave duplicada        | teste `unique`              | build/test                 |    67 s | detectada      |
+| DBT-005 | dbt        | join semântico         | `baseline_counts`           | build/test                 |    82 s | detectada      |
+|         |            |                        |                             |                            |         |                |
 
 ## Leitura correta da comparação
 

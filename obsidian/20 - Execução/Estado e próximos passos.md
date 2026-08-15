@@ -43,10 +43,10 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 Estas melhorias ficam para depois da rodada dbt e da consolidação comparativa.
 Elas não bloqueiam a revisão do vault nem o experimento atual.
 
-| Prioridade | Melhoria | Objetivo | Estado |
-| --- | --- | --- | --- |
-| 1 | Validações integrais de dados na CI | Detectar regressões de cardinalidade e integridade de chaves, como SP-003 e SP-004, que testes unitários não capturaram. | recomendada antes de considerar a esteira suficiente para joins e schemas |
-| 2 | Testes nativos dbt | Acrescentar testes unitários/semânticos para ampliar a cobertura das transformações dbt. | a avaliar após DBT-001 a DBT-005 |
-| 3 | Auditoria de dependências dbt | Verificar vulnerabilidades nas dependências Python usadas pelo projeto dbt. | não implementada |
-| 4 | Mypy | Adicionar análise estática de tipos aos objetos Python e PySpark. | não implementado |
-| 5 | Artefatos de cobertura e JUnit | Publicar cobertura e resultados estruturados dos testes na CI para rastreabilidade e visualização. | não implementados; não alteram a capacidade de detecção por si só |
+| Prioridade | Melhoria                            | Objetivo                                                                                                                 | Estado                                                                    |
+| ---------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| 1          | Validações integrais de dados na CI | Detectar regressões de cardinalidade e integridade de chaves, como SP-003 e SP-004, que testes unitários não capturaram. | recomendada antes de considerar a esteira suficiente para joins e schemas |
+| 2          | Testes nativos dbt                  | Acrescentar testes unitários/semânticos para ampliar a cobertura das transformações dbt.                                 | a avaliar após DBT-001 a DBT-005                                          |
+| 3          | Auditoria de dependências dbt       | Verificar vulnerabilidades nas dependências Python usadas pelo projeto dbt.                                              | não implementada                                                          |
+| 4          | Mypy                                | Adicionar análise estática de tipos aos objetos Python e PySpark.                                                        | não implementado                                                          |
+| 5          | Artefatos de cobertura e JUnit      | Publicar cobertura e resultados estruturados dos testes na CI para rastreabilidade e visualização.                       | não implementados; não alteram a capacidade de detecção por si só         |

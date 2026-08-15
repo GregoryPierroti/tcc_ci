@@ -9,15 +9,15 @@ de execução.
 
 ## Desenho experimental
 
-| Elemento | Especificação |
-| --- | --- |
-| Objetos | ETL Python, ETL PySpark e ETL dbt |
-| Linha de base | tag `baseline-ci-v1` |
-| Entrada | dados pequenos, versionados e determinísticos |
-| Execução | Docker Compose e interface `make` |
-| CI | GitHub Actions, uma pipeline bloqueante por objeto |
-| Tratamento | uma mutação por branch/PR; código defeituoso não entra em `main` |
-| Evidência | catálogo YAML, CSV de resultados, diário metodológico e PRs |
+| Elemento      | Especificação                                                    |
+| ------------- | ---------------------------------------------------------------- |
+| Objetos       | ETL Python, ETL PySpark e ETL dbt                                |
+| Linha de base | tag `baseline-ci-v1`                                             |
+| Entrada       | dados pequenos, versionados e determinísticos                    |
+| Execução      | Docker Compose e interface `make`                                |
+| CI            | GitHub Actions, uma pipeline bloqueante por objeto               |
+| Tratamento    | uma mutação por branch/PR; código defeituoso não entra em `main` |
+| Evidência     | catálogo YAML, CSV de resultados, diário metodológico e PRs      |
 
 ## Critérios de baseline
 

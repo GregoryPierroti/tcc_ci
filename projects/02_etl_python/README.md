@@ -48,7 +48,9 @@ make lint            # verifica código, imports e padrões propensos a defeito
 make type-check      # verifica contratos estáticos com mypy
 make complexity      # reporta complexidade ciclomática com Radon
 make dead-code       # procura código não utilizado com Vulture
-make test            # executa os testes unitários pytest
+make test-unit       # executa os testes unitários isolados
+make test-integration # executa integrações técnicas com PostgreSQL e MinIO
+make test            # executa as duas camadas de teste
 make security        # executa Bandit e audita dependências instaladas
 ```
 

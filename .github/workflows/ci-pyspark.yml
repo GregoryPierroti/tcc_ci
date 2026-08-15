@@ -57,7 +57,7 @@ jobs:
       - name: Verificar código morto
         run: make dead-code
 
-      - name: Executar testes unitários Spark
+      - name: Executar testes unitários e de integração Spark
         run: make test
 
       - name: Auditar dependências

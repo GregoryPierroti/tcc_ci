@@ -57,7 +57,7 @@ jobs:
       - name: Verificar código morto
         run: make dead-code
 
-      - name: Executar testes unitários
+      - name: Executar testes unitários e de integração
         run: make test
 
       - name: Auditar dependências

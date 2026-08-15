@@ -1034,3 +1034,22 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   consolidado em commit próprio antes de aguardar nova direção.
 - **Limite:** o commit conterá somente arquivos do tópico encerrado; mudanças
   preexistentes ou alheias permanecem fora dele até decisão explícita.
+
+### 2026-08-15 — ETP-046 — Separação de testes unitários e de integração
+
+- **Estado:** concluída; ainda não é baseline v2.
+- **Decisão implementada:** os dois projetos Python agora expõem
+  `make test-unit`, para testes isolados marcados com `unit`, e
+  `make test-integration`, para contratos técnicos marcados com `integration`.
+  `make test` agrega as duas camadas e os workflows executam esse alvo.
+- **Integrações verificadas:** o ETL Python publica e recupera um DataFrame no
+  PostgreSQL efêmero e publica/lista um objeto no MinIO; o ETL PySpark escreve
+  e lê uma tabela por JDBC no PostgreSQL efêmero. Os asserts verificam
+  interfaces, serialização e ciclo de vida de serviços — não conteúdo ou
+  qualidade de dados.
+- **Evidência local:** Python: 2 testes de integração aprovados; PySpark: 1
+  teste de integração aprovado. Os testes unitários preexistentes continuam
+  marcados e disponíveis no alvo próprio.
+- **Limite atual:** a separação melhora diagnóstico e reprodutibilidade, mas
+  não ativa o gate de cobertura de 95%; essa meta depende da expansão posterior
+  dos testes unitários e da validação integral da baseline.

@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := run
 
-.PHONY: up run format-check docformat-check lint type-check complexity dead-code security test test-unit status down reset
+.PHONY: up run format-check docformat-check lint type-check complexity dead-code security test test-unit test-integration status down reset
 
 up:
 	docker compose up -d --wait postgres
@@ -30,10 +30,13 @@ security:
 	docker compose run --rm --no-deps --build spark bandit -q -r . -x ./tests
 	docker compose run --rm --no-deps --build spark pip-audit --strict
 
-test: test-unit
+test: test-unit test-integration
 
 test-unit:
 	docker compose run --rm --no-deps --build spark pytest -q -m unit --cov=pipeline --cov-report=term-missing --cov-report=xml:coverage.xml
+
+test-integration: up
+	docker compose run --rm --build spark pytest -q -m integration
 
 status:
 	docker compose exec -T postgres sh -c 'psql -U "$$POSTGRES_USER" -d "$$POSTGRES_DB" -c "SELECT count(*) AS registros FROM reclamacoes_consolidadas;"'

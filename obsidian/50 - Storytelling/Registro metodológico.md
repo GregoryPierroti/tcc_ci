@@ -1240,3 +1240,17 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   substitui, a primeira tentativa V2-PY-003; o PR e as branches foram fechados
   sem merge. Os uploads posteriores sem artefatos seguem efeitos secundários
   da falha precoce.
+
+### 2026-08-16 — ETP-057 — Execução controlada V2-PY-004
+
+- **Mutação:** inserido um espaço interno excedente antes do fechamento da
+  docstring de `normalizar_nome` na branch `fault/v2-py-004`, derivada de
+  `baseline-ci-v2`.
+- **Resultado:** a confirmação local exibiu o diff de normalização e o PR #51
+  passou por **Verificar formatação**, mas falhou em 18 s na etapa **Verificar
+  docstrings**. O pydocstringformatter reportou exatamente a docstring
+  mutada.
+- **Classificação:** `detected`. PR e branches foram fechados sem merge; o
+  commit experimental `cd7d5f9` não integra a linha de desenvolvimento.
+- **Limite observado:** os uploads de JUnit e SBOM sem artefatos ocorreram
+  após a interrupção precoce e não são detectores causais.

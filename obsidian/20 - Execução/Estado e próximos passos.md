@@ -30,10 +30,10 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
 ## Próximos passos da v2
 
-1. Executar as 25 mutações restantes de forma isolada a partir da tag
-   `baseline-ci-v2` e consolidar os resultados observados; V2-PY-001 a
-   V2-PY-003 foram detectadas pelo Ruff, sendo a última uma detecção anterior
-   ao mypy que requer repetição metodológica.
+1. Executar as 24 mutações restantes de forma isolada a partir da tag
+   `baseline-ci-v2` e consolidar os resultados observados; V2-PY-001 e
+   V2-PY-002 foram detectadas por Ruff, V2-PY-003 foi confirmado por mypy na
+   repetição isolada e V2-PY-004 por pydocstringformatter.
 2. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
 
 ## Escopo aprovado para a v2

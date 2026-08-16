@@ -1072,3 +1072,23 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Limite preservado:** cobertura de linhas não prova ausência de defeitos;
   os testes de integração permanecem necessários para verificar os adaptadores
   contra PostgreSQL, MinIO e JDBC reais.
+
+### 2026-08-16 — ETP-048 — Segurança e validação da esteira
+
+- **Estado:** concluída; ainda não é baseline v2.
+- **Decisão implementada:** criado o workflow independente `CI - Governança da
+  esteira`, executado em qualquer pull request e push em `main`. Ele chama
+  alvos locais reproduzíveis para Gitleaks, Actionlint e Hadolint.
+- **Escopo técnico:** Gitleaks inspeciona segredos versionados; Actionlint
+  verifica a sintaxe e semântica dos quatro workflows; Hadolint verifica os
+  Dockerfiles Python e PySpark. São controles do código, da automação e da
+  infraestrutura de execução — não validadores de dados.
+- **Configurações justificadas:** o Gitleaks ignora somente ambientes virtuais
+  e caches locais não versionados, que inicialmente geravam 604 falsos
+  positivos de dependências de terceiros. Hadolint mantém DL3008 ignorada:
+  os pacotes Debian seguem atualizações de segurança da imagem Bookworm em vez
+  de versões rígidas potencialmente obsoletas. As exceções são explícitas e
+  restritas por arquivo de configuração.
+- **Evidência local:** `make quality-ci` passou, com Gitleaks sem ocorrências,
+  Actionlint sem diagnósticos e Hadolint sem violações fora da política
+  declarada.

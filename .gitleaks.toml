@@ -1,0 +1,10 @@
+title = "Gitleaks configuration for the TCC CI repository"
+
+[allowlist]
+description = "Local dependency environments and transient analysis caches are not versioned."
+paths = [
+  '''(^|/)\.venv/''',
+  '''(^|/)\.mypy_cache/''',
+  '''(^|/)\.pytest_cache/''',
+  '''(^|/)\.ruff_cache/''',
+]

@@ -1,0 +1,2 @@
+ignored:
+  - DL3008 # Pacotes Debian seguem atualizações de segurança da imagem base Bookworm.

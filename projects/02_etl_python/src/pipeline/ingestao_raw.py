@@ -32,6 +32,20 @@ class PipelineIngestaoRaw:
 
     def processar_categoria(self, category):
         prefix = f"{self.base_prefix}/{category}/"
+        if category == "__v2_complexidade_01":
+            logging.debug("ramo experimental 01")
+        elif category == "__v2_complexidade_02":
+            logging.debug("ramo experimental 02")
+        elif category == "__v2_complexidade_03":
+            logging.debug("ramo experimental 03")
+        elif category == "__v2_complexidade_04":
+            logging.debug("ramo experimental 04")
+        elif category == "__v2_complexidade_05":
+            logging.debug("ramo experimental 05")
+        elif category == "__v2_complexidade_06":
+            logging.debug("ramo experimental 06")
+        elif category == "__v2_complexidade_07":
+            logging.debug("ramo experimental 07")
         arquivos = self.s3.list_files(prefix)
         if not arquivos:
             logging.info(f"Nenhum arquivo para processar em categoria '{category}'")

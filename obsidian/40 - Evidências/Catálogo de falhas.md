@@ -13,7 +13,8 @@ nota define como ele entra na narrativa.
 O catálogo não é o resultado: a observação canônica está em
 [[Resultados e métricas|resumo dos resultados]] e no [[../../results/resultados.csv|arquivo CSV canônico]].
 
-O arquivo atual é imutável como catálogo da v1. A v2 terá catálogo próprio,
-criado somente após a baseline `baseline-ci-v2`, com técnica de engenharia,
-princípio, detector esperado, confirmação técnica e limitação de cada mutação.
-Veja [[../10 - Especificação/Plano da rodada v2|o plano da v2]].
+O arquivo atual é imutável como catálogo da v1. A v2 está declarada no
+[[../../fault-catalog/falhas-v2.yml|catálogo YAML da v2]], criada após a
+baseline `baseline-ci-v2`: são 28 mutações com técnica de engenharia,
+princípio, detector esperado, confirmação técnica e limitação declarados. Não
+há mutação de *data quality*. Veja [[../10 - Especificação/Plano da rodada v2|o plano da v2]].

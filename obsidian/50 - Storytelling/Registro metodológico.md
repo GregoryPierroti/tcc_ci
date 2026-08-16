@@ -1164,3 +1164,20 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   publicaram os artefatos previstos e a tag foi criada somente após esses
   resultados. A próxima etapa é revisar o catálogo próprio das 28 mutações;
   nenhuma falha controlada foi inserida nesta baseline.
+
+### 2026-08-16 — ETP-052 — Catálogo de falhas controladas da v2
+
+- **Estado:** especificado e ainda não executado.
+- **Decisão implementada:** criado `fault-catalog/falhas-v2.yml`, separado do
+  catálogo imutável da v1 e ancorado na tag `baseline-ci-v2`. Ele contém 28
+  mutações: 10 de análise estática, 6 de testes e cobertura, 8 de contrato,
+  bootstrap, integração ou reexecução técnica, e 4 de segurança ou
+  infraestrutura.
+- **Rastreabilidade:** toda entrada declara arquivo-alvo, mutação única,
+  técnica, princípio de engenharia, detector e etapa esperados, confirmação
+  independente e limite de interpretação. SBOM, pré-commit e artefatos
+  continuam controles operacionais, sem mutação artificial própria.
+- **Delimitação:** nenhuma entrada usa nulidade, unicidade, completude,
+  cardinalidade ou qualquer atributo do conteúdo processado. A mutação de
+  complexidade é hipótese explícita de falso negativo: o Radon atual reporta o
+  limiar B, mas não converte o diagnóstico em falha de job.

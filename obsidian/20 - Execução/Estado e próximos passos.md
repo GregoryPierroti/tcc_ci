@@ -30,11 +30,9 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
 ## Próximos passos da v2
 
-1. Revisar e versionar o catálogo das 28 mutações v2, sem alterar as 15
-   evidências históricas da v1.
-2. Executar as mutações de forma isolada a partir da tag `baseline-ci-v2` e consolidar
+1. Executar as 28 mutações de forma isolada a partir da tag `baseline-ci-v2` e consolidar
    os resultados observados.
-3. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
+2. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
 
 ## Escopo aprovado para a v2
 

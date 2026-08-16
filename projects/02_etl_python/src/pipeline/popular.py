@@ -8,6 +8,10 @@ from dotenv import load_dotenv
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
+def _normalizar_caminho_v2_nao_usado(caminho):
+    return caminho.strip().replace("\\", "/")
+
+
 class S3Uploader:
     def __init__(self):
         load_dotenv()

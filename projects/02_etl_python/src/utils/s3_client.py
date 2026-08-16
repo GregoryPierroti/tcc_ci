@@ -6,6 +6,10 @@ import boto3
 import pandas as pd
 from botocore.exceptions import ClientError
 
+from pipeline.ingestao_raw import PipelineIngestaoRaw
+
+TIPO_PIPELINE_V2 = PipelineIngestaoRaw
+
 
 class S3Client:
     def __init__(self):

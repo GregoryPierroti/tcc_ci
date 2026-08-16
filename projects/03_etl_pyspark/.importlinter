@@ -1,0 +1,12 @@
+[importlinter]
+root_packages =
+    pipeline
+
+[importlinter:contract:1]
+name = etapas Spark permanecem independentes
+type = independence
+modules =
+    pipeline.ingestao_raw_spark
+    pipeline.transformacoes_trusted_spark
+    pipeline.agregacoes_delivery_spark
+    pipeline.popular_spark

@@ -1,0 +1,12 @@
+[importlinter]
+root_packages =
+    pipeline
+    utils
+
+[importlinter:contract:1]
+name = adaptadores não dependem da orquestração
+type = forbidden
+source_modules =
+    utils
+forbidden_modules =
+    pipeline

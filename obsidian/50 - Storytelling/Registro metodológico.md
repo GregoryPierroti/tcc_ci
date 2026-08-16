@@ -1092,3 +1092,25 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Evidência local:** `make quality-ci` passou, com Gitleaks sem ocorrências,
   Actionlint sem diagnósticos e Hadolint sem violações fora da política
   declarada.
+
+### 2026-08-16 — ETP-049 — Arquitetura e evidências de teste
+
+- **Estado:** concluída; ainda não é baseline v2.
+- **Decisão implementada:** adicionados contratos de importação e o alvo
+  `make architecture` aos projetos Python e PySpark. O primeiro impede que os
+  adaptadores importem a orquestração; o segundo mantém independentes as
+  etapas de ingestão, transformação, agregação e popularização.
+- **Testabilidade:** Hypothesis passou a gerar entradas variadas para as
+  funções de normalização, verificando invariantes técnicos de formato (texto
+  ASCII, sem espaços externos ou duplicados). Não mede corretude, completude
+  ou qualquer atributo de qualidade dos dados.
+- **Evidência reprodutível:** os alvos unitário e de integração agora emitem
+  `junit-unit.xml` e `junit-integration.xml`; os workflows Python e PySpark
+  publicam esses arquivos e `coverage.xml` como artefatos da execução.
+- **Evidência local:** os dois contratos de importação foram mantidos;
+  `make test` passou nos dois projetos. Python: 16 testes unitários, 2 de
+  integração e 100,00% do pacote `pipeline`; PySpark: 12 unitários, 1 de
+  integração e 97,50%. Actionlint aprovou os workflows atualizados.
+- **Limite preservado:** os relatórios demonstram o resultado daquela execução
+  e a cobertura declarada; não são prova de ausência de defeitos nem um novo
+  eixo de qualidade de dados.

@@ -1,6 +1,8 @@
 from pathlib import Path
 
 import pytest
+from hypothesis import given, settings
+from hypothesis import strategies as st
 from pyspark.sql import SparkSession
 
 from pipeline.ingestao_raw_spark import IngestaoRawSpark
@@ -31,6 +33,20 @@ def test_normaliza_nome_com_spark(spark):
     resultado = transformacoes._criar_chave_nome(entrada, "Nome").collect()
 
     assert resultado[0]["Nome_processed"] == "ITAU"
+
+
+@settings(max_examples=8, deadline=None)
+@given(st.text(alphabet=st.characters(blacklist_categories=("Cc", "Cs")), max_size=40))
+def test_chave_spark_tem_formato_tecnico_estavel(spark, nome):
+    """Preserva invariantes de normalização para nomes variados no Spark."""
+    transformacoes = TransformacoesTrustedSpark.__new__(TransformacoesTrustedSpark)
+    entrada = spark.createDataFrame([(nome,)], ["Nome"])
+
+    resultado = transformacoes._criar_chave_nome(entrada, "Nome").first()["Nome_processed"]
+
+    assert resultado == resultado.strip()
+    assert "  " not in resultado
+    assert resultado.isascii()
 
 
 def test_ingestao_grava_parquet_com_mesma_quantidade_de_linhas(spark, tmp_path):

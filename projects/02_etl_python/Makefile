@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := run
 
-.PHONY: up bootstrap run format-check docformat-check lint type-check complexity dead-code security test test-unit test-integration status reset down
+.PHONY: up bootstrap run format-check docformat-check lint type-check complexity dead-code architecture security test test-unit test-integration status reset down
 
 up:
 	docker compose up -d --wait postgres minio
@@ -29,6 +29,9 @@ complexity:
 dead-code:
 	docker compose run --rm --no-deps --build pipeline vulture . --min-confidence 100
 
+architecture:
+	docker compose run --rm --no-deps --build pipeline lint-imports --config /app/.importlinter
+
 security:
 	docker compose run --rm --no-deps --build pipeline bandit -q -r . -x ./tests
 	docker compose run --rm --no-deps --build pipeline pip-audit --strict
@@ -36,10 +39,10 @@ security:
 test: test-unit test-integration
 
 test-unit:
-	docker compose run --rm --no-deps --build pipeline pytest -q -m unit --cov=pipeline --cov-fail-under=95 --cov-report=term-missing --cov-report=xml:coverage.xml
+	docker compose run --rm --no-deps --build pipeline pytest -q -m unit --cov=pipeline --cov-fail-under=95 --cov-report=term-missing --cov-report=xml:coverage.xml --junitxml=junit-unit.xml
 
 test-integration: bootstrap
-	docker compose run --rm --build pipeline pytest -q -m integration
+	docker compose run --rm --build pipeline pytest -q -m integration --junitxml=junit-integration.xml
 
 status:
 	docker compose exec -T postgres sh -c 'psql -U "$$POSTGRES_USER" -d "$$POSTGRES_DB" -c "SELECT table_schema, table_name FROM information_schema.tables WHERE table_schema IN ('\''raw'\'', '\''trusted'\'', '\''delivery'\'') ORDER BY 1, 2;"'

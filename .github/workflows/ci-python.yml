@@ -57,8 +57,21 @@ jobs:
       - name: Verificar código morto
         run: make dead-code
 
+      - name: Verificar fronteiras de arquitetura
+        run: make architecture
+
       - name: Executar testes unitários e de integração
         run: make test
+
+      - name: Publicar relatórios de teste
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorios-etl-python
+          path: |
+            projects/02_etl_python/src/coverage.xml
+            projects/02_etl_python/src/junit-*.xml
+          if-no-files-found: error
 
       - name: Auditar dependências
         run: make security

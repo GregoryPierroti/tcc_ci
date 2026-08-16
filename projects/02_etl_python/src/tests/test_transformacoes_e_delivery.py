@@ -1,5 +1,7 @@
 import pandas as pd
 import pytest
+from hypothesis import given
+from hypothesis import strategies as st
 
 from pipeline.agregacoes_delivery import AgregacoesDelivery
 from pipeline.transformacoes_trusted import TransformacoesTrusted
@@ -16,6 +18,18 @@ def test_normaliza_nome_para_chave_de_juncao():
 
     assert trusted._criar_chave_nome("Banco Itaú S.A. - Prudencial") == "ITAU"
     assert trusted._criar_chave_nome(None) == ""
+
+
+@given(st.one_of(st.text(max_size=80), st.integers(), st.none()))
+def test_chave_de_juncao_tem_formato_tecnico_estavel(nome):
+    """Preserva invariantes de normalização para entradas variadas."""
+    trusted = trusted_sem_banco()
+
+    resultado = trusted._criar_chave_nome(nome)
+
+    assert resultado == resultado.strip()
+    assert "  " not in resultado
+    assert resultado.isascii()
 
 
 def test_transformacao_de_bancos_cria_chave_e_preserva_cnpj_como_texto():

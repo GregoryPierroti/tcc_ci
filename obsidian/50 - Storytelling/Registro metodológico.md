@@ -1333,3 +1333,11 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Resultado:** a integração local falhou com `InvalidSchemaName`; a CI do
   PR #58 falhou em 1 min 02 s na etapa de testes.
 - **Classificação:** `detected`. PR e branches foram fechados sem merge.
+
+### 2026-08-16 — ETP-065 — Execução controlada V2-PY-012
+
+- **Mutação:** o cliente S3 passou a apontar para
+  `etl-python-v2-inexistente`, no commit experimental `bb818d7`.
+- **Resultado:** a integração local falhou com `NoSuchBucket`; a CI do PR #59
+  falhou em 1 min 01 s na etapa de testes.
+- **Classificação:** `detected`. PR e branches foram fechados sem merge.

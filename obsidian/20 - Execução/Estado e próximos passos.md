@@ -30,12 +30,13 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
 ## Próximos passos da v2
 
-1. Executar as 23 mutações restantes de forma isolada a partir da tag
+1. Executar as 22 mutações restantes de forma isolada a partir da tag
    `baseline-ci-v2` e consolidar os resultados observados; V2-PY-001 e
    V2-PY-002 foram detectadas por Ruff, V2-PY-003 foi confirmado por mypy na
    repetição isolada e V2-PY-004 por pydocstringformatter. V2-PY-005 expôs
    falso negativo: Radon reportou C (14), mas sua configuração não bloqueia o
-   job.
+   job. V2-PY-006 expôs outro falso negativo: função morta em 60% de confiança
+   não alcança o limiar 100 configurado para Vulture.
 2. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
 
 ## Escopo aprovado para a v2

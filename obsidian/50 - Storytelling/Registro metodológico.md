@@ -1271,3 +1271,17 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Classificação:** `false_negative`. PR e branches foram fechados sem merge;
   a evidência documenta a limitação do limiar atual, não uma afirmação sobre
   qualidade dos dados.
+
+### 2026-08-16 — ETP-059 — Execução controlada V2-PY-006
+
+- **Mutação:** adicionada a função privada sem referência
+  `_normalizar_caminho_v2_nao_usado` no commit experimental `c9d085c`.
+- **Confirmação independente:** Vulture com confiança mínima 0 listou a
+  função como não usada, porém com **60%** de confiança. Em 100%, que é o
+  limiar configurado, não houve achado.
+- **Resultado remoto:** o PR #53 passou em 1 min 04 s, inclusive em
+  **Verificar código morto**. Logo, a hipótese inicial de `detected` não se
+  confirmou para uma função privada não usada sob esta configuração.
+- **Classificação:** `false_negative`. PR e branches foram fechados sem merge;
+  trata-se de limitação de confiança do analisador, sem relação com qualidade
+  dos dados.

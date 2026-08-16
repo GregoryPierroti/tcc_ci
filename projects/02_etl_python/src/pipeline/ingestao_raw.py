@@ -32,6 +32,7 @@ class PipelineIngestaoRaw:
 
     def processar_categoria(self, category):
         prefix = f"{self.base_prefix}/{category}/"
+        logging.debug(identificador_v2_inexistente)
         arquivos = self.s3.list_files(prefix)
         if not arquivos:
             logging.info(f"Nenhum arquivo para processar em categoria '{category}'")

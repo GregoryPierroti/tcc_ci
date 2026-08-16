@@ -1137,10 +1137,10 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   Esses controles inspecionam repositório e ambiente de software, não a
   qualidade dos dados processados.
 
-### 2026-08-16 — ETP-051 — Baseline local candidata da rodada v2
+### 2026-08-16 — ETP-051 — Baseline saudável da rodada v2
 
-- **Estado:** concluída localmente; confirmação remota e criação da tag
-  `baseline-ci-v2` pendentes.
+- **Estado:** concluída localmente e remotamente; tag `baseline-ci-v2` criada
+  no commit `e5f65d8`.
 - **Protocolo executado:** a governança passou em Gitleaks, Actionlint,
   Hadolint e nos sete hooks de pré-commit. Nos dois ETLs foram executados os
   checks de formato, docstrings, lint, mypy, complexidade, código morto,
@@ -1159,3 +1159,8 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   seu workflow pré-existente continua operacional, mas seus quatro testes de
   conteúdo não entram como evidência nem como mutações da v2. A rodada mantém
   o escopo de engenharia de software e integração técnica, sem *data quality*.
+- **Confirmação remota:** o PR #46 executou com sucesso a governança (22 s), o
+  ETL Python (1 min 10 s) e o ETL PySpark (1 min 49 s). Os três workflows
+  publicaram os artefatos previstos e a tag foi criada somente após esses
+  resultados. A próxima etapa é revisar o catálogo próprio das 28 mutações;
+  nenhuma falha controlada foi inserida nesta baseline.

@@ -1227,3 +1227,16 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   atribuição tipadamente incompatível adicional, preservando o uso do
   adaptador. Assim se observa o mypy remoto sem reescrever esta primeira
   execução nem o catálogo posteriori.
+
+### 2026-08-16 — ETP-056 — Execução controlada V2-PY-003 (repetição)
+
+- **Isolamento corrigido:** a instância `PostgresUploader` permaneceu em uso;
+  uma segunda porta anotada `RepositorioDataFrame` recebeu texto no commit
+  `3a409c4`. Ruff passou localmente antes de mypy ser executado.
+- **Resultado:** o PR #50 falhou na etapa **Verificar tipos** em 15 s. Mypy
+  reportou a incompatibilidade de `str` para `RepositorioDataFrame`, como
+  previsto no catálogo.
+- **Classificação:** `detected`. Esta segunda linha complementa, e não
+  substitui, a primeira tentativa V2-PY-003; o PR e as branches foram fechados
+  sem merge. Os uploads posteriores sem artefatos seguem efeitos secundários
+  da falha precoce.

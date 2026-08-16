@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := run
 
-.PHONY: up bootstrap run format-check docformat-check lint type-check complexity dead-code architecture security test test-unit test-integration status reset down
+.PHONY: up bootstrap run format-check docformat-check lint type-check complexity dead-code architecture security sbom test test-unit test-integration status reset down
 
 up:
 	docker compose up -d --wait postgres minio
@@ -35,6 +35,9 @@ architecture:
 security:
 	docker compose run --rm --no-deps --build pipeline bandit -q -r . -x ./tests
 	docker compose run --rm --no-deps --build pipeline pip-audit --strict
+
+sbom:
+	docker compose run --rm --no-deps --build pipeline pip-audit --format cyclonedx-json --output sbom.cdx.json
 
 test: test-unit test-integration
 

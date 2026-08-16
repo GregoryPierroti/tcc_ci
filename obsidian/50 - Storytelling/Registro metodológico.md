@@ -1114,3 +1114,25 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Limite preservado:** os relatórios demonstram o resultado daquela execução
   e a cobertura declarada; não são prova de ausência de defeitos nem um novo
   eixo de qualidade de dados.
+
+### 2026-08-16 — ETP-050 — Controles operacionais e inventário de dependências
+
+- **Estado:** concluída; ainda não é baseline v2.
+- **Decisão implementada:** a raiz passou a expor `make pre-commit`, com uma
+  configuração versionada que verifica sintaxe de Python, JSON, TOML e YAML,
+  conflitos de merge, chaves privadas e arquivos adicionados excessivamente
+  grandes. O workflow de governança instala o `uv` e executa o mesmo alvo,
+  mantendo a verificação local e remota equivalente.
+- **Inventário de dependências:** os projetos ETL Python e PySpark passaram a
+  expor `make sbom`, que usa `pip-audit` para gerar um SBOM CycloneDX JSON das
+  dependências instaladas a partir de seus ambientes bloqueados. Os workflows
+  publicam esse inventário como artefato separado e os arquivos gerados ficam
+  fora do versionamento.
+- **Evidência local:** os sete hooks de pré-commit passaram; ambos os SBOMs
+  foram gerados sem vulnerabilidades conhecidas; Actionlint aprovou os
+  workflows atualizados.
+- **Limite preservado:** o SBOM descreve dependências da execução e facilita
+  auditoria posterior, mas não atesta procedência da cadeia de suprimentos nem
+  cobre o projeto dbt, que ainda não possui manifesto bloqueado equivalente.
+  Esses controles inspecionam repositório e ambiente de software, não a
+  qualidade dos dados processados.

@@ -37,6 +37,7 @@ make test-unit       # executa testes isolados com Spark local[2] (cobertura >= 
 make test-integration # executa a integração técnica Spark-JDBC-PostgreSQL
 make test            # executa as duas camadas de teste
 make security        # executa Bandit e audita dependências instaladas
+make sbom            # gera inventário CycloneDX das dependências Python
 ```
 
 As dependências e configurações Python estão em `pyproject.toml`; `uv.lock`

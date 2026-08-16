@@ -53,6 +53,7 @@ make test-unit       # executa os testes unitários isolados (cobertura >= 95% d
 make test-integration # executa integrações técnicas com PostgreSQL e MinIO
 make test            # executa as duas camadas de teste
 make security        # executa Bandit e audita dependências instaladas
+make sbom            # gera inventário CycloneDX das dependências Python
 ```
 
 As dependências e configurações Python estão em `pyproject.toml`; `uv.lock`

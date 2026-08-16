@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := run
 
-.PHONY: up run format-check docformat-check lint type-check complexity dead-code architecture security test test-unit test-integration status down reset
+.PHONY: up run format-check docformat-check lint type-check complexity dead-code architecture security sbom test test-unit test-integration status down reset
 
 up:
 	docker compose up -d --wait postgres
@@ -32,6 +32,9 @@ architecture:
 security:
 	docker compose run --rm --no-deps --build spark bandit -q -r . -x ./tests
 	docker compose run --rm --no-deps --build spark pip-audit --strict
+
+sbom:
+	docker compose run --rm --no-deps --build spark pip-audit --format cyclonedx-json --output sbom.cdx.json
 
 test: test-unit test-integration
 

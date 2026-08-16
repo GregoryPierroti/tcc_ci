@@ -24,6 +24,12 @@ jobs:
       - name: Obter código
         uses: actions/checkout@v4
 
+      - name: Instalar uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Executar hooks de pré-commit
+        run: make pre-commit
+
       - name: Verificar segredos versionados
         run: make gitleaks
 

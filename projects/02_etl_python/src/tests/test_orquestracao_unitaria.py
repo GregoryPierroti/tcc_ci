@@ -182,7 +182,6 @@ def test_trusted_inicializa_e_despacha_transformacoes_especificas(
 
 def test_trusted_executar_pula_vazia_publica_transformada_e_respeita_none() -> None:
     """Exercita as decisões de orquestração da camada trusted."""
-
     class BancoTrusted:
         def __init__(self) -> None:
             self.publicacoes: list[tuple[str, str]] = []

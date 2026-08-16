@@ -62,7 +62,7 @@ class TransformacoesTrusted:
         if not isinstance(nome, str):
             return ""
 
-        nome_limpo = self._remover_caracteres_invalidos(nome).upper()
+        nome_limpo = self._remover_caracteres_invalidos(nome).lower()
 
         padroes_remocao = [
             r"\bS\.A\b",

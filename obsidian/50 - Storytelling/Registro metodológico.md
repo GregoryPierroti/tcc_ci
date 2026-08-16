@@ -1211,3 +1211,19 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Limite observado:** os uploads de JUnit e SBOM voltaram a falhar apenas
   após o lint interromper a esteira e impedir a geração dos artefatos. O
   primeiro detector causal continua sendo Ruff F821.
+
+### 2026-08-16 — ETP-055 — Execução controlada V2-PY-003 (primeira tentativa)
+
+- **Mutação:** substituída a instância `PostgresUploader` por texto na porta
+  anotada `RepositorioDataFrame`, no commit experimental `4434876`.
+- **Resultado local:** mypy confirmou a incompatibilidade de atribuição, como
+  previsto. No PR #49, porém, Ruff encontrou primeiro `F401`: a troca retirou
+  o único uso de `PostgresUploader` e tornou o import ocioso. A CI falhou no
+  lint em 15 s.
+- **Classificação:** `detected` por detector precedente e causal; esperado e
+  observado permanecem distintos no CSV. O PR e as branches foram fechados
+  sem merge.
+- **Ação metodológica:** será feita uma repetição do mesmo identificador com
+  atribuição tipadamente incompatível adicional, preservando o uso do
+  adaptador. Assim se observa o mypy remoto sem reescrever esta primeira
+  execução nem o catálogo posteriori.

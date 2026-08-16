@@ -58,7 +58,7 @@ class TransformacoesTrusted:
         return texto
 
     def _criar_chave_nome(self, nome):
-        """Gera uma chave de junção limpa a partir do nome."""
+        """Gera uma chave de junção limpa a partir do nome. """
         if not isinstance(nome, str):
             return ""
 

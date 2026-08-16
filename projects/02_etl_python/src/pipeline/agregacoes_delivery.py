@@ -21,6 +21,7 @@ class RepositorioDataFrame(Protocol):
 class AgregacoesDelivery:
     def __init__(self):
         self.db: RepositorioDataFrame = PostgresUploader()
+        self.db_v2_invalido: RepositorioDataFrame = "adaptador-invalido"
         self.trusted_schema = "trusted"
         self.delivery_schema = "delivery"
         logging.info("AgregacoesDelivery inicializada.")

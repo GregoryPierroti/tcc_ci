@@ -1,9 +1,9 @@
 # Estado e próximos passos
 
-> [!important] Ponto de handoff — 2026-07-26
-> As três rodadas estão concluídas e a análise comparativa foi consolidada. O
-> próximo trabalho é executar a v2 de engenharia de software, mantendo as
-> evidências v1 separadas dos novos resultados.
+> [!important] Ponto de handoff — 2026-08-16
+> A rodada v2 está pausada após V2-PY-012. Há 13 execuções v2 registradas,
+> correspondentes a 12 mutações únicas: 10 detectadas e 3 falsos negativos.
+> As evidências v1 permanecem separadas e imutáveis.
 
 ## Estado consolidado
 
@@ -13,6 +13,7 @@
 | Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada dbt | concluída: 5 detecções | [[../30 - Tecnologias/Fluxo de checks dbt|fluxo de checks do dbt]] |
+| Rodada v2 (parcial) | 12 de 28 mutações únicas concluídas; 16 restantes | `results/resultados.csv`, `fault-catalog/falhas-v2.yml` |
 | Obsidian | documentação e narrativa da v1 consolidadas | [[../40 - Evidências/Matriz comparativa final|matriz da v1]] |
 
 ## Pendência experimental preservada
@@ -41,6 +42,8 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
    testes unitários de normalização; V2-PY-009 foi detectada por propriedade
    Hypothesis sobre espaços externos. V2-PY-010 expôs falso negativo: a CI
    agrega cobertura de integração e não preserva o piso unitário de 95%.
+   V2-PY-011 e V2-PY-012 foram detectadas por testes de integração PostgreSQL
+   e MinIO, respectivamente. A próxima execução é V2-PY-013 (bootstrap).
 2. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
 
 ## Escopo aprovado para a v2

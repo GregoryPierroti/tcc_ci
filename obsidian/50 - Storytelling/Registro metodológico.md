@@ -1341,3 +1341,14 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Resultado:** a integração local falhou com `NoSuchBucket`; a CI do PR #59
   falhou em 1 min 01 s na etapa de testes.
 - **Classificação:** `detected`. PR e branches foram fechados sem merge.
+
+### 2026-08-16 — ETP-066 — Pausa controlada da rodada v2
+
+- **Estado preservado:** V2-PY-001 a V2-PY-012 foram encerradas; há 13
+  execuções para 12 mutações únicas, pois V2-PY-003 exigiu repetição
+  metodológica. Foram registradas 10 detecções e 3 falsos negativos.
+- **Handoff:** todas as PRs experimentais foram fechadas sem merge, as
+  branches defeituosas removidas e a branch de documentação está limpa em
+  `docs/rename-data-validations`.
+- **Retomada:** partir de `baseline-ci-v2` na V2-PY-013, mantendo o catálogo,
+  CSV e diário como referências; restam 16 mutações únicas.

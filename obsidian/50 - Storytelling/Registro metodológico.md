@@ -1197,3 +1197,17 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Limite observado:** os uploads de JUnit e SBOM, marcados com `if: always`,
   também falharam porque o check precoce não gerou esses arquivos. São efeitos
   secundários da interrupção, não detectores causais da mutação.
+
+### 2026-08-16 — ETP-054 — Execução controlada V2-PY-002
+
+- **Mutação:** adicionada a referência única ao identificador inexistente
+  `identificador_v2_inexistente` no fluxo `processar_categoria`, na branch
+  `fault/v2-py-002` derivada de `baseline-ci-v2`.
+- **Resultado:** Ruff reportou `F821 Undefined name` no arquivo e linha
+  esperados localmente e no PR #48. A CI interrompeu em 16 s na etapa
+  **Executar lint**, coincidindo com detector e etapa previstos.
+- **Classificação:** `detected`. O PR foi fechado sem merge; as branches local
+  e remota foram removidas e o commit defeituoso `752cbc4` não foi integrado.
+- **Limite observado:** os uploads de JUnit e SBOM voltaram a falhar apenas
+  após o lint interromper a esteira e impedir a geração dos artefatos. O
+  primeiro detector causal continua sendo Ruff F821.

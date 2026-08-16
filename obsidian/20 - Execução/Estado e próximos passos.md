@@ -30,7 +30,7 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
 ## Próximos passos da v2
 
-1. Executar as 18 mutações restantes de forma isolada a partir da tag
+1. Executar as 17 mutações restantes de forma isolada a partir da tag
    `baseline-ci-v2` e consolidar os resultados observados; V2-PY-001 e
    V2-PY-002 foram detectadas por Ruff, V2-PY-003 foi confirmado por mypy na
    repetição isolada e V2-PY-004 por pydocstringformatter. V2-PY-005 expôs

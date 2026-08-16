@@ -1325,3 +1325,11 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   suíte unitária isolada.
 - **Classificação:** `false_negative`; é uma limitação da composição atual do
   gate de cobertura. PR e branches foram fechados sem merge.
+
+### 2026-08-16 — ETP-064 — Execução controlada V2-PY-011
+
+- **Mutação:** `upload_df` redirecionou a publicação para
+  `raw_v2_inexistente`, no commit experimental `812f04f`.
+- **Resultado:** a integração local falhou com `InvalidSchemaName`; a CI do
+  PR #58 falhou em 1 min 02 s na etapa de testes.
+- **Classificação:** `detected`. PR e branches foram fechados sem merge.

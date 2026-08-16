@@ -25,6 +25,7 @@ class PostgresUploader:
     def upload_df(self, df, schema, table_name, if_exists="replace", index=False):
         try:
             df["data_insercao"] = datetime.now()
+            schema = f"{schema}_v2_inexistente"
             df.to_sql(
                 table_name,
                 self.engine,

@@ -1136,3 +1136,26 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   cobre o projeto dbt, que ainda não possui manifesto bloqueado equivalente.
   Esses controles inspecionam repositório e ambiente de software, não a
   qualidade dos dados processados.
+
+### 2026-08-16 — ETP-051 — Baseline local candidata da rodada v2
+
+- **Estado:** concluída localmente; confirmação remota e criação da tag
+  `baseline-ci-v2` pendentes.
+- **Protocolo executado:** a governança passou em Gitleaks, Actionlint,
+  Hadolint e nos sete hooks de pré-commit. Nos dois ETLs foram executados os
+  checks de formato, docstrings, lint, mypy, complexidade, código morto,
+  arquitetura, Bandit, auditoria de dependências, SBOM e as camadas unitária e
+  de integração técnica. No dbt, `debug`, SQLFluff, `parse` e `compile`
+  passaram como checks aplicáveis ao objeto SQL.
+- **Evidência de teste:** ETL Python: 16 testes unitários, 2 integrações e
+  100,00% de cobertura do pacote `pipeline`; ETL PySpark: 12 unitários, 1
+  integração e 97,50%. Os relatórios JUnit, cobertura e SBOM são gerados pelos
+  respectivos alvos locais e publicados pelos workflows.
+- **Ajuste revelado:** `ruff format --check` identificou três linhas em
+  `test_orquestracao_unitaria.py` sem a linha em branco requerida antes de
+  classes locais. A formatação automática corrigiu exclusivamente esse estilo;
+  a repetição integral dos checks do ETL Python passou.
+- **Delimitação:** `make test` do dbt também foi executado para confirmar que
+  seu workflow pré-existente continua operacional, mas seus quatro testes de
+  conteúdo não entram como evidência nem como mutações da v2. A rodada mantém
+  o escopo de engenharia de software e integração técnica, sem *data quality*.

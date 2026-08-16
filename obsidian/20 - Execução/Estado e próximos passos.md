@@ -30,12 +30,12 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
 ## Próximos passos da v2
 
-1. Consolidar o [[../10 - Especificação/Plano da rodada v2|plano da rodada v2]] e
-   atualizar protocolo, governança e documentação de checks.
-2. Implementar os checks v2, separar testes unitários de integração e validar
-   uma nova baseline saudável.
-3. Criar `baseline-ci-v2`, o catálogo v2 e executar as mutações sem alterar
-   as 15 evidências v1.
+1. Confirmar remotamente a baseline local candidata e criar a tag
+   `baseline-ci-v2`.
+2. Revisar e versionar o catálogo das 28 mutações v2, sem alterar as 15
+   evidências históricas da v1.
+3. Executar as mutações de forma isolada a partir da tag saudável e consolidar
+   os resultados observados.
 4. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
 
 ## Escopo aprovado para a v2
@@ -47,8 +47,8 @@ avaliados como comportamentos técnicos entre componentes.
 
 | Prioridade | Ampliação | Objetivo | Estado |
 | --- | --- | --- | --- |
-| 1 | Ruff expandido, mypy, docstrings, Radon e cobertura mínima | Prevenir defeitos estáticos e tornar a testabilidade mensurável. | planejada |
-| 2 | Bandit, Gitleaks, Actionlint e Hadolint | Cobrir segurança de código, segredos, workflow e contêiner. | planejada |
-| 3 | Testes unitários, contratos e integração separados | Verificar código isolado e integração técnica em ambiente efêmero. | planejada |
-| 4 | Bootstrap e reexecução | Verificar criação de recursos e idempotência técnica. | planejada |
-| 5 | Artefatos JUnit/cobertura, SBOM e governança de merge | Produzir rastreabilidade e reforçar o processo de CI. | planejada |
+| 1 | Ruff expandido, mypy, docstrings, Radon e cobertura mínima | Prevenir defeitos estáticos e tornar a testabilidade mensurável. | implementada e validada localmente |
+| 2 | Bandit, Gitleaks, Actionlint e Hadolint | Cobrir segurança de código, segredos, workflow e contêiner. | implementada e validada localmente |
+| 3 | Testes unitários, contratos e integração separados | Verificar código isolado e integração técnica em ambiente efêmero. | implementada e validada localmente |
+| 4 | Bootstrap e reexecução | Verificar criação de recursos e idempotência técnica. | implementada e validada localmente |
+| 5 | Artefatos JUnit/cobertura, SBOM e governança de merge | Produzir rastreabilidade e reforçar o processo de CI. | implementada; confirmação remota pendente |

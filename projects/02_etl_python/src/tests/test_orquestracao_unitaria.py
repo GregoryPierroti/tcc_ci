@@ -182,6 +182,7 @@ def test_trusted_inicializa_e_despacha_transformacoes_especificas(
 
 def test_trusted_executar_pula_vazia_publica_transformada_e_respeita_none() -> None:
     """Exercita as decisões de orquestração da camada trusted."""
+
     class BancoTrusted:
         def __init__(self) -> None:
             self.publicacoes: list[tuple[str, str]] = []
@@ -211,6 +212,7 @@ def test_trusted_executar_pula_vazia_publica_transformada_e_respeita_none() -> N
 
 def test_delivery_nao_publica_quando_os_joins_nao_produzem_registros() -> None:
     """Evita publicação quando falta correspondência em qualquer join."""
+
     class BancoLeitura:
         def __init__(self, tabelas: dict[tuple[str, str], pd.DataFrame]) -> None:
             self.tabelas = tabelas
@@ -263,6 +265,7 @@ def test_uploader_envia_arquivos_e_trata_diretorio_ausente_vazio_e_erro(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
     """Cobre a publicação local sem chamar a API real da AWS."""
+
     class ClienteS3:
         def __init__(self) -> None:
             self.envios: list[dict[str, str]] = []

@@ -1314,3 +1314,14 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Resultado:** Hypothesis gerou localmente o contraexemplo mínimo `' '`;
   quatro testes falharam. A CI do PR #56 falhou em 39 s na etapa de testes.
 - **Classificação:** `detected`. PR e branches foram fechados sem merge.
+
+### 2026-08-16 — ETP-063 — Execução controlada V2-PY-010
+
+- **Mutação:** incluído caminho técnico não exercitado no commit `b26a5a9`.
+- **Confirmação independente:** os testes unitários passaram, mas pytest-cov
+  falhou localmente em **94,66%**, abaixo do piso 95%.
+- **Resultado remoto:** o PR #57 passou em 1 min 31 s. A etapa remota agrega
+  unitários e integração, recuperando a cobertura e ocultando a queda da
+  suíte unitária isolada.
+- **Classificação:** `false_negative`; é uma limitação da composição atual do
+  gate de cobertura. PR e branches foram fechados sem merge.

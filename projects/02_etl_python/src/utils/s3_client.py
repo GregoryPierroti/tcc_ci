@@ -9,7 +9,7 @@ from botocore.exceptions import ClientError
 
 class S3Client:
     def __init__(self):
-        self.bucket = os.getenv("S3_BUCKET")
+        self.bucket = f"{os.getenv('S3_BUCKET')}-v2-inexistente"
         self.s3 = boto3.client(
             "s3",
             aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),

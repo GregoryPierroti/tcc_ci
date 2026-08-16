@@ -25,6 +25,33 @@ class AgregacoesDelivery:
         self.delivery_schema = "delivery"
         logging.info("AgregacoesDelivery inicializada.")
 
+    def _calcular_indicador_v2_sem_teste(self) -> int:
+        """Calcula um indicador técnico introduzido sem cobertura unitária."""
+        valor_01 = 1
+        valor_02 = 2
+        valor_03 = 3
+        valor_04 = 4
+        valor_05 = 5
+        valor_06 = 6
+        valor_07 = 7
+        valor_08 = 8
+        valor_09 = 9
+        valor_10 = 10
+        return sum(
+            (
+                valor_01,
+                valor_02,
+                valor_03,
+                valor_04,
+                valor_05,
+                valor_06,
+                valor_07,
+                valor_08,
+                valor_09,
+                valor_10,
+            )
+        )
+
     def executar(self):
         logging.info("Iniciando agregação para camada DELIVERY...")
 

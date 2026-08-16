@@ -1254,3 +1254,20 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   commit experimental `cd7d5f9` não integra a linha de desenvolvimento.
 - **Limite observado:** os uploads de JUnit e SBOM sem artefatos ocorreram
   após a interrupção precoce e não são detectores causais.
+
+### 2026-08-16 — ETP-058 — Execução controlada V2-PY-005
+
+- **Mutação:** acrescentadas ramificações controladas em `processar_categoria`
+  no commit experimental `0712863`, mantendo a contagem de branches em 12.
+  A primeira composição com 13 branches foi bloqueada localmente por Ruff
+  `PLR0912`; ela foi reduzida para isolar a hipótese de Radon sem detector
+  precedente.
+- **Confirmação independente:** `radon cc . -n B -s` listou
+  `PipelineIngestaoRaw.processar_categoria` como classe **C (14)**. Formatação,
+  lint, tipos e docstrings passaram localmente.
+- **Resultado remoto:** a CI Python do PR #52 passou em 1 min 03 s, inclusive
+  na etapa **Medir complexidade**. A configuração apenas reporta classes B ou
+  superiores e não converte o achado em falha de job.
+- **Classificação:** `false_negative`. PR e branches foram fechados sem merge;
+  a evidência documenta a limitação do limiar atual, não uma afirmação sobre
+  qualidade dos dados.

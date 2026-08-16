@@ -1306,3 +1306,11 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   **Executar testes unitários e de integração**.
 - **Classificação:** `detected`. PR e branches foram fechados sem merge. O
   upload SBOM sem arquivo é efeito secundário da interrupção.
+
+### 2026-08-16 — ETP-062 — Execução controlada V2-PY-009
+
+- **Mutação:** removido `strip()` ao finalizar a chave de nome, no commit
+  experimental `48d383e`.
+- **Resultado:** Hypothesis gerou localmente o contraexemplo mínimo `' '`;
+  quatro testes falharam. A CI do PR #56 falhou em 39 s na etapa de testes.
+- **Classificação:** `detected`. PR e branches foram fechados sem merge.

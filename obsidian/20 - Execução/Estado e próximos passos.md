@@ -30,8 +30,9 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
 ## Próximos passos da v2
 
-1. Executar as 28 mutações de forma isolada a partir da tag `baseline-ci-v2` e consolidar
-   os resultados observados.
+1. Executar as 27 mutações restantes de forma isolada a partir da tag
+   `baseline-ci-v2` e consolidar os resultados observados; V2-PY-001 foi
+   detectada por Ruff format.
 2. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
 
 ## Escopo aprovado para a v2

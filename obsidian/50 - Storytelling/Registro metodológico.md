@@ -1181,3 +1181,19 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   cardinalidade ou qualquer atributo do conteúdo processado. A mutação de
   complexidade é hipótese explícita de falso negativo: o Radon atual reporta o
   limiar B, mas não converte o diagnóstico em falha de job.
+
+### 2026-08-16 — ETP-053 — Execução controlada V2-PY-001
+
+- **Mutação:** removida uma única linha em branco antes de classe local em
+  `test_orquestracao_unitaria.py`, na branch `fault/v2-py-001` criada a partir
+  de `baseline-ci-v2`.
+- **Resultado:** `make format-check` falhou localmente e o PR #47 falhou em
+  16 s no workflow Python, primeiro na etapa **Verificar formatação**. O Ruff
+  apontou o mesmo arquivo e informou que ele seria reformatado; o detector e a
+  etapa observados coincidiram com o catálogo.
+- **Classificação:** `detected`. O PR foi fechado sem merge e suas branches
+  local e remota foram removidas; o commit defeituoso `c824c3f` não integra a
+  linha de desenvolvimento.
+- **Limite observado:** os uploads de JUnit e SBOM, marcados com `if: always`,
+  também falharam porque o check precoce não gerou esses arquivos. São efeitos
+  secundários da interrupção, não detectores causais da mutação.

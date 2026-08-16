@@ -77,7 +77,7 @@ class TransformacoesTrusted:
             nome_limpo = re.sub(pattern, "", nome_limpo)
 
         nome_limpo = re.sub(r"[^\w\s]", "", nome_limpo)  # Remove pontuação
-        return re.sub(r"\s+", " ", nome_limpo).strip()  # Remove espaços extras
+        return re.sub(r"\s+", " ", nome_limpo)  # Remove espaços extras
 
     def _transformar_bancos(self, df: pd.DataFrame) -> pd.DataFrame:
         if "Nome" in df.columns:

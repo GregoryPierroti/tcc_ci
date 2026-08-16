@@ -1296,3 +1296,13 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   38 s na etapa **Verificar fronteiras de arquitetura**.
 - **Classificação:** `detected`. PR e branches foram fechados sem merge. Os
   uploads posteriores sem artefatos são efeitos secundários da interrupção.
+
+### 2026-08-16 — ETP-061 — Execução controlada V2-PY-008
+
+- **Mutação:** substituído `upper()` por `lower()` na criação da chave de nome,
+  no commit experimental `16006c1`.
+- **Resultado:** os checks estáticos passaram; três testes unitários de
+  normalização falharam localmente e a CI do PR #55 falhou em 37 s na etapa
+  **Executar testes unitários e de integração**.
+- **Classificação:** `detected`. PR e branches foram fechados sem merge. O
+  upload SBOM sem arquivo é efeito secundário da interrupção.

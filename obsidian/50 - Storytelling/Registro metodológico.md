@@ -1285,3 +1285,14 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Classificação:** `false_negative`. PR e branches foram fechados sem merge;
   trata-se de limitação de confiança do analisador, sem relação com qualidade
   dos dados.
+
+### 2026-08-16 — ETP-060 — Execução controlada V2-PY-007
+
+- **Mutação:** `utils.s3_client` passou a importar `pipeline.ingestao_raw` no
+  commit experimental `bf7a1b5`. A ordenação do import foi ajustada para não
+  antecipar a falha por Ruff.
+- **Resultado:** Ruff, mypy e pydocstringformatter passaram localmente;
+  import-linter quebrou o contrato de adaptadores e a CI do PR #54 falhou em
+  38 s na etapa **Verificar fronteiras de arquitetura**.
+- **Classificação:** `detected`. PR e branches foram fechados sem merge. Os
+  uploads posteriores sem artefatos são efeitos secundários da interrupção.

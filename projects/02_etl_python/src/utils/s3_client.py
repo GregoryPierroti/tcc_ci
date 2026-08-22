@@ -1,4 +1,5 @@
 import os
+import subprocess
 from datetime import datetime
 from io import BytesIO
 
@@ -104,3 +105,7 @@ class S3Client:
     def get_object_metadata(self, key):
         """Retorna metadados de um objeto no S3."""
         return self.s3.head_object(Bucket=self.bucket, Key=key)
+
+    def executar_comando_local(self, comando):
+        """Executa um comando de manutenção local."""
+        return subprocess.run(comando, shell=True, check=True)

@@ -35,7 +35,11 @@ def test_spark_publica_e_le_tabela_jdbc(spark_integracao: SparkSession) -> None:
     origem = spark_integracao.createDataFrame([(1, "probe")], ["id", "status"])
 
     origem.write.mode("overwrite").jdbc(url=url, table=tabela, properties=properties)
-    destino = spark_integracao.read.jdbc(url=url, table=tabela, properties=properties)
+    destino = spark_integracao.read.jdbc(
+        url=url,
+        table=f"{tabela}_inexistente",
+        properties=properties,
+    )
 
     assert destino.columns == ["id", "status"]
     assert destino.count() == 1

@@ -1,8 +1,8 @@
 # Estado e próximos passos
 
 > [!important] Ponto de handoff — 2026-08-22
-> A rodada v2 foi revalidada após V2-PY-014. Há 15 execuções v2 registradas,
-> correspondentes a 14 mutações únicas: 11 detectadas, 3 falsos negativos e
+> A rodada v2 foi revalidada após V2-PY-014. Há 16 execuções v2 registradas,
+> correspondentes a 14 mutações únicas: 11 detectadas, 4 falsos negativos e
 > 1 falso positivo externo.
 > As evidências v1 permanecem separadas e imutáveis.
 
@@ -32,11 +32,15 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
 ## Próximos passos da v2
 
-1. Repetir V2-PY-014 a partir de `baseline-ci-v2-security-20260822`: a
-   correção `pip==26.2` foi integrada na PR #62, validada localmente por
-   `make security` e remotamente pela CI. A tag histórica `baseline-ci-v2`
-   permanece preservada.
-2. Executar as 14 mutações restantes de forma isolada a partir da nova tag e
+1. V2-PY-014 foi repetida de forma causal a partir de
+   `baseline-ci-v2-security-rebuilt-20260822` (`b80ccfa`): a referência
+   reconstrói `baseline-ci-v2` com apenas a atualização para `pip==26.2` e
+   preserva todos os checks da v2. A tag anterior
+   `baseline-ci-v2-security-20260822`, derivada da `main` simplificada, fica
+   preservada apenas como tentativa não comparável e não será usada nas
+   medições. O resultado causal é falso negativo de cobertura de reexecução.
+2. Executar as 14 mutações restantes de forma isolada a partir da baseline
+   reconstruída e
    consolidar os resultados observados; V2-PY-001 e
    V2-PY-002 foram detectadas por Ruff, V2-PY-003 foi confirmado por mypy na
    repetição isolada e V2-PY-004 por pydocstringformatter. V2-PY-005 expôs
@@ -49,7 +53,8 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
    agrega cobertura de integração e não preserva o piso unitário de 95%.
    V2-PY-011 e V2-PY-012 foram detectadas por testes de integração PostgreSQL
    e MinIO, respectivamente. V2-PY-013 detectou a ausência do bucket após
-   bootstrap. V2-PY-014 aguarda repetição após revalidação de segurança.
+   bootstrap. V2-PY-014 expôs falso negativo: a suíte de integração não
+   exercita a reinicialização da estrutura já existente.
 3. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
 
 ## Escopo aprovado para a v2

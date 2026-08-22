@@ -1391,3 +1391,28 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Nova referência:** criada a tag anotada
   `baseline-ci-v2-security-20260822`, sem alterar `baseline-ci-v2`. V2-PY-014
   deve ser repetida a partir da nova tag.
+
+### 2026-08-22 — ETP-071 — Reconstrução comparável e repetição de V2-PY-014
+
+- **Correção metodológica:** a inspeção da tag
+  `baseline-ci-v2-security-20260822` identificou que ela partia de uma
+  `main` simplificada, sem `type-check`, `test-integration`, checks de
+  docstrings, complexidade, código morto, arquitetura e workflow de
+  governança da v2. Ela não era comparável à baseline experimental original.
+- **Nova referência comparável:** a branch `baseline/v2-security-rebuilt` e
+  a tag `baseline-ci-v2-security-rebuilt-20260822` (`b80ccfa`) foram
+  reconstruídas a partir de `baseline-ci-v2`, aplicando exclusivamente
+  `pip==26.2` no manifesto, lockfile e imagem. Segurança, todos os checks v2
+  e os testes unitários + integração passaram localmente.
+- **Mutação e confirmação independente:** no commit experimental `2b19e05`,
+  a segunda chamada de `ensure_base_structure` falha se já houver objetos no
+  bucket. A sequência foi confirmada localmente: a primeira chamada cria os
+  arquivos `.keep` e a segunda lança `RuntimeError`.
+- **Resultado remoto:** a PR #63, direcionada à branch da baseline
+  reconstruída, passou em 1 min 12 s. Todos os 17 passos do workflow Python
+  passaram, incluindo testes unitários e de integração, auditoria de
+  dependências e SBOM.
+- **Classificação:** `false_negative` causal. A suíte atual não exercita a
+  reexecução/idempotência do bootstrap. PR e branch de falha devem ser
+  fechadas sem merge; a baseline reconstruída permanece como referência para
+  as próximas mutações.

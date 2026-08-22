@@ -1485,3 +1485,14 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   composição, recompondo a cobertura e não bloqueando a queda unitária.
 - **Classificação:** `false_negative` causal. PR e branch de falha foram
   fechadas sem merge.
+
+### 2026-08-22 — ETP-078 — Execução controlada V2-SP-006
+
+- **Mutação:** a URL JDBC no teste de integração apontou para a porta 5433,
+  inexistente, no commit experimental `3c35652`.
+- **Confirmação independente:** a integração local falhou por `Connection
+  refused`.
+- **Resultado remoto:** a CI PySpark da PR #70 falhou em 1 min 24 s em
+  **Executar testes unitários e de integração Spark**, após todos os checks
+  estáticos passarem.
+- **Classificação:** `detected`. PR e branch de falha foram fechadas sem merge.

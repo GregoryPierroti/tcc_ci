@@ -1529,3 +1529,14 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Resultado remoto:** a PR #74 falhou em 49 s em **Executar lint SQL**;
   parse, compile e build não foram executados.
 - **Classificação:** `detected`. PR e branch foram fechadas sem merge.
+
+### 2026-08-22 — ETP-082 — Execução controlada V2-DBT-002
+
+- **Mutação:** `ref('mod_bancos')` foi substituída por
+  `ref('modelo_inexistente')` no commit experimental `669be7a`.
+- **Confirmação independente:** `dbt parse` falhou localmente por referência
+  ausente; SQLFluff também falhou ao compilar pelo templater dbt.
+- **Resultado remoto:** a PR #75 falhou em 55 s em **Executar lint SQL**,
+  antes da etapa explícita de parse.
+- **Classificação:** `detected` por detector causal precedente (SQLFluff com
+  templater dbt). PR e branch foram fechadas sem merge.

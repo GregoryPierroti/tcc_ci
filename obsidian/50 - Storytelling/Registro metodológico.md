@@ -1427,3 +1427,13 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Resultado remoto:** a CI PySpark da PR #64 falhou em 53 s em **Executar
   lint**; formatação e docstrings passaram antes da detecção.
 - **Classificação:** `detected`. PR e branch de falha foram fechadas sem merge.
+
+### 2026-08-22 — ETP-073 — Execução controlada V2-SP-002
+
+- **Mutação:** atribuída uma lista a `base_dir: str` em `PopularLocalSpark`,
+  no commit experimental `f663255`.
+- **Confirmação independente:** mypy reportou a incompatibilidade de tipos na
+  linha mutada.
+- **Resultado remoto:** a CI PySpark da PR #65 falhou em 47 s em **Verificar
+  tipos**, após formatação, docstrings e lint aprovarem.
+- **Classificação:** `detected`. PR e branch de falha foram fechadas sem merge.

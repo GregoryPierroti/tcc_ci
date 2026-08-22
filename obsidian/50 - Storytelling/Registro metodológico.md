@@ -1437,3 +1437,14 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Resultado remoto:** a CI PySpark da PR #65 falhou em 47 s em **Verificar
   tipos**, após formatação, docstrings e lint aprovarem.
 - **Classificação:** `detected`. PR e branch de falha foram fechadas sem merge.
+
+### 2026-08-22 — ETP-074 — Execução controlada V2-SP-003
+
+- **Mutação:** substituído `F.upper` por `F.lower` na normalização da chave
+  Spark, no commit experimental `7b1c07b`.
+- **Confirmação independente:** dois testes unitários Spark falharam; a
+  cobertura permaneceu em 95%.
+- **Resultado remoto:** a CI PySpark da PR #66 falhou em 1 min 30 s em
+  **Executar testes unitários e de integração Spark**, após os checks
+  estáticos passarem.
+- **Classificação:** `detected`. PR e branch de falha foram fechadas sem merge.

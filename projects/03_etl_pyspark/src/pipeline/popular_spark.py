@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 class PopularLocalSpark:
     def __init__(self, spark: SparkSession, base_dir="camadas", fonte_dir="Dados"):
         self.spark = spark
-        self.base_dir = base_dir
+        self.base_dir: str = []
         self.raw_dir = os.path.join(base_dir, "RAW")
         self.categorias = ["Bancos", "Reclamacoes", "Empregados"]
         self.fonte_dir = fonte_dir

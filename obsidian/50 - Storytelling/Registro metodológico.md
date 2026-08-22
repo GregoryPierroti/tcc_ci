@@ -1448,3 +1448,16 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   **Executar testes unitários e de integração Spark**, após os checks
   estáticos passarem.
 - **Classificação:** `detected`. PR e branch de falha foram fechadas sem merge.
+
+### 2026-08-22 — ETP-075 — Execução controlada V2-SP-004
+
+- **Mutação:** removido `F.trim` na chave Spark, no commit experimental
+  `f320146`.
+- **Confirmação independente:** a mutação preservou espaços externos; dois
+  testes unitários falharam localmente, com cobertura de 95%.
+- **Resultado remoto:** a CI PySpark da PR #67 falhou em 1 min 19 s em
+  **Executar testes unitários e de integração Spark**, após todos os checks
+  estáticos passarem.
+- **Classificação:** `detected`, mas não atribuído exclusivamente ao Hypothesis:
+  o teste determinístico de normalização também cobre a mutação. PR e branch
+  de falha foram fechadas sem merge.

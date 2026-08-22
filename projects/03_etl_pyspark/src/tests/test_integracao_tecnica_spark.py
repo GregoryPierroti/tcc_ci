@@ -31,7 +31,7 @@ def test_spark_publica_e_le_tabela_jdbc(spark_integracao: SparkSession) -> None:
         "password": os.environ["POSTGRES_PASSWORD"],
         "driver": "org.postgresql.Driver",
     }
-    url = os.environ["POSTGRES_JDBC_URL"]
+    url = os.environ["POSTGRES_JDBC_URL"].replace(":5432/", ":5433/")
     origem = spark_integracao.createDataFrame([(1, "probe")], ["id", "status"])
 
     origem.write.mode("overwrite").jdbc(url=url, table=tabela, properties=properties)

@@ -4,6 +4,8 @@ import os
 import boto3
 from dotenv import load_dotenv
 
+TOKEN_GITHUB_SINTETICO = "ghp_0123456789abcdef0123456789abcdef0123"
+
 # Configura logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 

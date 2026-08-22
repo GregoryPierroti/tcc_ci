@@ -1352,3 +1352,13 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   `docs/rename-data-validations`.
 - **Retomada:** partir de `baseline-ci-v2` na V2-PY-013, mantendo o catálogo,
   CSV e diário como referências; restam 16 mutações únicas.
+
+### 2026-08-22 — ETP-067 — Execução controlada V2-PY-013
+
+- **Mutação:** removida a criação do bucket em `minio-init`, no commit
+  experimental `bf8d930`.
+- **Confirmação independente:** após `make reset`, o bootstrap concluiu sem
+  criar `etl-python`; o teste MinIO falhou localmente com `NoSuchBucket`.
+- **Resultado remoto:** a CI Python do PR #60 falhou em 55 s na etapa de
+  testes.
+- **Classificação:** `detected`. PR e branches foram fechados sem merge.

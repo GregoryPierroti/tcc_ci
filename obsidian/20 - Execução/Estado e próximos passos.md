@@ -1,8 +1,8 @@
 # Estado e próximos passos
 
-> [!important] Ponto de handoff — 2026-08-16
-> A rodada v2 está pausada após V2-PY-012. Há 13 execuções v2 registradas,
-> correspondentes a 12 mutações únicas: 10 detectadas e 3 falsos negativos.
+> [!important] Ponto de handoff — 2026-08-22
+> A rodada v2 está em execução após V2-PY-013. Há 14 execuções v2 registradas,
+> correspondentes a 13 mutações únicas: 11 detectadas e 3 falsos negativos.
 > As evidências v1 permanecem separadas e imutáveis.
 
 ## Estado consolidado
@@ -13,7 +13,7 @@
 | Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada dbt | concluída: 5 detecções | [[../30 - Tecnologias/Fluxo de checks dbt|fluxo de checks do dbt]] |
-| Rodada v2 (parcial) | 12 de 28 mutações únicas concluídas; 16 restantes | `results/resultados.csv`, `fault-catalog/falhas-v2.yml` |
+| Rodada v2 (parcial) | 13 de 28 mutações únicas concluídas; 15 restantes | `results/resultados.csv`, `fault-catalog/falhas-v2.yml` |
 | Obsidian | documentação e narrativa da v1 consolidadas | [[../40 - Evidências/Matriz comparativa final|matriz da v1]] |
 
 ## Pendência experimental preservada
@@ -31,7 +31,7 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
 ## Próximos passos da v2
 
-1. Executar as 16 mutações restantes de forma isolada a partir da tag
+1. Executar as 15 mutações restantes de forma isolada a partir da tag
    `baseline-ci-v2` e consolidar os resultados observados; V2-PY-001 e
    V2-PY-002 foram detectadas por Ruff, V2-PY-003 foi confirmado por mypy na
    repetição isolada e V2-PY-004 por pydocstringformatter. V2-PY-005 expôs
@@ -43,7 +43,8 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
    Hypothesis sobre espaços externos. V2-PY-010 expôs falso negativo: a CI
    agrega cobertura de integração e não preserva o piso unitário de 95%.
    V2-PY-011 e V2-PY-012 foram detectadas por testes de integração PostgreSQL
-   e MinIO, respectivamente. A próxima execução é V2-PY-013 (bootstrap).
+   e MinIO, respectivamente. V2-PY-013 detectou a ausência do bucket após
+   bootstrap. A próxima execução é V2-PY-014 (reexecução técnica).
 2. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
 
 ## Escopo aprovado para a v2

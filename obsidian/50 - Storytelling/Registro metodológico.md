@@ -1540,3 +1540,13 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   antes da etapa explícita de parse.
 - **Classificação:** `detected` por detector causal precedente (SQLFluff com
   templater dbt). PR e branch foram fechadas sem merge.
+
+### 2026-08-22 — ETP-083 — Execução controlada V2-GOV-001
+
+- **Mutação:** adicionado auxiliar com `subprocess.run(..., shell=True)` no
+  commit experimental `4cbe515`.
+- **Confirmação independente:** Bandit reportou a chamada insegura.
+- **Resultado remoto:** a CI Python da PR #76 falhou em 1 min 13 s em
+  **Auditar dependências**, após checks estáticos e testes aprovarem.
+- **Classificação:** `detected` por Bandit B602. PR e branch foram fechadas sem
+  merge.

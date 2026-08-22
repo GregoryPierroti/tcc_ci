@@ -93,6 +93,10 @@ class S3Client:
         """Garante a estrutura base por meio de arquivos ``.keep`` vazios."""
         folders = ["Dados/Bancos/", "Dados/Reclamacoes/", "Dados/Empregados/"]
 
+        objetos_existentes = self.s3.list_objects_v2(Bucket=self.bucket).get("Contents", [])
+        if objetos_existentes:
+            raise RuntimeError("Estrutura base já existe.")
+
         for folder in folders:
             key = f"{folder}.keep"
             try:

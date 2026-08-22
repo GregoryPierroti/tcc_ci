@@ -1362,3 +1362,13 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Resultado remoto:** a CI Python do PR #60 falhou em 55 s na etapa de
   testes.
 - **Classificação:** `detected`. PR e branches foram fechados sem merge.
+
+### 2026-08-22 — ETP-068 — Execução controlada V2-PY-014
+
+- **Confirmação independente:** duas chamadas consecutivas a
+  `ensure_base_structure` falharam na segunda; a suíte de integração existente
+  passou por não cobrir a sequência.
+- **Resultado remoto:** o PR #61 falhou em `pip-audit` por
+  `PYSEC-2026-3721` no `pip 26.1.2`, fora do escopo causal da mutação.
+- **Classificação:** `false_positive`; a baseline de segurança deve ser
+  revalidada antes de repetir a mutação. PR e branches foram fechados sem merge.

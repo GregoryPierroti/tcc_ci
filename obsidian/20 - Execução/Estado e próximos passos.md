@@ -1,8 +1,9 @@
 # Estado e próximos passos
 
 > [!important] Ponto de handoff — 2026-08-22
-> A rodada v2 está em execução após V2-PY-013. Há 14 execuções v2 registradas,
-> correspondentes a 13 mutações únicas: 11 detectadas e 3 falsos negativos.
+> A rodada v2 está suspensa após V2-PY-014. Há 15 execuções v2 registradas,
+> correspondentes a 14 mutações únicas: 11 detectadas, 3 falsos negativos e
+> 1 falso positivo externo.
 > As evidências v1 permanecem separadas e imutáveis.
 
 ## Estado consolidado
@@ -13,7 +14,7 @@
 | Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada dbt | concluída: 5 detecções | [[../30 - Tecnologias/Fluxo de checks dbt|fluxo de checks do dbt]] |
-| Rodada v2 (parcial) | 13 de 28 mutações únicas concluídas; 15 restantes | `results/resultados.csv`, `fault-catalog/falhas-v2.yml` |
+| Rodada v2 (parcial) | 14 de 28 mutações únicas concluídas; 14 restantes | `results/resultados.csv`, `fault-catalog/falhas-v2.yml` |
 | Obsidian | documentação e narrativa da v1 consolidadas | [[../40 - Evidências/Matriz comparativa final|matriz da v1]] |
 
 ## Pendência experimental preservada
@@ -31,7 +32,10 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
 ## Próximos passos da v2
 
-1. Executar as 15 mutações restantes de forma isolada a partir da tag
+1. Revalidar a baseline de segurança: a CI remota passou a reprovar
+   `pip 26.1.2` por `PYSEC-2026-3721`, causa externa à V2-PY-014. Somente
+   depois decidir se se corrige a baseline e se repete V2-PY-014.
+2. Executar as 14 mutações restantes de forma isolada a partir da tag
    `baseline-ci-v2` e consolidar os resultados observados; V2-PY-001 e
    V2-PY-002 foram detectadas por Ruff, V2-PY-003 foi confirmado por mypy na
    repetição isolada e V2-PY-004 por pydocstringformatter. V2-PY-005 expôs
@@ -44,8 +48,8 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
    agrega cobertura de integração e não preserva o piso unitário de 95%.
    V2-PY-011 e V2-PY-012 foram detectadas por testes de integração PostgreSQL
    e MinIO, respectivamente. V2-PY-013 detectou a ausência do bucket após
-   bootstrap. A próxima execução é V2-PY-014 (reexecução técnica).
-2. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
+   bootstrap. V2-PY-014 aguarda repetição após revalidação de segurança.
+3. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
 
 ## Escopo aprovado para a v2
 

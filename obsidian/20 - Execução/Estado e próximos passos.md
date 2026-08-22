@@ -1,8 +1,8 @@
 # Estado e próximos passos
 
 > [!important] Ponto de handoff — 2026-08-22
-> A rodada v2 foi revalidada após V2-SP-008. Há 26 execuções v2 registradas,
-> correspondentes a 22 mutações únicas: 19 detectadas, 5 falsos negativos e
+> A rodada v2 foi revalidada após V2-DBT-001. Há 27 execuções v2 registradas,
+> correspondentes a 23 mutações únicas: 20 detectadas, 5 falsos negativos e
 > 2 falsos positivos externos.
 > As evidências v1 permanecem separadas e imutáveis.
 
@@ -14,7 +14,7 @@
 | Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada dbt | concluída: 5 detecções | [[../30 - Tecnologias/Fluxo de checks dbt|fluxo de checks do dbt]] |
-| Rodada v2 (parcial) | 22 de 28 mutações únicas concluídas; 6 restantes | `results/resultados.csv`, `fault-catalog/falhas-v2.yml` |
+| Rodada v2 (parcial) | 23 de 28 mutações únicas concluídas; 5 restantes | `results/resultados.csv`, `fault-catalog/falhas-v2.yml` |
 | Obsidian | documentação e narrativa da v1 consolidadas | [[../40 - Evidências/Matriz comparativa final|matriz da v1]] |
 
 ## Pendência experimental preservada
@@ -39,7 +39,7 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
    `baseline-ci-v2-security-20260822`, derivada da `main` simplificada, fica
    preservada apenas como tentativa não comparável e não será usada nas
    medições. O resultado causal é falso negativo de cobertura de reexecução.
-2. Executar as 6 mutações restantes de forma isolada a partir da baseline
+2. Executar as 5 mutações restantes de forma isolada a partir da baseline
    reconstruída e
    consolidar os resultados observados; V2-PY-001 e
    V2-PY-002 foram detectadas por Ruff, V2-PY-003 foi confirmado por mypy na
@@ -62,8 +62,8 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
    de 95%. V2-SP-006 detectou a indisponibilidade JDBC e V2-SP-007 o contrato
    de escrita-leitura; a primeira tentativa de V2-SP-007 foi bloqueada por
    formatação e a repetição confirmou o detector previsto. V2-SP-008 detectou
-   a ausência de persistência pelo teste unitário de orquestração. A próxima é
-   V2-DBT-001, de estilo SQL.
+   a ausência de persistência pelo teste unitário de orquestração. V2-DBT-001
+   foi detectada por SQLFluff. A próxima é V2-DBT-002, de integridade do grafo.
 3. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
 
 ## Escopo aprovado para a v2

@@ -1520,3 +1520,12 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   estáticos passarem.
 - **Classificação:** `detected`. O teste unitário antecipou o detector de
   integração previsto no catálogo. PR e branch foram fechadas sem merge.
+
+### 2026-08-22 — ETP-081 — Execução controlada V2-DBT-001
+
+- **Mutação:** inserido espaço duplicado antes de `*` no `select` final de
+  `mod_final`, no commit experimental `f6b5d80`, sem alteração semântica SQL.
+- **Confirmação independente:** SQLFluff reportou LT01 (`layout.spacing`).
+- **Resultado remoto:** a PR #74 falhou em 49 s em **Executar lint SQL**;
+  parse, compile e build não foram executados.
+- **Classificação:** `detected`. PR e branch foram fechadas sem merge.

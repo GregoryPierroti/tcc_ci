@@ -29,6 +29,7 @@ class IngestaoRawSpark:
 
     def executar(self):
         logging.info("📥 Etapa 1: Popular RAW")
+        logging.info(identificador_v2_inexistente)
 
         caminho_bancos = os.path.join(self.base_dir, "Bancos", "EnquadramentoInicia_v2.tsv")
         schema_bancos = StructType(

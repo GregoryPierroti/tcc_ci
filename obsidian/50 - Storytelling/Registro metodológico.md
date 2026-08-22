@@ -1550,3 +1550,17 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   **Auditar dependências**, após checks estáticos e testes aprovarem.
 - **Classificação:** `detected` por Bandit B602. PR e branch foram fechadas sem
   merge.
+
+### 2026-08-22 — ETP-084 — Execução controlada V2-GOV-002
+
+- **Tentativa inicial:** o commit experimental `0541a9a` adicionou uma
+  assinatura de token GitHub explicitamente sintética como constante Python.
+  O Gitleaks passou, mas o Bandit B105 a bloqueou em **Auditar dependências**
+  como possível senha, em 82 s. A tentativa foi classificada como detecção
+  causal precedente e a PR #77 foi fechada sem merge.
+- **Repetição isolada:** a mesma assinatura foi deslocada para comentário no
+  commit `fdd1b4c`, evitando o escopo da regra B105. O workflow de governança
+  passou em 21 s e o workflow Python em 1 min 08 s; Gitleaks não a detectou.
+- **Classificação:** a repetição é `false_negative` do Gitleaks para essa
+  assinatura sintética. A PR #78 e ambas as branches experimentais foram
+  fechadas sem merge, preservando a baseline.

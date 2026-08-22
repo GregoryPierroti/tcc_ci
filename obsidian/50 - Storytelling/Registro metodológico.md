@@ -1508,3 +1508,15 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Resultado remoto:** a PR #72 falhou em 1 min 37 s em **Executar testes
   unitários e de integração Spark**, após todos os checks estáticos passarem.
 - **Classificação:** `detected`. PRs e branches de falha foram fechadas sem merge.
+
+### 2026-08-22 — ETP-080 — Execução controlada V2-SP-008
+
+- **Mutação:** removida a escrita JDBC da etapa de entrega Spark, no commit
+  experimental `81272dc`.
+- **Confirmação independente:** o teste unitário de orquestração falhou com a
+  lista de publicações vazia; a cobertura permaneceu em 97,45%.
+- **Resultado remoto:** a CI PySpark da PR #73 falhou em 1 min 20 s em
+  **Executar testes unitários e de integração Spark**, após todos os checks
+  estáticos passarem.
+- **Classificação:** `detected`. O teste unitário antecipou o detector de
+  integração previsto no catálogo. PR e branch foram fechadas sem merge.

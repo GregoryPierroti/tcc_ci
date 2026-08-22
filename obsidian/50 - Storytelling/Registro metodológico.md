@@ -1372,3 +1372,11 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   `PYSEC-2026-3721` no `pip 26.1.2`, fora do escopo causal da mutação.
 - **Classificação:** `false_positive`; a baseline de segurança deve ser
   revalidada antes de repetir a mutação. PR e branches foram fechados sem merge.
+
+### 2026-08-22 — ETP-069 — Revalidação de segurança da baseline
+
+- `make security` na referência atual reproduziu localmente o achado remoto:
+  `pip-audit --strict` reporta `pip 26.1.2` vulnerável a `PYSEC-2026-3721`,
+  com atualização disponível para 26.2.
+- A falha não decorre de V2-PY-014 e torna a baseline de segurança inválida
+  para novas medições até correção, nova baseline e repetição controlada.

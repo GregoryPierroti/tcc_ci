@@ -32,9 +32,10 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
 ## Próximos passos da v2
 
-1. Revalidar a baseline de segurança: a CI remota passou a reprovar
-   `pip 26.1.2` por `PYSEC-2026-3721`, causa externa à V2-PY-014. Somente
-   depois decidir se se corrige a baseline e se repete V2-PY-014.
+1. Corrigir e revalidar a baseline de segurança: tanto a CI remota quanto
+   `make security` local reprovam `pip 26.1.2` por `PYSEC-2026-3721`, causa
+   externa à V2-PY-014. Depois, criar baseline saudável substituta e repetir
+   V2-PY-014.
 2. Executar as 14 mutações restantes de forma isolada a partir da tag
    `baseline-ci-v2` e consolidar os resultados observados; V2-PY-001 e
    V2-PY-002 foram detectadas por Ruff, V2-PY-003 foi confirmado por mypy na

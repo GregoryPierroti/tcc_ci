@@ -76,4 +76,4 @@ final as (
   inner join empregados as e on jb.nome_processed = e.nome_processed_empregado
 )
 
-select * from final
+select  * from final

@@ -16,7 +16,7 @@ class TransformacoesTrustedSpark:
         os.makedirs(self.trusted_dir, exist_ok=True)
 
     def _criar_chave_nome(self, df, nome_coluna):
-        coluna = F.upper(F.col(nome_coluna))
+        coluna = F.lower(F.col(nome_coluna))
         coluna = F.translate(coluna, "ÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇ", "AAAAAEEEEIIIIOOOOOUUUUC")
         coluna = F.regexp_replace(coluna, "[^A-Z0-9 ]", "")
         padroes = ["S A", "S/A", "SA", "LTDA", " - PRUDENCIAL", "BANCO", "BRASIL"]

@@ -1416,3 +1416,14 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   reexecução/idempotência do bootstrap. PR e branch de falha devem ser
   fechadas sem merge; a baseline reconstruída permanece como referência para
   as próximas mutações.
+
+### 2026-08-22 — ETP-072 — Execução controlada V2-SP-001
+
+- **Mutação:** inserida a referência Python inexistente
+  `identificador_v2_inexistente` na ingestão Spark, no commit experimental
+  `b2836cf`.
+- **Confirmação independente:** `ruff check` reportou F821 exatamente na linha
+  mutada.
+- **Resultado remoto:** a CI PySpark da PR #64 falhou em 53 s em **Executar
+  lint**; formatação e docstrings passaram antes da detecção.
+- **Classificação:** `detected`. PR e branch de falha foram fechadas sem merge.

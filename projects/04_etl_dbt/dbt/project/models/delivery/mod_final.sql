@@ -6,7 +6,7 @@ with bancos as (
     segmento,
     nome,
     nome_processed
-  from {{ ref('mod_bancos') }}
+  from {{ ref('modelo_inexistente') }}
   where cnpj is not null and cnpj <> '0'
 ),
 

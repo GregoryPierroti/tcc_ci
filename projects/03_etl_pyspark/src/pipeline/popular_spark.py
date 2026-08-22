@@ -43,6 +43,14 @@ class PopularLocalSpark:
             df.write.mode("overwrite").parquet(destino)
             logging.info(f"RAW salva: {destino}")
 
+    def caminho_de_contingencia(self) -> str:
+        """Retorna o diretório alternativo para uma futura contingência local."""
+        if self.base_dir:
+            return self.base_dir
+        if self.fonte_dir:
+            return os.path.join(self.fonte_dir, "contingencia")
+        return ""
+
 
 if __name__ == "__main__":
     spark = SparkSession.builder.appName("PopularLocalSpark").getOrCreate()

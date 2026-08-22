@@ -82,9 +82,3 @@ class AgregacoesDeliverySpark:
         destino_parquet = os.path.join(self.delivery_dir, "reclamacoes_unificadas_parquet")
         df_final.write.mode("overwrite").parquet(destino_parquet)
         logging.info(f"Delivery salvo em Parquet: {destino_parquet}")
-
-        logging.info("Salvando no Postgres...")
-        df_final.write.mode("overwrite").jdbc(
-            url=self.jdbc_url, table=self.tabela_destino, properties=self.properties
-        )
-        logging.info(f"Tabela '{self.tabela_destino}' salva com sucesso no Postgres.")

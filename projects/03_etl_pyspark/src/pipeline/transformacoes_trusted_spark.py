@@ -23,7 +23,7 @@ class TransformacoesTrustedSpark:
         for p in padroes:
             coluna = F.regexp_replace(coluna, p, "")
         coluna = F.regexp_replace(coluna, "\\s+", " ")
-        return df.withColumn("Nome_processed", F.trim(coluna))
+        return df.withColumn("Nome_processed", coluna)
 
     def transformar_e_salvar(self, nome_tabela, nome_coluna_chave):
         caminho_raw = os.path.join(self.raw_dir, f"{nome_tabela}_parquet")

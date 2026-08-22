@@ -1,9 +1,9 @@
 # Estado e próximos passos
 
 > [!important] Ponto de handoff — 2026-08-22
-> A rodada v2 foi revalidada após V2-SP-004. Há 20 execuções v2 registradas,
-> correspondentes a 18 mutações únicas: 15 detectadas, 4 falsos negativos e
-> 1 falso positivo externo.
+> A rodada v2 foi revalidada após V2-SP-005. Há 22 execuções v2 registradas,
+> correspondentes a 19 mutações únicas: 15 detectadas, 5 falsos negativos e
+> 2 falsos positivos externos.
 > As evidências v1 permanecem separadas e imutáveis.
 
 ## Estado consolidado
@@ -14,7 +14,7 @@
 | Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada dbt | concluída: 5 detecções | [[../30 - Tecnologias/Fluxo de checks dbt|fluxo de checks do dbt]] |
-| Rodada v2 (parcial) | 18 de 28 mutações únicas concluídas; 10 restantes | `results/resultados.csv`, `fault-catalog/falhas-v2.yml` |
+| Rodada v2 (parcial) | 19 de 28 mutações únicas concluídas; 9 restantes | `results/resultados.csv`, `fault-catalog/falhas-v2.yml` |
 | Obsidian | documentação e narrativa da v1 consolidadas | [[../40 - Evidências/Matriz comparativa final|matriz da v1]] |
 
 ## Pendência experimental preservada
@@ -33,13 +33,13 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 ## Próximos passos da v2
 
 1. V2-PY-014 foi repetida de forma causal a partir de
-   `baseline-ci-v2-security-rebuilt-20260822` (`b80ccfa`): a referência
+   `baseline-ci-v2-security-rebuilt-all-20260822` (`14efe37`): a referência
    reconstrói `baseline-ci-v2` com apenas a atualização para `pip==26.2` e
    preserva todos os checks da v2. A tag anterior
    `baseline-ci-v2-security-20260822`, derivada da `main` simplificada, fica
    preservada apenas como tentativa não comparável e não será usada nas
    medições. O resultado causal é falso negativo de cobertura de reexecução.
-2. Executar as 10 mutações restantes de forma isolada a partir da baseline
+2. Executar as 9 mutações restantes de forma isolada a partir da baseline
    reconstruída e
    consolidar os resultados observados; V2-PY-001 e
    V2-PY-002 foram detectadas por Ruff, V2-PY-003 foi confirmado por mypy na
@@ -57,8 +57,9 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
    exercita a reinicialização da estrutura já existente. V2-SP-001 foi
    detectada por Ruff F821; V2-SP-002 foi detectada por mypy e V2-SP-003 e
    V2-SP-004 por testes unitários Spark. V2-SP-004 não isolou Hypothesis,
-   pois o teste determinístico também cobre a mutação. A próxima é V2-SP-005,
-   de cobertura unitária Spark.
+   pois o teste determinístico também cobre a mutação. V2-SP-005 expôs falso
+   negativo: a CI agrega cobertura de integração e não preserva o piso unitário
+   de 95%. A próxima é V2-SP-006, de integração Spark-JDBC.
 3. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
 
 ## Escopo aprovado para a v2

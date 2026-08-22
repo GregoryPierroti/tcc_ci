@@ -1461,3 +1461,27 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Classificação:** `detected`, mas não atribuído exclusivamente ao Hypothesis:
   o teste determinístico de normalização também cobre a mutação. PR e branch
   de falha foram fechadas sem merge.
+
+### 2026-08-22 — ETP-076 — Revalidação de segurança da baseline Spark
+
+- **Achado externo:** a primeira execução de V2-SP-005 (PR #68) passou na
+  etapa de testes, mas falhou posteriormente em `pip-audit` por `pip 26.1.2`
+  vulnerável a `PYSEC-2026-3721`; não é causa da mutação de cobertura.
+- **Correção:** reconstruída a baseline a partir de
+  `baseline-ci-v2-security-rebuilt`, aplicando `pip==26.2` ao manifesto,
+  lockfile e imagem PySpark. `make security` passou localmente.
+- **Nova referência:** branch `baseline/v2-security-rebuilt-all` e tag
+  `baseline-ci-v2-security-rebuilt-all-20260822` (`14efe37`), preservando os
+  checks da v2 e as correções de segurança de Python e PySpark.
+
+### 2026-08-22 — ETP-077 — Repetição causal V2-SP-005
+
+- **Mutação:** caminho técnico de contingência sem teste em `PopularLocalSpark`,
+  no commit experimental `e799582`.
+- **Confirmação independente:** os testes unitários funcionais passaram, mas a
+  cobertura ficou em **94,58%**, abaixo do piso de 95%.
+- **Resultado remoto:** a PR #69 passou em 1 min 51 s, incluindo todos os 17
+  passos, segurança e SBOM. A etapa remota executa unitários e integração em
+  composição, recompondo a cobertura e não bloqueando a queda unitária.
+- **Classificação:** `false_negative` causal. PR e branch de falha foram
+  fechadas sem merge.

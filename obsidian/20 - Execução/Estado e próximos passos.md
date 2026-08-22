@@ -1,8 +1,8 @@
 # Estado e próximos passos
 
 > [!important] Ponto de handoff — 2026-08-22
-> A rodada v2 foi revalidada após V2-SP-006. Há 23 execuções v2 registradas,
-> correspondentes a 20 mutações únicas: 16 detectadas, 5 falsos negativos e
+> A rodada v2 foi revalidada após V2-SP-007. Há 25 execuções v2 registradas,
+> correspondentes a 21 mutações únicas: 18 detectadas, 5 falsos negativos e
 > 2 falsos positivos externos.
 > As evidências v1 permanecem separadas e imutáveis.
 
@@ -14,7 +14,7 @@
 | Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada dbt | concluída: 5 detecções | [[../30 - Tecnologias/Fluxo de checks dbt|fluxo de checks do dbt]] |
-| Rodada v2 (parcial) | 20 de 28 mutações únicas concluídas; 8 restantes | `results/resultados.csv`, `fault-catalog/falhas-v2.yml` |
+| Rodada v2 (parcial) | 21 de 28 mutações únicas concluídas; 7 restantes | `results/resultados.csv`, `fault-catalog/falhas-v2.yml` |
 | Obsidian | documentação e narrativa da v1 consolidadas | [[../40 - Evidências/Matriz comparativa final|matriz da v1]] |
 
 ## Pendência experimental preservada
@@ -39,7 +39,7 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
    `baseline-ci-v2-security-20260822`, derivada da `main` simplificada, fica
    preservada apenas como tentativa não comparável e não será usada nas
    medições. O resultado causal é falso negativo de cobertura de reexecução.
-2. Executar as 8 mutações restantes de forma isolada a partir da baseline
+2. Executar as 7 mutações restantes de forma isolada a partir da baseline
    reconstruída e
    consolidar os resultados observados; V2-PY-001 e
    V2-PY-002 foram detectadas por Ruff, V2-PY-003 foi confirmado por mypy na
@@ -59,8 +59,10 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
    V2-SP-004 por testes unitários Spark. V2-SP-004 não isolou Hypothesis,
    pois o teste determinístico também cobre a mutação. V2-SP-005 expôs falso
    negativo: a CI agrega cobertura de integração e não preserva o piso unitário
-   de 95%. V2-SP-006 detectou a indisponibilidade JDBC. A próxima é
-   V2-SP-007, de contrato escrita-leitura Spark-JDBC.
+   de 95%. V2-SP-006 detectou a indisponibilidade JDBC e V2-SP-007 o contrato
+   de escrita-leitura; a primeira tentativa de V2-SP-007 foi bloqueada por
+   formatação e a repetição confirmou o detector previsto. A próxima é
+   V2-SP-008, de persistência Spark-JDBC.
 3. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
 
 ## Escopo aprovado para a v2

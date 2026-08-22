@@ -1496,3 +1496,15 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   **Executar testes unitários e de integração Spark**, após todos os checks
   estáticos passarem.
 - **Classificação:** `detected`. PR e branch de falha foram fechadas sem merge.
+
+### 2026-08-22 — ETP-079 — Execução controlada V2-SP-007
+
+- **Primeira tentativa:** a leitura JDBC foi alterada para uma relação
+  inexistente, no commit `1e56213`, mas a PR #71 bloqueou em **Verificar
+  formatação** antes do detector previsto. O resultado precedente foi mantido
+  no CSV e a hipótese foi repetida.
+- **Repetição isolada:** no commit `7d52596`, a mutação foi formatada; o check
+  de formatação passou e a integração local falhou ao ler a relação inexistente.
+- **Resultado remoto:** a PR #72 falhou em 1 min 37 s em **Executar testes
+  unitários e de integração Spark**, após todos os checks estáticos passarem.
+- **Classificação:** `detected`. PRs e branches de falha foram fechadas sem merge.

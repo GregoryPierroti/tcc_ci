@@ -1380,3 +1380,14 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   com atualização disponível para 26.2.
 - A falha não decorre de V2-PY-014 e torna a baseline de segurança inválida
   para novas medições até correção, nova baseline e repetição controlada.
+
+### 2026-08-22 — ETP-070 — Correção e nova baseline de segurança
+
+- **Correção:** a PR #62 fixou `pip==26.2` no manifesto, lockfile e imagem
+  Python. `uv sync --frozen` agora preserva a versão corrigida no ambiente
+  auditado.
+- **Validação:** `make security` passou localmente e a CI remota passou na PR
+  #62. A correção foi integrada à `main` no commit `ab97bd8`.
+- **Nova referência:** criada a tag anotada
+  `baseline-ci-v2-security-20260822`, sem alterar `baseline-ci-v2`. V2-PY-014
+  deve ser repetida a partir da nova tag.

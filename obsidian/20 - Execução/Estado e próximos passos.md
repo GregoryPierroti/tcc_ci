@@ -1,7 +1,7 @@
 # Estado e próximos passos
 
 > [!important] Ponto de handoff — 2026-08-22
-> A rodada v2 está suspensa após V2-PY-014. Há 15 execuções v2 registradas,
+> A rodada v2 foi revalidada após V2-PY-014. Há 15 execuções v2 registradas,
 > correspondentes a 14 mutações únicas: 11 detectadas, 3 falsos negativos e
 > 1 falso positivo externo.
 > As evidências v1 permanecem separadas e imutáveis.
@@ -32,12 +32,12 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
 ## Próximos passos da v2
 
-1. Corrigir e revalidar a baseline de segurança: tanto a CI remota quanto
-   `make security` local reprovam `pip 26.1.2` por `PYSEC-2026-3721`, causa
-   externa à V2-PY-014. Depois, criar baseline saudável substituta e repetir
-   V2-PY-014.
-2. Executar as 14 mutações restantes de forma isolada a partir da tag
-   `baseline-ci-v2` e consolidar os resultados observados; V2-PY-001 e
+1. Repetir V2-PY-014 a partir de `baseline-ci-v2-security-20260822`: a
+   correção `pip==26.2` foi integrada na PR #62, validada localmente por
+   `make security` e remotamente pela CI. A tag histórica `baseline-ci-v2`
+   permanece preservada.
+2. Executar as 14 mutações restantes de forma isolada a partir da nova tag e
+   consolidar os resultados observados; V2-PY-001 e
    V2-PY-002 foram detectadas por Ruff, V2-PY-003 foi confirmado por mypy na
    repetição isolada e V2-PY-004 por pydocstringformatter. V2-PY-005 expôs
    falso negativo: Radon reportou C (14), mas sua configuração não bloqueia o

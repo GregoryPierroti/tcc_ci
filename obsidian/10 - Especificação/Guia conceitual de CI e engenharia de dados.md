@@ -69,7 +69,7 @@ detectá-la.
 | **SBOM CycloneDX** | Inventaria componentes de software e dependências. | Apoia auditoria e resposta a vulnerabilidades nos ambientes que rodam o pipeline. |
 | PR, proteção de branch e logs do GitHub Actions | Preservam revisão, status e evidência do processo. | Impedem integrar mudança sem controles e permitem reconstruir a causa de uma falha experimental. |
 
-## Como apresentar ao orientador
+## Síntese técnica do argumento
 
 1. Começar pelo problema: pipelines falham não só por dados ruins, mas também
    por código, dependência, configuração, infraestrutura e integração técnica.

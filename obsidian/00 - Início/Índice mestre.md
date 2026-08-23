@@ -21,9 +21,10 @@
 
 ## Para escrever a monografia ou analisar resultados
 
-- [[../40 - Evidências/Resultados e métricas|Resumo de resultados v1]] — resultados e interpretação histórica.
-- [[../40 - Evidências/Matriz comparativa final|Matriz comparativa v1]] — comparação das 15 execuções.
-- [[../40 - Evidências/Interpretação comparativa|Discussão comparativa v1 e limites]] — discussão e limites.
+- [[../40 - Evidências/Resultados e métricas|Resultados e métricas v1–v2]] — números consolidados por execução.
+- [[../40 - Evidências/Matriz comparativa final|Matriz comparativa v1–v2]] — síntese por técnica, risco e evidência.
+- [[../50 - Storytelling/Matriz acadêmica das 43 mutações|Matriz acadêmica das 43 mutações]] — uma linha por mutação única.
+- [[../40 - Evidências/Interpretação comparativa|Discussão comparativa v1–v2 e limites]] — interpretação dos resultados.
 - [[../40 - Evidências/Rastreabilidade das evidências|Rastreabilidade das evidências]] — caminho até CSV, jobs e diário.
 - [[../50 - Storytelling/Linha do tempo metodológica|Linha do tempo metodológica]] — narrativa cronológica.
 - [[../90 - Governança e IA/Contexto para IA|Guia de leitura para IA]] — vocabulário e ordem de leitura segura.

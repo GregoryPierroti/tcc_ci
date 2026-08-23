@@ -1612,9 +1612,9 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Artefato:** criado o guia de CI e engenharia de dados que organiza
   conceitos, ferramentas, riscos mitigados, aplicação em pipelines e limites
   de interpretação.
-- **Uso previsto:** apoiar a conversa com o orientador e orientar a análise
-  comparativa, explicando a ponte com engenharia de software sem alegar que
-  esses controles avaliam *data quality*.
+- **Uso previsto:** orientar a análise comparativa e explicar a ponte com
+  engenharia de software sem alegar que esses controles avaliam *data
+  quality*.
 
 ### 2026-08-23 — ETP-089 — Consolidação das unidades e da rastreabilidade
 
@@ -1643,3 +1643,20 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Delimitação:** a consolidação permanece no escopo de engenharia de
   software aplicada a pipelines e não introduz nem substitui controles de
   *data quality*.
+
+### 2026-08-23 — ETP-090 — Matriz acadêmica das 43 mutações
+
+- **Objetivo:** consolidar as mutações v1–v2 em uma matriz que preserve a
+  diferença entre prática avaliada, objetivo do controle, ferramenta presente,
+  detector esperado e primeiro detector observado.
+- **Artefato:** criada a [[Matriz acadêmica das 43 mutações|matriz acadêmica
+  das 43 mutações únicas]]. O índice e o dashboard passaram a apontar para a
+  matriz e tiveram os rótulos v1–v2 atualizados.
+- **Unidade da matriz:** uma linha por `fault_id`: 15 mutações v1 e 28 v2. As
+  cinco repetições metodológicas permanecem consolidadas na linha da mutação,
+  com a sequência dos detectores e classificações preservada.
+- **Forma final:** por decisão do mantenedor, o arquivo da matriz contém
+  somente a tabela de dez colunas e 43 linhas, sem introdução ou síntese. Um
+  rascunho intermediário redundante não foi versionado.
+- **Verificação:** confirmados 43 IDs únicos, nenhuma duplicidade, dez colunas
+  em todas as linhas e `git diff --check` sem erros.

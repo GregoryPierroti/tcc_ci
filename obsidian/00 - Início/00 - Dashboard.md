@@ -10,8 +10,9 @@
 3. [[../10 - Especificação/Desenho metodológico|Desenho metodológico]] — como a hipótese é testada.
 4. [[../20 - Execução/Estado e próximos passos|Estado atual e próximos passos]] — retomar o trabalho.
 5. [[../10 - Especificação/Plano da rodada v2|Plano da rodada v2]] — escopo da próxima rodada.
-6. [[../40 - Evidências/Resultados e métricas|Resumo de resultados v1]] — achados históricos.
-7. [[../40 - Evidências/Matriz comparativa final|Matriz comparativa v1]] — comparação das 15 execuções iniciais.
+6. [[../40 - Evidências/Resultados e métricas|Resultados e métricas v1–v2]] — números consolidados por execução.
+7. [[../40 - Evidências/Matriz comparativa final|Matriz comparativa v1–v2]] — síntese por técnica e risco.
+8. [[../50 - Storytelling/Matriz acadêmica das 43 mutações|Matriz das 43 mutações]] — visão acadêmica por hipótese única.
 
 ## Fontes primárias
 

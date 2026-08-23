@@ -13,7 +13,7 @@ testabilidade, integração técnica e reprodutibilidade. Ela não avalia *data
 quality*; completude, nulidade, unicidade e cardinalidade do conteúdo não são
 métricas nem objetivo da rodada.
 
-## Pergunta orientadora
+## Pergunta de pesquisa
 
 Uma esteira de CI usual em software pode ser reutilizada em engenharia de
 dados? Quais adaptações são necessárias, quais falhas ela detecta e qual custo

@@ -1,8 +1,9 @@
 FROM ghcr.io/astral-sh/uv:0.10.7 AS uv
 FROM python:3.11-slim-bookworm
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends openjdk-17-jdk-headless curl procps \
+RUN apt-get update
+
+RUN apt-get install -y --no-install-recommends openjdk-17-jdk-headless curl procps \
     && rm -rf /var/lib/apt/lists/*
 
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64

@@ -1564,3 +1564,16 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Classificação:** a repetição é `false_negative` do Gitleaks para essa
   assinatura sintética. A PR #78 e ambas as branches experimentais foram
   fechadas sem merge, preservando a baseline.
+
+### 2026-08-23 — ETP-085 — Execução controlada V2-GOV-003
+
+- **Mutação:** a condição de publicação de relatórios no workflow Python foi
+  alterada para uma chamada `always()` incompleta, no commit experimental
+  `9f89497`.
+- **Confirmação independente:** Actionlint retornou erro de parser apontando
+  `ci-python.yml:67`; por isso, o workflow Python defeituoso não foi carregado
+  e somente a governança executou.
+- **Resultado remoto:** hooks de pré-commit e Gitleaks passaram; a PR #79
+  falhou em 16 s em **Validar workflows GitHub Actions**.
+- **Classificação:** `detected` por Actionlint no estágio previsto. PR e branch
+  foram fechadas sem merge.

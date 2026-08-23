@@ -1,8 +1,8 @@
 # Estado e próximos passos
 
 > [!important] Ponto de handoff — 2026-08-22
-> A rodada v2 foi revalidada após V2-GOV-002. Há 31 execuções v2 registradas,
-> correspondentes a 26 mutações únicas: 23 detectadas, 6 falsos negativos e
+> A rodada v2 foi revalidada após V2-GOV-003. Há 32 execuções v2 registradas,
+> correspondentes a 27 mutações únicas: 24 detectadas, 6 falsos negativos e
 > 2 falsos positivos externos.
 > As evidências v1 permanecem separadas e imutáveis.
 
@@ -14,7 +14,7 @@
 | Rodada Python | concluída: 5 detecções | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada dbt | concluída: 5 detecções | [[../30 - Tecnologias/Fluxo de checks dbt|fluxo de checks do dbt]] |
-| Rodada v2 (parcial) | 26 de 28 mutações únicas concluídas; 2 restantes | `results/resultados.csv`, `fault-catalog/falhas-v2.yml` |
+| Rodada v2 (parcial) | 27 de 28 mutações únicas concluídas; 1 restante | `results/resultados.csv`, `fault-catalog/falhas-v2.yml` |
 | Obsidian | documentação e narrativa da v1 consolidadas | [[../40 - Evidências/Matriz comparativa final|matriz da v1]] |
 
 ## Pendência experimental preservada
@@ -39,7 +39,7 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
    `baseline-ci-v2-security-20260822`, derivada da `main` simplificada, fica
    preservada apenas como tentativa não comparável e não será usada nas
    medições. O resultado causal é falso negativo de cobertura de reexecução.
-2. Executar as 2 mutações restantes de forma isolada a partir da baseline
+2. Executar a mutação restante de forma isolada a partir da baseline
    reconstruída e
    consolidar os resultados observados; V2-PY-001 e
    V2-PY-002 foram detectadas por Ruff, V2-PY-003 foi confirmado por mypy na
@@ -67,8 +67,8 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
    SQLFluff antes de dbt parse. V2-GOV-001 foi detectada por Bandit. Na
    V2-GOV-002, o Bandit B105 preemptou a primeira tentativa e a repetição
    isolada revelou falsa negativa do Gitleaks para a assinatura sintética em
-   comentário. As próximas são V2-GOV-003 (Actionlint) e V2-GOV-004
-   (Hadolint).
+   comentário. V2-GOV-003 foi detectada pelo Actionlint na expressão inválida
+   do workflow. A próxima é V2-GOV-004 (Hadolint).
 3. Ao final, produzir matriz e interpretação comparativas entre v1 e v2.
 
 ## Escopo aprovado para a v2

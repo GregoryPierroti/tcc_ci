@@ -1,6 +1,6 @@
 # Estado e próximos passos
 
-> [!important] Ponto de handoff — 2026-08-22
+> [!important] Ponto de handoff — 2026-08-23
 > A rodada v2 foi concluída após V2-GOV-004. Há 33 execuções v2 registradas,
 > correspondentes às 28 mutações únicas do catálogo: 25 detectadas, 6 falsos negativos e
 > 2 falsos positivos externos.
@@ -40,8 +40,7 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
    preservada apenas como tentativa não comparável e não será usada nas
    medições. O resultado causal é falso negativo de cobertura de reexecução.
 2. Consolidar a interpretação dos resultados a partir da baseline
-   reconstruída:
-   consolidar os resultados observados; V2-PY-001 e
+   reconstruída. V2-PY-001 e
    V2-PY-002 foram detectadas por Ruff, V2-PY-003 foi confirmado por mypy na
    repetição isolada e V2-PY-004 por pydocstringformatter. V2-PY-005 expôs
    falso negativo: Radon reportou C (14), mas sua configuração não bloqueia o
@@ -72,6 +71,72 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
    integralmente executado; todas as PRs experimentais foram fechadas sem merge.
 3. Produzir matriz e interpretação comparativas entre v1 e v2, distinguindo
    detecções causais, precedentes, falsas negativas e falsos positivos externos.
+
+## Handoff para aprofundamento analítico
+
+### Ponto de partida e fontes de verdade
+
+- A execução experimental está encerrada. Não criar novas falhas, não reabrir
+  PRs e não alterar a baseline para esta rodada; o trabalho seguinte é
+  exclusivamente de consolidação, análise e redação.
+- O conjunto observacional primário é `results/resultados.csv`; cada linha é
+  uma **execução**, e não necessariamente uma mutação distinta. O catálogo e
+  a intenção de cada mutação estão em `fault-catalog/falhas-v2.yml`.
+- A referência comparável da v2 é a tag
+  `baseline-ci-v2-security-rebuilt-all-20260822` no commit `14efe37`. Não usar
+  `baseline-ci-v2-security-20260822`: ela deriva de uma `main` simplificada e
+  é explicitamente não comparável.
+- A documentação consolidada está na branch
+  `docs/rename-data-validations`, commit `ed8aff6`. As evidências da v1 são
+  históricas e imutáveis; a comparação deve preservá-las, não recalculá-las.
+
+### Como interpretar os números
+
+- O CSV totaliza 33 execuções para 28 mutações únicas: 25 linhas
+  `detected`, 6 `false_negative` e 2 `false_positive` externos. Esses totais
+  são descritivos da rodada e não estimativas de cobertura geral.
+- Repetições e detecções precedentes devem aparecer explicitamente na matriz:
+  V2-PY-003, V2-SP-007 e V2-GOV-002 tiveram repetição para isolar a hipótese;
+  V2-DBT-002, V2-GOV-001 e a primeira tentativa de V2-GOV-002 foram
+  interrompidas por detector causal precedente. Não atribuir a detecção ao
+  detector originalmente esperado quando outro detector falhou antes.
+- Os dois falsos positivos externos decorrem de vulnerabilidades transitivas
+  de `pip` durante auditoria, não de mutações do catálogo. Mantê-los separados
+  de eficácia dos checks. Os falsos negativos são achados sobre limites dos
+  controles configurados, não prova de ausência de defeitos.
+- A análise deve permanecer em engenharia de software aplicada a pipelines:
+  estilo, tipagem, documentação, segurança, complexidade, arquitetura,
+  testes, cobertura, integração técnica, automação e imagem. Não introduzir
+  métricas de nulidade, unicidade, completude ou outra forma de *data quality*.
+
+### Entregáveis recomendados
+
+1. Construir a matriz v1–v2 por mutação e por técnica, contendo detector
+   previsto/observado, estágio, classificação, evidência e limitação de
+   interpretação.
+2. Redigir a análise por princípio de engenharia: explicar qual risco técnico
+   cada ferramenta reduz em pipelines e relacionar as falsas negativas às
+   decisões de configuração (por exemplo, limiar, cobertura agregada ou regra
+   heurística).
+3. Separar, na narrativa, evidência causal, evidência precedente, repetição
+   metodológica e falha externa. Só então calcular percentuais, sempre
+   informando denominador (execuções ou mutações únicas).
+4. Atualizar os artefatos de storytelling e de evidências a partir do CSV;
+   manter links para PRs fechadas como trilha de auditoria, sem mesclar código
+   experimental.
+
+### Cuidados operacionais na retomada
+
+- As PRs experimentais #76 a #80 estão fechadas sem merge e suas branches
+  remotas foram removidas. A baseline permanece íntegra.
+- O checkout principal `tcc_ci` contém alteração local pré-existente em
+  `projects/02_etl_python/src/utils/s3_client.py` e artefatos não rastreados
+  JUnit/SBOM em Python e PySpark. Não removê-los, não adicioná-los a commits e
+  não os confundir com resultados versionados; a branch local atual é
+  `fault/v2-py-014-retry`.
+- Trabalhar na branch de documentação para a redação e registrar cada marco
+  em `Registro metodológico.md` e `Estado e próximos passos.md` antes de
+  encerrar uma sessão.
 
 ## Escopo aprovado para a v2
 

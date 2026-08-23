@@ -1592,3 +1592,17 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   execuções: 25 detecções, 6 falsos negativos e 2 falsos positivos externos.
   O próximo artefato é a matriz comparativa v1–v2 e sua interpretação, sem
   reabrir o escopo para *data quality*.
+
+### 2026-08-23 — ETP-087 — Handoff para aprofundamento analítico
+
+- **Estado entregue:** a execução v2 foi encerrada e o CSV foi validado com 33
+  execuções, 28 mutações únicas, 25 detecções, 6 falsos negativos e 2 falsos
+  positivos externos.
+- **Referência metodológica:** a baseline comparável é
+  `baseline-ci-v2-security-rebuilt-all-20260822` (`14efe37`); a baseline
+  derivada da `main` simplificada permanece não comparável.
+- **Próxima etapa:** elaborar matriz e interpretação v1–v2 a partir do CSV e
+  do catálogo, distinguindo execução de mutação, detector previsto de causal,
+  repetição metodológica e ocorrência externa.
+- **Limite preservado:** a discussão aprofunda práticas de engenharia de
+  software em pipelines; não amplia o experimento para *data quality*.

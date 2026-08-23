@@ -1606,3 +1606,12 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   repetição metodológica e ocorrência externa.
 - **Limite preservado:** a discussão aprofunda práticas de engenharia de
   software em pipelines; não amplia o experimento para *data quality*.
+
+### 2026-08-23 — ETP-088 — Guia conceitual para defesa da esteira
+
+- **Artefato:** criado o guia de CI e engenharia de dados que organiza
+  conceitos, ferramentas, riscos mitigados, aplicação em pipelines e limites
+  de interpretação.
+- **Uso previsto:** apoiar a conversa com o orientador e orientar a análise
+  comparativa, explicando a ponte com engenharia de software sem alegar que
+  esses controles avaliam *data quality*.

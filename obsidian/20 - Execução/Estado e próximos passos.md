@@ -82,6 +82,10 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 - O conjunto observacional primário é `results/resultados.csv`; cada linha é
   uma **execução**, e não necessariamente uma mutação distinta. O catálogo e
   a intenção de cada mutação estão em `fault-catalog/falhas-v2.yml`.
+- O roteiro conceitual para a conversa com o orientador está em
+  [[../10 - Especificação/Guia conceitual de CI e engenharia de dados|guia
+  conceitual de CI e engenharia de dados]]. Ele relaciona cada conceito,
+  ferramenta, risco técnico, aplicação em pipelines e limite de interpretação.
 - A referência comparável da v2 é a tag
   `baseline-ci-v2-security-rebuilt-all-20260822` no commit `14efe37`. Não usar
   `baseline-ci-v2-security-20260822`: ela deriva de uma `main` simplificada e
@@ -124,6 +128,9 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 4. Atualizar os artefatos de storytelling e de evidências a partir do CSV;
    manter links para PRs fechadas como trilha de auditoria, sem mesclar código
    experimental.
+5. Usar o guia conceitual como pauta para justificar por que cada controle de
+   CI é uma prática de engenharia de software aplicável a pipelines, sem
+   confundir essa justificativa com avaliação de *data quality*.
 
 ### Cuidados operacionais na retomada
 

@@ -1615,3 +1615,31 @@ rastreabilidade para a redação posterior da metodologia da monografia.
 - **Uso previsto:** apoiar a conversa com o orientador e orientar a análise
   comparativa, explicando a ponte com engenharia de software sem alegar que
   esses controles avaliam *data quality*.
+
+### 2026-08-23 — ETP-089 — Consolidação das unidades e da rastreabilidade
+
+- **Objetivo:** preparar a análise comparativa v1–v2 sem alterar os registros
+  experimentais, tornando auditáveis as unidades de execução, mutação única e
+  detector-alvo, bem como a atribuição entre expectativa e observação.
+- **Artefatos alterados:** [[../10 - Especificação/Desenho metodológico|desenho metodológico]]
+  e [[../40 - Evidências/Rastreabilidade das evidências|rastreabilidade das
+  evidências]]. Catálogos YAML, [[../../results/resultados.csv|CSV de
+  resultados]], plano da v2, matriz comparativa e interpretação permaneceram
+  inalterados nesta fase.
+- **Decisões metodológicas:** formalizadas detecção causal, detecção causal
+  precedente, repetição metodológica, falso negativo e falso positivo externo.
+  A repetição preserva a execução inicial e não cria mutação nem resultado
+  adicional; por isso, toda proporção futura deve declarar explicitamente se o
+  denominador é execução ou mutação única.
+- **Rastreabilidade:** o percurso canônico foi explicitado como catálogo → CSV
+  → job/PR → diário. A referência comparável final é
+  `baseline-ci-v2-security-rebuilt-all-20260822` (`14efe37`), sem substituir o
+  `baseline_tag` efetivamente registrado em cada linha do CSV.
+- **Correções preservadas para a matriz:** V2-GOV-001 é detecção causal direta
+  por Bandit B602; V2-SP-008 é detecção causal precedente por teste unitário;
+  V2-SP-004 não permite atribuição exclusiva ao Hypothesis; e DBT-001 da v1
+  corresponde ao alias implícito identificado por SQLFluff AL02, com parse e
+  compile aprovados.
+- **Delimitação:** a consolidação permanece no escopo de engenharia de
+  software aplicada a pipelines e não introduz nem substitui controles de
+  *data quality*.

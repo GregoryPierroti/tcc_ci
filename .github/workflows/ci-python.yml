@@ -64,7 +64,7 @@ jobs:
         run: make test
 
       - name: Publicar relatórios de teste
-        if: always()
+        if: ${{ always( }}
         uses: actions/upload-artifact@v4
         with:
           name: relatorios-etl-python

@@ -1577,3 +1577,18 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   falhou em 16 s em **Validar workflows GitHub Actions**.
 - **Classificação:** `detected` por Actionlint no estágio previsto. PR e branch
   foram fechadas sem merge.
+
+### 2026-08-23 — ETP-086 — Execução controlada V2-GOV-004 e fechamento da rodada
+
+- **Mutação:** o `apt-get update` do Dockerfile PySpark foi separado da
+  instalação e da limpeza das listas no commit experimental `32efcb3`.
+- **Confirmação independente:** Hadolint reportou DL3009 no Dockerfile: a
+  limpeza das listas deve permanecer na mesma camada da instalação.
+- **Resultado remoto:** hooks de pré-commit, Gitleaks e Actionlint passaram; a
+  PR #80 falhou em 15 s em **Validar Dockerfiles**.
+- **Classificação:** `detected` por Hadolint no estágio previsto. A PR e a
+  branch foram fechadas sem merge.
+- **Fechamento:** as 28 mutações únicas da v2 foram executadas em 33
+  execuções: 25 detecções, 6 falsos negativos e 2 falsos positivos externos.
+  O próximo artefato é a matriz comparativa v1–v2 e sua interpretação, sem
+  reabrir o escopo para *data quality*.

@@ -5,6 +5,7 @@ WORKDIR /app
 
 COPY --from=uv /uv /uvx /bin/
 COPY pyproject.toml uv.lock .importlinter ./
+RUN python -m pip install --no-cache-dir --upgrade pip==26.2
 ENV UV_PROJECT_ENVIRONMENT=/opt/venv
 RUN uv sync --frozen --no-install-project
 

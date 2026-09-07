@@ -1,10 +1,11 @@
 # Estado e próximos passos
 
-> [!important] Ponto de handoff — 2026-08-23
+> [!important] Ponto de handoff — 2026-09-07
 > A rodada v2 foi concluída após V2-GOV-004. Há 33 execuções v2 registradas,
 > correspondentes às 28 mutações únicas do catálogo: 25 detectadas, 6 falsos negativos e
 > 2 falsos positivos externos.
-> As evidências v1 permanecem separadas e imutáveis.
+> As evidências v1 permanecem separadas e imutáveis. A consolidação v1–v2
+> foi integrada ao `main` pela PR #46; a fase atual é redação da monografia.
 
 ## Estado consolidado
 
@@ -15,7 +16,7 @@
 | Rodada PySpark | concluída: 3 detecções e 2 falsos negativos | [[../40 - Evidências/Resultados e métricas|resultados consolidados]] |
 | Rodada dbt | concluída: 5 detecções | [[../30 - Tecnologias/Fluxo de checks dbt|fluxo de checks do dbt]] |
 | Rodada v2 | 28 de 28 mutações únicas concluídas | `results/resultados.csv`, `fault-catalog/falhas-v2.yml` |
-| Obsidian | documentação e narrativa da v1 consolidadas | [[../40 - Evidências/Matriz comparativa final|matriz da v1]] |
+| Obsidian | documentação, matriz e interpretação v1–v2 integradas ao `main` | [[../40 - Evidências/Matriz comparativa final|matriz comparativa]] |
 
 ## Pendência experimental preservada
 
@@ -30,7 +31,10 @@ revalidação. `make lint` passou localmente no `main` e o workflow manual
 **CI - ETL dbt** passou remotamente em todas as etapas; as repetições, DBT-004
 e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
-## Próximos passos da v2
+## Fechamento da v2
+
+Os itens abaixo registram a consolidação já concluída e os limites que devem
+ser preservados na redação.
 
 1. V2-PY-014 foi repetida de forma causal a partir de
    `baseline-ci-v2-security-rebuilt-all-20260822` (`14efe37`): a referência
@@ -69,8 +73,9 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
    comentário. V2-GOV-003 foi detectada pelo Actionlint na expressão inválida
    do workflow e V2-GOV-004 pelo Hadolint (DL3009). O catálogo v2 está
    integralmente executado; todas as PRs experimentais foram fechadas sem merge.
-3. Produzir matriz e interpretação comparativas entre v1 e v2, distinguindo
-   detecções causais, precedentes, falsas negativas e falsos positivos externos.
+3. A matriz e a interpretação comparativas entre v1 e v2 foram produzidas,
+   distinguindo detecções causais, precedentes, falsas negativas e falsos
+   positivos externos.
 
 ## Handoff para aprofundamento analítico
 
@@ -89,9 +94,9 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
   `baseline-ci-v2-security-rebuilt-all-20260822` no commit `14efe37`. Não usar
   `baseline-ci-v2-security-20260822`: ela deriva de uma `main` simplificada e
   é explicitamente não comparável.
-- A documentação consolidada está na branch
-  `docs/rename-data-validations`, commit `ed8aff6`. As evidências da v1 são
-  históricas e imutáveis; a comparação deve preservá-las, não recalculá-las.
+- A documentação consolidada está no `main`, a partir do commit `95f4df9`,
+  integrado pela PR #46. As evidências da v1 são históricas e imutáveis; a
+  comparação deve preservá-las, não recalculá-las.
 
 ### Como interpretar os números
 
@@ -135,14 +140,24 @@ e DBT-005 estão consolidadas no CSV. Não houve correção basal a integrar.
 
 - As PRs experimentais #76 a #80 estão fechadas sem merge e suas branches
   remotas foram removidas. A baseline permanece íntegra.
-- O checkout principal `tcc_ci` contém alteração local pré-existente em
-  `projects/02_etl_python/src/utils/s3_client.py` e artefatos não rastreados
-  JUnit/SBOM em Python e PySpark. Não removê-los, não adicioná-los a commits e
-  não os confundir com resultados versionados; a branch local atual é
-  `fault/v2-py-014-retry`.
-- Trabalhar na branch de documentação para a redação e registrar cada marco
-  em `Registro metodológico.md` e `Estado e próximos passos.md` antes de
-  encerrar uma sessão.
+- O checkout principal está no `main`. O arquivo `TCC- CI progressivo.docx` é
+  referência pessoal de redação e permanece não versionado. Trabalhar em uma
+  branch documental para cada etapa da monografia e registrar cada marco neste
+  handoff e no `Registro metodológico.md`.
+
+## Próximos passos da monografia
+
+1. Reescrever a introdução a partir da perspectiva confirmada pelo experimento,
+   preservando a qualidade argumentativa do DOCX anterior e reutilizando apenas
+   afirmações sustentadas pelos seis artigos recuperados.
+2. Ajustar problema de pesquisa, objetivo geral e objetivos específicos para
+   refletir o artefato e a avaliação efetivamente realizados.
+3. Converter o desenho metodológico e a rastreabilidade em capítulo de método;
+   converter a matriz e a interpretação em resultados e discussão.
+4. Redigir ameaças à validade, conclusão e trabalhos futuros sem generalizar as
+   taxas observadas para outros catálogos, tecnologias ou organizações.
+5. Revisar referências, normalização institucional, tabelas, apêndices e material
+   de defesa somente depois de estabilizar o texto dos capítulos.
 
 ## Escopo aprovado para a v2
 

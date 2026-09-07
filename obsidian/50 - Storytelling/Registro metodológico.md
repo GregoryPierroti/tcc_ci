@@ -1660,3 +1660,21 @@ rastreabilidade para a redação posterior da metodologia da monografia.
   rascunho intermediário redundante não foi versionado.
 - **Verificação:** confirmados 43 IDs únicos, nenhuma duplicidade, dez colunas
   em todas as linhas e `git diff --check` sem erros.
+
+### 2026-09-07 — ETP-091 — Integração da consolidação e handoff para redação
+
+- **Integração:** os commits de interpretação comparativa e da matriz acadêmica
+  foram publicados na PR #46. O conflito com o `main` foi resolvido mantendo os
+  controles da v2 e incorporando `pip==26.2` ao ETL Python.
+- **Revalidação:** a primeira execução após o merge falhou na auditoria do
+  PySpark porque a branch consolidada ainda instalava `pip 26.1.2`. Foi aplicada
+  a correção já validada na baseline reconstruída (`14efe37`), sem alterar o
+  desenho ou os resultados experimentais.
+- **Resultado remoto:** governança, ETL Python e ETL PySpark passaram no commit
+  `95f4df9`; a PR #46 foi integrada ao `main`. O DOCX anterior da introdução
+  permanece não versionado e será usado como referência de qualidade textual.
+- **Base bibliográfica recuperada:** os seis PDFs citados no DOCX foram
+  identificados pelo conteúdo interno: Yang et al.; Munappy et al.; da Roza,
+  Prado Lima e Vergilio; Tahir et al.; Sun, Friberg e Staron; e Nocera, Fucci e
+  Scanniello. A reescrita deve conferir cada afirmação diretamente nesses
+  artigos e adaptar a perspectiva ao experimento concluído.
